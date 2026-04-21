@@ -714,6 +714,38 @@
     });
   }
 
+  // Mirror-Quirk: das Original liefert Flaggen über die Asset-Pipeline aus
+  // `assets/flag/<land>.png`, der gespiegelte Pfad ist aber `assets/<land>.png`.
+  // Wir normalisieren clientseitig, damit wir die Original-HAML nicht anfassen.
+  function fixFlagPaths() {
+    var imgs = document.querySelectorAll('img[src*="assets/flag/"]');
+    for (var i = 0; i < imgs.length; i++) {
+      var src = imgs[i].getAttribute('src') || '';
+      imgs[i].setAttribute('src', src.replace('assets/flag/', 'assets/'));
+    }
+  }
+
+  // Top-5-Übersicht (`female.html`/`male.html`): das Original benutzt
+  // `<span class="flagblock" style="background-image: url(/assets/top5-N.png)">`
+  // mit absolutem Slash, der unter GitHub Pages auf der Domain-Root landet
+  // (404). Wir entfernen das Inline-Background und setzen ein data-Attribut,
+  // damit unser CSS via `:nth-child` die Rang-Badges 1–5 selbst rendern kann.
+  function decorateTop5() {
+    var lists = document.querySelectorAll('div.top5_nations ul');
+    if (!lists.length) return;
+    for (var i = 0; i < lists.length; i++) {
+      var items = lists[i].querySelectorAll(':scope > li');
+      for (var j = 0; j < items.length; j++) {
+        var rank = j + 1;
+        items[j].setAttribute('data-rank', String(rank));
+        var fb = items[j].querySelector('.flagblock');
+        if (fb && fb.style && fb.style.backgroundImage) {
+          fb.style.backgroundImage = 'none';
+        }
+      }
+    }
+  }
+
   function init() {
     try { ensureViewport(); }     catch (e) {}
     try { syncBodyVariant(); }    catch (e) {}
@@ -727,6 +759,8 @@
     try { decorateToursPage(); }  catch (e) {}
     try { applyEventsFilter(); }  catch (e) {}
     try { buildHomeHero(); }      catch (e) {}
+    try { fixFlagPaths(); }       catch (e) {}
+    try { decorateTop5(); }       catch (e) {}
     try { preserveVariant(); }    catch (e) {}
     try { attachShortcuts(); }    catch (e) {}
     try { rewireDropmenu(); }     catch (e) {}

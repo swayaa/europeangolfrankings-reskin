@@ -1769,6 +1769,229 @@ div#main aside .wblock img {
   display: block;
 }
 
+/* Werbe-Karte (.wblock) auf Desktop sticky in der Sidebar, damit sie beim
+   Scrollen langer Tabellen sichtbar bleibt — Original klebte sie einfach an
+   den Seitenrand, wir brauchen den Sticky-Trick wegen der Grid-Spalte. */
+@media (min-width: 900px) {
+  div#main aside .wblock {
+    position: sticky;
+    top: clamp(16px, 3vw, 28px);
+  }
+}
+
+/* ============================================================================
+ * 12b. Top-5-Übersichten (female.html / male.html)
+ *      Original: <div.top5_nations> > <h2.top5> + <ul> > <li>{flagblock,
+ *      img.default, playerblock}. Wir machen daraus ein Trading-Card-Grid.
+ * ============================================================================ */
+
+div#inhalt div.top5_nations {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 32px);
+  margin-top: var(--egr-space-5);
+}
+
+div#inhalt div.top5_nations h2.top5 {
+  margin: 0 0 var(--egr-space-3);
+  padding: 0 0 var(--egr-space-2);
+  font-family: var(--egr-font-display);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 700;
+  color: var(--egr-color-accent-strong);
+  border-bottom: 2px solid var(--egr-color-border);
+  background: none !important;
+  text-shadow: none !important;
+  letter-spacing: 0.01em;
+}
+
+div#inhalt div.top5_nations h2.top5 .translation_missing {
+  background: none !important;
+  color: inherit !important;
+  border: none !important;
+  font-style: normal;
+}
+
+/* Liste = responsives Karten-Grid: 5 Spalten desktop, 3 tablet, 1 mobile */
+div#inhalt div.top5_nations > ul {
+  list-style: none !important;
+  margin: 0 0 var(--egr-space-3) !important;
+  padding: 0 !important;
+  display: grid;
+  gap: clamp(12px, 2vw, 18px);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+div#inhalt div.top5_nations > ul > li {
+  position: relative;
+  list-style: none !important;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: var(--egr-space-2);
+  margin: 0 !important;
+  padding: var(--egr-space-4) var(--egr-space-3) var(--egr-space-3);
+  background: var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  box-shadow: var(--egr-shadow-1);
+  transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease;
+  text-align: center;
+  min-width: 0;
+}
+
+div#inhalt div.top5_nations > ul > li::before {
+  content: attr(data-rank);
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-family: var(--egr-font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--egr-color-on-accent, #fff);
+  background: var(--egr-color-accent);
+  border: 2px solid var(--egr-color-surface);
+  border-radius: 999px;
+  box-shadow: var(--egr-shadow-1);
+}
+
+/* Goldglanz für Rang 1, Silber für 2, Bronze für 3 — Variant-agnostisch
+   über semantische Tokens mit Fallback. */
+div#inhalt div.top5_nations > ul > li[data-rank="1"]::before {
+  background: var(--egr-color-rank-gold, #d4a017);
+  color: #1a1a1a;
+}
+div#inhalt div.top5_nations > ul > li[data-rank="2"]::before {
+  background: var(--egr-color-rank-silver, #b8b8b8);
+  color: #1a1a1a;
+}
+div#inhalt div.top5_nations > ul > li[data-rank="3"]::before {
+  background: var(--egr-color-rank-bronze, #c97a3a);
+  color: #fff;
+}
+
+div#inhalt div.top5_nations > ul > li:hover {
+  border-color: var(--egr-color-accent);
+  box-shadow: var(--egr-shadow-2);
+  transform: translateY(-2px);
+}
+
+/* flagblock = Flagge oben (Inline-Background haben wir per JS entfernt) */
+div#inhalt div.top5_nations > ul > li .flagblock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 28px;
+  margin: 0 auto;
+  padding: 0;
+  background: none !important;
+  border: 1px solid var(--egr-color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+div#inhalt div.top5_nations > ul > li .flagblock img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Spielerfoto (a > img.default.jpg) */
+div#inhalt div.top5_nations > ul > li > a {
+  display: block;
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--egr-color-border);
+  background: var(--egr-color-surface-2);
+  text-decoration: none !important;
+}
+
+div#inhalt div.top5_nations > ul > li > a > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: var(--egr-color-surface-2);
+}
+
+/* Playerblock = Name + Stats */
+div#inhalt div.top5_nations > ul > li .playerblock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--egr-color-text-2);
+  line-height: 1.4;
+}
+
+div#inhalt div.top5_nations > ul > li .playerblock br {
+  display: none;
+}
+
+div#inhalt div.top5_nations > ul > li .playerblock a {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+  font-family: var(--egr-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--egr-color-text-1) !important;
+  text-decoration: none !important;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+}
+
+div#inhalt div.top5_nations > ul > li .playerblock a:hover {
+  color: var(--egr-color-accent) !important;
+  text-decoration: underline !important;
+}
+
+/* "View Complete Rankings" → CTA-Button */
+div#inhalt div.top5_nations > a[href*="ranking"],
+div#inhalt div.top5_nations > a:not([class]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-end;
+  margin: calc(-1 * var(--egr-space-2)) 0 var(--egr-space-2) auto;
+  padding: 8px 16px;
+  font-family: var(--egr-font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--egr-color-on-accent, #fff) !important;
+  background: var(--egr-color-accent);
+  border: 1px solid var(--egr-color-accent);
+  border-radius: var(--egr-radius-sm);
+  text-decoration: none !important;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+div#inhalt div.top5_nations > a[href*="ranking"]:hover,
+div#inhalt div.top5_nations > a:not([class]):hover {
+  background: var(--egr-color-accent-strong);
+  transform: translateY(-1px);
+}
+
+div#inhalt div.top5_nations > a[href*="ranking"] img,
+div#inhalt div.top5_nations > a:not([class]) img {
+  display: none; /* das Pfeil-PNG (pfeil-view-complete-top5.png) ist 404 */
+}
+
+div#inhalt div.top5_nations > a[href*="ranking"]::after,
+div#inhalt div.top5_nations > a:not([class])::after {
+  content: "→";
+  font-weight: 700;
+}
+
 /* ============================================================================
  * 13. Events-Liste / Tour-Liste / Search-Result-Cards
  *    Original benutzt freie <div>/<table>-Strukturen ohne stabile Klassen.
