@@ -334,6 +334,19 @@ def transform_html(html: str, page_kind: str, body_id_default: str) -> str:
         r'<!--\s*Matomo\s*-->.*?<!--\s*End Matomo Code\s*-->',
         '', body_part, flags=re.DOTALL)
 
+    # 3b) Strip <img> tags pointing at non-mirrored CMS uploads (page_images/...).
+    #     These are 404 in the mirror; we hide them via CSS already, but the
+    #     browser still issues a GET. Removing the element prevents the request.
+    body_part = re.sub(
+        r'<img[^>]*src=["\']page_images/[^"\']+["\'][^>]*/?>',
+        '', body_part)
+    # 3c) Strip the literal "?2026" cache-buster from ad src so GitHub Pages
+    #     can serve the file (the literal `?` in the mirrored filename
+    #     conflicts with the URL query separator).
+    body_part = re.sub(
+        r'(<img[^>]*src=["\']ads/[^"\']+\.gif)\?[^"\']+(["\'])',
+        r'\1\2', body_part)
+
     # 4) Ensure body has data-egr-page attribute
     body_part = re.sub(
         r'<body([^>]*)>',

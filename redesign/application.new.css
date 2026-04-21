@@ -2132,12 +2132,38 @@ body[data-egr-page="sessions"] div#main {
  *   bereits als CSS-`::after`-Pfeile.
  * -------------------------------------------------------------------------- */
 
-/* dreieck-asc.png / dreieck-desc.png — Sortier-Pfeile auf Event-Tabellen-
-   Spalten-Headern. Wir nehmen sowohl Hintergrund als auch Padding raus,
-   damit die Header nicht blau eingefärbt mit Lücke links bleiben. */
+/* dreieck-asc.png / dreieck-desc.png — Sortier-Pfeile auf ALLEN Spalten-
+   Headern aller Tabellen. Wir nehmen sowohl Hintergrund als auch Padding
+   raus, damit die Header nicht blau eingefärbt mit Lücke links bleiben.
+   Sortier-Indikatoren liefert unsere CSS bereits als Unicode-Pfeile via
+   ::after. */
+div#contentbox div#main div#inhalt table tr.ranking th.ranking,
+div#contentbox div#main div#inhalt table tr.points th.points,
+div#contentbox div#main div#inhalt table tr.last_name th.last_name,
+div#contentbox div#main div#inhalt table tr.first_name th.first_name,
+div#contentbox div#main div#inhalt table tr.country th.country,
+div#contentbox div#main div#inhalt table tr.born th.born,
+div#contentbox div#main div#inhalt table tr.score th.score,
+div#contentbox div#main div#inhalt table tr.events th.events,
+div#contentbox div#main div#inhalt table tr.age_group th.age_group,
+div#contentbox div#main div#inhalt table tr.places th.places,
+div#contentbox div#main div#inhalt table tr.venue th.venue,
+div#contentbox div#main div#inhalt table tr.event_name th.event_name,
 div#contentbox div#main div#inhalt table tr.date_start th.date_start,
 div#contentbox div#main div#inhalt table tr.date_end th.date_end,
 div#contentbox div#main div#inhalt table tr.css th.css,
+div#contentbox div#main div#inhalt table tr.desc.ranking th.ranking,
+div#contentbox div#main div#inhalt table tr.desc.points th.points,
+div#contentbox div#main div#inhalt table tr.desc.last_name th.last_name,
+div#contentbox div#main div#inhalt table tr.desc.first_name th.first_name,
+div#contentbox div#main div#inhalt table tr.desc.country th.country,
+div#contentbox div#main div#inhalt table tr.desc.born th.born,
+div#contentbox div#main div#inhalt table tr.desc.score th.score,
+div#contentbox div#main div#inhalt table tr.desc.events th.events,
+div#contentbox div#main div#inhalt table tr.desc.age_group th.age_group,
+div#contentbox div#main div#inhalt table tr.desc.places th.places,
+div#contentbox div#main div#inhalt table tr.desc.venue th.venue,
+div#contentbox div#main div#inhalt table tr.desc.event_name th.event_name,
 div#contentbox div#main div#inhalt table tr.desc.date_start th.date_start,
 div#contentbox div#main div#inhalt table tr.desc.date_end th.date_end,
 div#contentbox div#main div#inhalt table tr.desc.css th.css {
@@ -2145,6 +2171,28 @@ div#contentbox div#main div#inhalt table tr.desc.css th.css {
   background-color: transparent !important;
   padding-left: var(--egr-space-3) !important;
 }
+
+/* nav-bg.png — Streifen-Hintergrund für Hauptnav, Submenue-Nav, Footer-Nav */
+div#contentbox header nav,
+div#contentbox header div#submenue nav#submenue,
+div#contentbox footer nav {
+  background-image: none !important;
+}
+
+/* pfeil-view-complete-top5.png — kleiner Pfeil auf <p class="complete_ranking">
+   Hintergrund. Unsere CTA-Pille rendert den Pfeil bereits via ::after. */
+div#contentbox div#main div#inhalt div.top5 div p.complete_ranking,
+div#contentbox div#main div#inhalt p.complete_ranking {
+  background-image: none !important;
+  padding-right: 0 !important;
+}
+
+/* background2.jpg / deko6.jpg — Body- + Header-Hintergründe sind oben
+   bereits durch unsere eigenen Variant-Tokens ersetzt. Falls die Variant
+   kein eigenes Banner setzt, fällt unser Code automatisch auf
+   `var(--egr-banner-image, none)` zurück; ein 404-Request entsteht dann
+   trotzdem nicht, weil wir den Originalwert via !important neutralisiert
+   haben (siehe oben). */
 
 /* bg-sidebar-h2.png — blauer Streifen-Background für Sidebar-Überschriften.
    Wir haben oben bereits `div#main aside .sidebar h2 { background:none
