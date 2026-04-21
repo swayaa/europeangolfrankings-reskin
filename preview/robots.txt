@@ -1,0 +1,5 @@
+# Re-Skin-Preview-Bundle.
+# Bewusst nicht für Suchmaschinen gedacht - der Live-Link ist nur fuer
+# das interne Review mit dem Betreiber/Kollegen, nicht fuer Endnutzer.
+User-agent: *
+Disallow: /

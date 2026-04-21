@@ -80,6 +80,10 @@ NEW_HEAD = """\
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Preview-Bundle: bewusst NICHT von Suchmaschinen indexieren, damit
+       der Re-Skin nicht versehentlich als „echte" Site auftaucht.
+       Robots.txt liefert zusätzlich Disallow für brave Crawler. -->
+  <meta name="robots" content="noindex,nofollow,noarchive" />
   <title>European Golf Rankings — Re-Skin Preview</title>
 
   <!-- ───── Original-CSS (Baseline). Wird bei aktivem Re-Skin deaktiviert. ───── -->
