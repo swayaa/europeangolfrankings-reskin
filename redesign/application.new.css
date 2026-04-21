@@ -2122,10 +2122,53 @@ body[data-egr-page="sessions"] div#main {
   }
 }
 
+/* ----------------------------------------------------------------------------
+ * Legacy-Asset-404-Suppression
+ *   Das Original-Stylesheet referenziert mehrere Assets per absolutem
+ *   `/assets/...`-Pfad, die unter dem GitHub-Pages-Subdir nicht auflösbar
+ *   sind. Wir neutralisieren diese Hintergründe hier global, damit weder
+ *   404-Netzwerk-Requests noch sichtbare Defekte (bunte Stripes, kaputte
+ *   Image-Icons) übrig bleiben. Sortier-Indikatoren liefern wir oben
+ *   bereits als CSS-`::after`-Pfeile.
+ * -------------------------------------------------------------------------- */
+
+/* dreieck-asc.png / dreieck-desc.png — Sortier-Pfeile auf Event-Tabellen-
+   Spalten-Headern. Wir nehmen sowohl Hintergrund als auch Padding raus,
+   damit die Header nicht blau eingefärbt mit Lücke links bleiben. */
+div#contentbox div#main div#inhalt table tr.date_start th.date_start,
+div#contentbox div#main div#inhalt table tr.date_end th.date_end,
+div#contentbox div#main div#inhalt table tr.css th.css,
+div#contentbox div#main div#inhalt table tr.desc.date_start th.date_start,
+div#contentbox div#main div#inhalt table tr.desc.date_end th.date_end,
+div#contentbox div#main div#inhalt table tr.desc.css th.css {
+  background-image: none !important;
+  background-color: transparent !important;
+  padding-left: var(--egr-space-3) !important;
+}
+
+/* bg-sidebar-h2.png — blauer Streifen-Background für Sidebar-Überschriften.
+   Wir haben oben bereits `div#main aside .sidebar h2 { background:none
+   !important }` gesetzt; hier zusätzlich für Sidebars außerhalb von
+   <aside> (gibt's vereinzelt im Mirror). */
+div#contentbox div#main div.sidebar h2 {
+  background-image: none !important;
+  background-color: transparent !important;
+  color: var(--egr-color-accent-strong) !important;
+  border-radius: 0 !important;
+  text-shadow: none !important;
+}
+
 /* Kaputte Sidebar-Bilder global ausblenden (page_images/* existiert nicht
    im Mirror; sind im Original CMS-Uploads). Sidebar-Text bleibt sichtbar. */
 img[src*="page_images/"] {
   display: none !important;
+}
+
+/* Wenn der `.page`-Container (in der Sidebar) nur das versteckte CMS-Bild
+   und keinen Text enthält, hat er sonst noch Padding/Border — also
+   neutralisieren wir den auch, falls er als optisch leer endet. */
+div#main aside .page:not(:has(.sidebar)) {
+  display: none;
 }
 body[data-egr-page="sessions"] aside .sidebar {
   background: var(--egr-color-surface);
