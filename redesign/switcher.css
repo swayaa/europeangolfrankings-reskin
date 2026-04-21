@@ -1,0 +1,131 @@
+/* ═══════════════════════════════════════════════════════════════════════
+ * redesign/switcher.css
+ *   Styles für den Preview-Switcher rechts unten + Device-Frame-Modus.
+ *   Wird gemeinsam mit redesign/switcher.js geladen.
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+.egr-preview-switcher {
+  position: fixed; right: 16px; bottom: 16px; z-index: 2147483000;
+  display: flex; flex-direction: column; gap: 6px;
+  background: #0F1620; color: #fff;
+  padding: 10px 12px; border-radius: 12px;
+  font: 12px/1.3 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+  max-width: 260px;
+  pointer-events: auto;
+}
+.egr-preview-switcher * { box-sizing: border-box; }
+.egr-preview-switcher strong {
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  opacity: .65; color: #fff;
+}
+.egr-preview-switcher .row { display: flex; gap: 4px; flex-wrap: wrap; }
+.egr-preview-switcher a, .egr-preview-switcher button {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 10px; border-radius: 6px;
+  background: #1F2A37; color: #fff; text-decoration: none;
+  font-weight: 600; font-size: 11px; transition: background .15s, transform .1s;
+  border: 1px solid transparent; cursor: pointer; font-family: inherit;
+}
+.egr-preview-switcher a:hover, .egr-preview-switcher button:hover { background: #2A3744; }
+.egr-preview-switcher a:active, .egr-preview-switcher button:active { transform: translateY(1px); }
+.egr-preview-switcher a.is-active, .egr-preview-switcher button.is-active {
+  background: #2E7D32; border-color: #66BB6A; color: #fff;
+}
+.egr-preview-switcher select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background-color: #1F2A37;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #fff 50%),
+    linear-gradient(135deg, #fff 50%, transparent 50%);
+  background-position: calc(100% - 14px) 12px, calc(100% - 9px) 12px;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  color: #fff !important;
+  border: 1px solid #3B4A5A;
+  padding: 6px 26px 6px 8px; border-radius: 6px;
+  font: 600 11px/1.3 -apple-system, system-ui, sans-serif;
+  width: 100%;
+  cursor: pointer;
+}
+.egr-preview-switcher select:focus { outline: 2px solid #66BB6A; outline-offset: 1px; }
+.egr-preview-switcher select option {
+  background: #1F2A37 !important; color: #fff !important;
+}
+.egr-preview-switcher select option:checked,
+.egr-preview-switcher select option:hover {
+  background: #2E7D32 !important; color: #fff !important;
+}
+@media print { .egr-preview-switcher { display: none; } }
+@media (max-width: 480px) {
+  .egr-preview-switcher { right: 8px; bottom: 8px; padding: 8px; max-width: 200px; }
+}
+
+/* ── Device-Frame (für Viewport-Toggle Mobile/Desktop) ────────────────── */
+body.egr-frame-mode {
+  margin: 0;
+  background: #0E1620;
+  min-height: 100vh;
+  color: #fff;
+  display: grid;
+  place-items: start center;
+  padding: 24px 16px 96px;
+  overflow: auto;
+}
+.egr-device-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+}
+.egr-device-stage .egr-device {
+  border: 6px solid #1F2937;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 48px rgba(0,0,0,.5);
+  position: relative;
+  flex: none;
+}
+.egr-device-stage .egr-device.mobile {
+  width: 390px; height: 844px;
+}
+.egr-device-stage .egr-device.mobile::before {
+  content: ""; position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 110px; height: 22px; background: #000;
+  border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;
+  z-index: 10;
+}
+.egr-device-stage .egr-device.desktop {
+  width: min(1280px, calc(100vw - 64px));
+  height: min(820px, calc(100vh - 180px));
+  border-radius: 12px;
+}
+.egr-device-stage .egr-device iframe {
+  border: 0; width: 100%; height: 100%; display: block; background: #fff;
+}
+.egr-device-stage .egr-device-label {
+  color: #9DA3AB;
+  font: 600 11px/1.3 -apple-system, system-ui, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Switcher im iframe-Inhalt selbst ausblenden (steht im Outer-Frame) */
+body.egr-inframe .egr-preview-switcher { display: none !important; }
+
+/* Mobile: Device-Frame skaliert runter, damit alles sichtbar bleibt */
+@media (max-width: 700px) {
+  .egr-device-stage .egr-device.mobile {
+    transform: scale(.78); transform-origin: top center;
+    margin-bottom: -180px;
+  }
+  .egr-device-stage .egr-device.desktop {
+    width: calc(100vw - 32px);
+    height: calc((100vw - 32px) * 0.6);
+    min-height: 320px;
+  }
+}

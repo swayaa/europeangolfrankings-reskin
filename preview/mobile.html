@@ -103,7 +103,7 @@
       location.href = '?' + (b ? 'baseline=1' : 'v=' + v) + '&page=' + sel.value;
     });
 
-    var url = page + '?' + (b ? 'baseline=1' : 'v=' + v) + '&_=' + Date.now();
+    var url = page + '?' + (b ? 'baseline=1' : 'v=' + v) + '&_inframe=1&_=' + Date.now();
     document.getElementById('frame').src = url;
   </script>
 </body>
