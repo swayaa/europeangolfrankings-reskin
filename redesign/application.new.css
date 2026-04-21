@@ -297,6 +297,13 @@ div#submenue {
   border-top: 1px solid var(--egr-color-border);
 }
 
+/* contact.html, imprint.html und ein paar andere Seiten haben zwar einen
+   leeren <div id="submenue">-Container im HAML, aber kein <nav> drin —
+   das hinterlässt sonst einen sichtbaren leeren 1-px-Streifen. */
+div#submenue:not(:has(nav)) {
+  display: none;
+}
+
 div#submenue nav#submenue {
   margin: 0;
   padding: 0;

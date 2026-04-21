@@ -714,6 +714,27 @@
     });
   }
 
+  // tours.html: das Original-Rails-Layout hängt aus Versehen die Rankings-
+  // Sub-Nav (Boys/Men · Girls/Women · Scandinavian · Dutch) an die Tours-
+  // Seite. Konzeptionell gehört Tours unter Events. Wir tauschen die Sub-
+  // Nav clientseitig gegen die Events-Sub-Nav mit "Tours" als Active-Tab.
+  function fixToursSubnav() {
+    var body = document.body;
+    if (!body || body.id !== 'tours') return;
+    var nav = document.querySelector('div#submenue nav#submenue');
+    if (!nav) return;
+    // Heuristik: enthält die Sub-Nav den Boys/Men-Link, ist sie die falsche.
+    if (!nav.querySelector('a[href="ranking.html"]')) return;
+    nav.innerHTML =
+      '<ul>' +
+        '<li><a href="events.html">Current Year</a></li>' +
+        '<li><a href="events.html?filter=counting">Counting</a></li>' +
+        '<li><a href="events.html?filter=upcoming">Upcoming</a></li>' +
+        '<li><a href="events.html?filter=archive">Archive</a></li>' +
+        '<li class="active"><a href="tours.html" aria-current="page">Tours</a></li>' +
+      '</ul>';
+  }
+
   // Mirror-Quirk: das Original liefert Flaggen über die Asset-Pipeline aus
   // `assets/flag/<land>.png`, der gespiegelte Pfad ist aber `assets/<land>.png`.
   // Wir normalisieren clientseitig, damit wir die Original-HAML nicht anfassen.
@@ -759,6 +780,7 @@
     try { decorateToursPage(); }  catch (e) {}
     try { applyEventsFilter(); }  catch (e) {}
     try { buildHomeHero(); }      catch (e) {}
+    try { fixToursSubnav(); }     catch (e) {}
     try { fixFlagPaths(); }       catch (e) {}
     try { decorateTop5(); }       catch (e) {}
     try { preserveVariant(); }    catch (e) {}
