@@ -1,0 +1,2650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>European Golf Rankings — Re-Skin Preview</title>
+
+  <!-- ───── Original-CSS (Baseline). Wird bei aktivem Re-Skin deaktiviert. ───── -->
+  <link id="legacy-css" href="assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <!-- ───── jQuery + Original-Scripts (DOM bleibt 1:1) ───── -->
+  <script src="assets/jquery.js"></script>
+  <script src="assets/jquery_ujs.js"></script>
+  <script src="assets/jquery.quickselect.min.js"></script>
+  <script src="assets/string_score.min.js"></script>
+  <script src="assets/application.js"></script>
+
+  <!-- ───── Variant-Switcher: ?v=a|b|c   ?baseline=1 zeigt das Original ───── -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var v = (p.get('v') || 'a').toLowerCase();
+      if (!/^[abc]$/.test(v)) v = 'a';
+      var baseline = p.get('baseline');
+      var tokenMap = {
+        a: 'redesign/tokens/variant-a-fairway-modern.css',
+        b: 'redesign/tokens/variant-b-tour-pro-dark.css',
+        c: 'redesign/tokens/variant-c-stat-lab-editorial.css'
+      };
+      function loadCss(href) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet'; l.href = href;
+        document.head.appendChild(l);
+      }
+      var cb = '?_=' + Date.now();
+      if (baseline !== '1') {
+        loadCss(tokenMap[v] + cb);
+        loadCss('redesign/application.new.css' + cb);
+      }
+      window.__EGR_VARIANT = v.toUpperCase();
+      window.__EGR_BASELINE = baseline === '1';
+      window.addEventListener('DOMContentLoaded', function () {
+        var legacy = document.getElementById('legacy-css');
+        if (legacy && baseline !== '1') legacy.disabled = true;
+        if (baseline !== '1') document.body.setAttribute('data-variant', v.toUpperCase());
+      });
+    })();
+  </script>
+
+  <!-- ───── Stufe-1-JS-Helfer (mit Cache-Buster) ───── -->
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'redesign/application.new.js?_=' + Date.now();
+      s.defer = true;
+      document.head.appendChild(s);
+    })();
+  </script>
+</head>
+<body id="events" data-egr-page="events">
+    
+  <div id="contentbox">
+  
+    <header>
+      <h1>European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="events">
+  <li id="l_home"><a href="home.html">Home</a></li>
+
+    <li id="l_rankings"><a href="ranking.html">Rankings</a></li>
+
+    <li id="l_events"><a href="events.html">Events</a></li>
+
+    <li>
+  <a href="how-to-use.html">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="sign_in.html">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+
+  
+  
+  
+    <nav id='submenue'>
+<ul>
+<li class='active'>
+<a href="events.html"><span class="translation_missing" title="translation missing: en.current_year">Current Year</span></a>
+</li>
+<li class=''>
+<a href="#"><span class="translation_missing" title="translation missing: en.counting">Counting</span></a>
+</li>
+<li class=''>
+<a href="#">Upcoming</a>
+</li>
+<li class=''>
+<a href="#">Archive</a>
+</li>
+<li>
+<a href='tours.html'>
+Tours
+</a>
+</li>
+</ul>
+</nav>
+  
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt"> 
+      <div>
+<div>
+<div id='searchbar'>
+<form accept-charset="UTF-8" action="#" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<div class='narrow'>
+<label>
+Year
+</label>
+<br>
+<select id="date_year" name="date[year]">
+<option value=""></option>
+<option value="2011">2011</option>
+<option value="2012">2012</option>
+<option value="2013">2013</option>
+<option value="2014">2014</option>
+<option value="2015">2015</option>
+<option value="2016">2016</option>
+<option value="2017">2017</option>
+<option value="2018">2018</option>
+<option value="2019">2019</option>
+<option value="2020">2020</option>
+<option value="2021">2021</option>
+<option value="2022">2022</option>
+<option value="2023">2023</option>
+<option value="2024">2024</option>
+<option value="2025">2025</option>
+<option selected="selected" value="2026">2026</option>
+</select>
+
+</div>
+<div class='narrow'>
+<label>
+Month
+</label>
+<br>
+<select id="date_month" name="date[month]">
+<option value=""></option>
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+
+</div>
+<!-- %div{:class => 'narrow'} -->
+<!-- %label -->
+<!-- = t(:open_closed) -->
+<!-- %br -->
+<!-- = select_tag 'open_closed', options_for_select(["Open","Closed","Both"], params[:open_closed]) -->
+<input id="open_closed" name="open_closed" type="hidden" value="Both" />
+<div style='width: 100px'>
+<label>
+Event`s Name
+</label>
+<br>
+<input id="name" name="name" style="width: 100px;" type="text" />
+</div>
+<div>
+<label>
+Country
+</label>
+<br>
+<select id="country" name="country"><option value=""></option><option value="Australia">Australia</option>
+<option value="Austria">Austria</option>
+<option value="Austria ">Austria </option>
+<option value="Belgium">Belgium</option>
+<option value="Belgium ">Belgium </option>
+<option value="Bulgaria">Bulgaria</option>
+<option value="Bulgaria ">Bulgaria </option>
+<option value="Canada">Canada</option>
+<option value="Croatia">Croatia</option>
+<option value="Cyprus">Cyprus</option>
+<option value="Czech">Czech</option>
+<option value="Denmark">Denmark</option>
+<option value="Egypt">Egypt</option>
+<option value="England">England</option>
+<option value="England ">England </option>
+<option value="Estonia">Estonia</option>
+<option value="Finland">Finland</option>
+<option value="France">France</option>
+<option value="Germany">Germany</option>
+<option value="Greece">Greece</option>
+<option value="Hungary">Hungary</option>
+<option value="Iceland">Iceland</option>
+<option value="Ireland">Ireland</option>
+<option value="Italy">Italy</option>
+<option value="Japan">Japan</option>
+<option value="Kenya">Kenya</option>
+<option value="Kenya ">Kenya </option>
+<option value="Latvia">Latvia</option>
+<option value="Lithuania">Lithuania</option>
+<option value="Luxembourg">Luxembourg</option>
+<option value="Malta">Malta</option>
+<option value="Mauritius">Mauritius</option>
+<option value="Netherlands">Netherlands</option>
+<option value="Norway">Norway</option>
+<option value="Peru">Peru</option>
+<option value="Poland">Poland</option>
+<option value="Portugal">Portugal</option>
+<option value="Romania">Romania</option>
+<option value="Russia">Russia</option>
+<option value="Scotland">Scotland</option>
+<option value="Scotland ">Scotland </option>
+<option value="Serbia">Serbia</option>
+<option value="Slovakia">Slovakia</option>
+<option value="Slovakia ">Slovakia </option>
+<option value="Slovenia">Slovenia</option>
+<option value="Slovenia ">Slovenia </option>
+<option value="South Africa">South Africa</option>
+<option value="Spain">Spain</option>
+<option value="Spain ">Spain </option>
+<option value="Sweden">Sweden</option>
+<option value="Switzerland">Switzerland</option>
+<option value="Tunisia">Tunisia</option>
+<option value="Turkey">Turkey</option>
+<option value="USA">USA</option>
+<option value="Ukraine">Ukraine</option>
+<option value="United Arab Emirates">United Arab Emirates</option>
+<option value="Wales">Wales</option>
+<option value="Wales ">Wales </option></select>
+</div>
+<div>
+<label>
+Federation
+</label>
+<br>
+<select id="federation" name="federation"><option value=""></option><option value="1"></option>
+<option value="165">5 Star</option>
+<option value="185">5 Stars</option>
+<option value="179">54 Junior Tour</option>
+<option value="180">54 Junior Tour</option>
+<option value="35">ASG</option>
+<option value="183">Audi Junior Tour</option>
+<option value="40">BBO</option>
+<option value="120">BGA</option>
+<option value="47">BGF</option>
+<option value="103">BGV</option>
+<option value="147">BUCS</option>
+<option value="16">BWGV</option>
+<option value="186">British Junior Golf Tour</option>
+<option value="154">CAGU</option>
+<option value="72">CGF</option>
+<option value="162">Cambridgeshire</option>
+<option value="163">Catalunya</option>
+<option value="146">Challenge Tour</option>
+<option value="157">Cheshire</option>
+<option value="125">Cyprus</option>
+<option value="4">DGU</option>
+<option value="3">DGV</option>
+<option value="135">DGV-BB</option>
+<option value="63">DGV-BWGV</option>
+<option value="62">DGV-Bayern</option>
+<option value="90">DGV-GVBB</option>
+<option value="117">DGV-GVMV</option>
+<option value="66">DGV-GVNB</option>
+<option value="77">DGV-GVSH</option>
+<option value="86">DGV-GVST</option>
+<option value="89">DGV-HH</option>
+<option value="74">DGV-Hessen</option>
+<option value="64">DGV-NRW</option>
+<option value="128">DGV-RPS</option>
+<option value="58">DGV-Region 4</option>
+<option value="67">DGV-Region 9</option>
+<option value="68">DGV-Region Nord</option>
+<option value="143">DP World Tour</option>
+<option value="116">Dorset</option>
+<option value="37">EGA</option>
+<option value="52">EGL</option>
+<option value="5">EGU</option>
+<option value="144">Ecco Tour</option>
+<option value="140">Edge</option>
+<option value="92">Eesti</option>
+<option value="2">English Golf Union</option>
+<option value="149">European Pro Golf Tour</option>
+<option value="130">Evolve</option>
+<option value="45">FFG</option>
+<option value="70">FGU</option>
+<option value="19">FIG</option>
+<option value="20">FIG</option>
+<option value="110">FLG</option>
+<option value="54">FPG</option>
+<option value="133">FPG</option>
+<option value="134">FPG</option>
+<option value="81">FRgolf</option>
+<option value="6">Faldo</option>
+<option value="141">Faldo Series</option>
+<option value="44">Finnish Golf Union</option>
+<option value="121">Florida Golf Association</option>
+<option value="79">GAS</option>
+<option value="78">GJG</option>
+<option value="114">GJGT</option>
+<option value="7">GUI</option>
+<option value="33">GVB</option>
+<option value="18">GVBB</option>
+<option value="8">GVLI</option>
+<option value="112">GVMV</option>
+<option value="28">GVNB</option>
+<option value="104">GVNRW</option>
+<option value="106">GVRPS</option>
+<option value="25">GVSH</option>
+<option value="48">GVSH/MV</option>
+<option value="108">GVST</option>
+<option value="24">GZS</option>
+<option value="99">German Jr. Golf</option>
+<option value="168">Golf Australia</option>
+<option value="142">Golf Union Iceland</option>
+<option value="9">Golf Union of Wales</option>
+<option value="98">HGF</option>
+<option value="82">HGS</option>
+<option value="107">HGV</option>
+<option value="105">HHGV</option>
+<option value="49">Hamburg</option>
+<option value="188">Herfordshire County</option>
+<option value="42">Hungarian Golf Federation</option>
+<option value="46">IGF</option>
+<option value="119">IGF</option>
+<option value="69">IGU</option>
+<option value="160">IJGM72</option>
+<option value="50">ILGU</option>
+<option value="127">Ireland</option>
+<option value="181">Irish Elite WAGR Tour</option>
+<option value="175">Irish Junior Open Tour</option>
+<option value="148">JMI</option>
+<option value="176">Junior Golf Masters</option>
+<option value="184">Junior Tour Germany</option>
+<option value="132">Junior Tour Scotland</option>
+<option value="138">LET</option>
+<option value="156">LETAS</option>
+<option value="91">LGF</option>
+<option value="51">LGU</option>
+<option value="113">LGVSA</option>
+<option value="177">LWGA</option>
+<option value="172">Loretto</option>
+<option value="32">Luxembourg Golf Federation</option>
+<option value="101">MGA</option>
+<option value="136">MGS</option>
+<option value="155">Midlands</option>
+<option value="100">NCGU</option>
+<option value="129">NGB</option>
+<option value="39">NGF</option>
+<option value="21">NRW</option>
+<option value="145">Nordic Golf League</option>
+<option value="153">Nordic League</option>
+<option value="158">North Wales</option>
+<option value="159">Northern Counties</option>
+<option value="43">OGF</option>
+<option value="85">PGU</option>
+<option value="96">PZG</option>
+<option value="137">Pro Golf Tour</option>
+<option value="182">Pro1Putt</option>
+<option value="131">ProDreamUSA</option>
+<option value="29">RANDA</option>
+<option value="94">RBGF</option>
+<option value="15">RFE</option>
+<option value="97">RGA</option>
+<option value="102">Region 4</option>
+<option value="22">Region 9</option>
+<option value="38">Region Nord</option>
+<option value="23">Region4</option>
+<option value="167">Robert Rock</option>
+<option value="87">Romania</option>
+<option value="88">Romania</option>
+<option value="41">Royal Belgian</option>
+<option value="83">RusGolf</option>
+<option value="109">SGB</option>
+<option value="10">SGF</option>
+<option value="111">SGL</option>
+<option value="11">SGU</option>
+<option value="12">SGU</option>
+<option value="95">SKGA</option>
+<option value="178">SLCGA</option>
+<option value="53">SLGA</option>
+<option value="73">SLGU</option>
+<option value="55">Scottish Ladies</option>
+<option value="170">Shropshire &amp; Herefordshire</option>
+<option value="174">Snowy</option>
+<option value="118">Somerset</option>
+<option value="161">Somerset</option>
+<option value="173">Somerset</option>
+<option value="187">South East</option>
+<option value="124">Spain</option>
+<option value="166">Swedish Golf Tour</option>
+<option value="26">TGF</option>
+<option value="150">Toro Tour</option>
+<option value="139">Toto Tour</option>
+<option value="152">Triple A</option>
+<option value="123">UKF</option>
+<option value="84">UKRGolf</option>
+<option value="169">USGA</option>
+<option value="122">WGU</option>
+<option value="164">WJGC</option>
+<option value="30">WJGS</option>
+<option value="34">WJGS</option>
+<option value="75">WJGTS</option>
+<option value="27">Welsh Golf Union</option>
+<option value="171">Win Tour</option>
+<option value="189">Yorkshire</option>
+<option value="13">ffgolf</option>
+<option value="14">ffgolf</option>
+<option value="151">t</option>
+<option value="36">ÖGV</option></select>
+</div>
+<div class='narrow'>
+<label>
+<span class="translation_missing" title="translation missing: en.gender">Gender</span>
+</label>
+<br>
+<select id="gender" name="gender"><option value="M" selected="selected">Male</option>
+<option value="F">Female</option>
+<option value="O">Open</option>
+<option value=""></option></select>
+</div>
+<div>
+<br>
+<input id="order" name="order" type="hidden" value="ASC" />
+<input name="commit" type="submit" value="Search" />
+</div>
+</form>
+
+</div>
+
+<table cellspacing='0'>
+<tr class='table_headfoot'>
+<td colspan='4'>
+Click on the white headers to sort with this criteria
+
+</td>
+<td align='right' colspan='4'>
+Page
+1
+of
+7
+</td>
+</tr>
+<tr class='header date_start asc'>
+<th class='date_start'>
+<a href="events.html?gender=M&amp;order=ASC&amp;sort=date_start">Start Date</a>
+</th>
+<th class='date_end'>
+<a href="events.html?gender=M&amp;order=ASC&amp;sort=date_end">End Date</a>
+</th>
+<th class='event_name' style='text-align: left'>
+<a href="events.html?gender=M&amp;order=ASC&amp;sort=event_name">Event</a>
+</th>
+<th class='age_group'>
+<a href="events.html?gender=M&amp;order=ASC&amp;sort=age_group">Age Group</a>
+</th>
+<th class='country' style='text-align: left'>
+<a href="events.html?gender=M&amp;order=ASC&amp;sort=country">Country</a>
+</th>
+<th class='points' style='border-right: none;'>
+<a href="events.html?gender=M&amp;order=ASC&amp;sort=points">EGR Points</a>
+</th>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+3. Jan
+</td>
+<td align='center' width='105'>
+5. Jan
+</td>
+<td align='left'>
+<a href="#">GJG Season Kick Off U15</a>
+</td>
+<td align='center' width='50'>
+U15
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+136.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+3. Jan
+</td>
+<td align='center' width='105'>
+5. Jan
+</td>
+<td align='left'>
+<a href="#">Lauro Finnish Open</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1749.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+3. Jan
+</td>
+<td align='center' width='105'>
+5. Jan
+</td>
+<td align='left'>
+<a href="#">GJG Season Kick Off</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2274.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+3. Jan
+</td>
+<td align='center' width='105'>
+5. Jan
+</td>
+<td align='left'>
+<a href="#">GJG Season Kick Off #2</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+470.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+8. Jan
+</td>
+<td align='center' width='105'>
+10. Jan
+</td>
+<td align='left'>
+<a href="#">GJG Spanish Junior Classics</a>
+</td>
+<td align='center' width='50'>
+U15
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+132.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+8. Jan
+</td>
+<td align='center' width='105'>
+10. Jan
+</td>
+<td align='left'>
+<a href="#">GJG Spanish Junior Classics</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1870.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+9. Jan
+</td>
+<td align='center' width='105'>
+11. Jan
+</td>
+<td align='left'>
+<a href="#">Copa Andalucía</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+5650.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+12. Jan
+</td>
+<td align='center' width='105'>
+14. Jan
+</td>
+<td align='left'>
+<a href="#">GJG Portuguese Intercollegiate By UGPM</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+932.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+13. Jan
+</td>
+<td align='center' width='105'>
+15. Jan
+</td>
+<td align='left'>
+<a href="#">European Winter Series #5 (Toro Tour)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1739.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+19. Jan
+</td>
+<td align='center' width='105'>
+21. Jan
+</td>
+<td align='left'>
+<a href="#">GJG Edge Mason Championship</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+PRT
+</td>
+<td align='center' style='border-right: none;' width='70'>
+936.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+21. Jan
+</td>
+<td align='center' width='105'>
+23. Jan
+</td>
+<td align='left'>
+<a href="#">Triple A European Invitational</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1138.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+23. Jan
+</td>
+<td align='center' width='105'>
+25. Jan
+</td>
+<td align='left'>
+<a href="#">Trofeo Barbésula</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2150.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+23. Jan
+</td>
+<td align='center' width='105'>
+25. Jan
+</td>
+<td align='left'>
+<a href="#">European Winter Series #6 (Toro Tour)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1539.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+23. Jan
+</td>
+<td align='center' width='105'>
+25. Jan
+</td>
+<td align='left'>
+<a href="#">Desert Springs Junior Championship</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1108.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+27. Jan
+</td>
+<td align='center' width='105'>
+29. Jan
+</td>
+<td align='left'>
+<a href="#">5 Stars International Cup </a>
+</td>
+<td align='center' width='50'>
+U25
+</td>
+<td align='center' style='color: ' width='40'>
+TUR
+</td>
+<td align='center' style='border-right: none;' width='70'>
+332.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+31. Jan
+</td>
+<td align='center' width='105'>
+31. Jan
+</td>
+<td align='left'>
+<a href="#">European Winter Series #7 (Toro Tour)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2047.50
+</td>
+</tr>
+<tr class='odd cancelled'>
+<td align='center' width='105'>
+3. Feb
+</td>
+<td align='center' width='105'>
+5. Feb
+</td>
+<td align='left'>
+<a href="#">European Winter Series #8 (Toro Tour)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2000.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+4. Feb
+</td>
+<td align='center' width='105'>
+6. Feb
+</td>
+<td align='left'>
+<a href="#">R&amp;A Student Tour Series (Palmares)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+PRT
+</td>
+<td align='center' style='border-right: none;' width='70'>
+3924.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+5. Feb
+</td>
+<td align='center' width='105'>
+8. Feb
+</td>
+<td align='left'>
+<a href="#">Hammamet Open (JTG)</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+TUN
+</td>
+<td align='center' style='border-right: none;' width='70'>
+152.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+6. Feb
+</td>
+<td align='center' width='105'>
+8. Feb
+</td>
+<td align='left'>
+<a href="#">Gara Nazionale Garlenda</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2093.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+6. Feb
+</td>
+<td align='center' width='105'>
+8. Feb
+</td>
+<td align='left'>
+<a href="#">Trofeo Rocco Forte</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+599.00
+</td>
+</tr>
+<tr class='even has_results major'>
+<td align='center' width='105'>
+11. Feb
+</td>
+<td align='center' width='105'>
+14. Feb
+</td>
+<td align='left'>
+<a href="#">Portuguese International Amateur Championship</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+PRT
+</td>
+<td align='center' style='border-right: none;' width='70'>
+10665.70
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+12. Feb
+</td>
+<td align='center' width='105'>
+14. Feb
+</td>
+<td align='left'>
+<a href="#">European Winter Series #9 (Toro Tour)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1636.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+16. Feb
+</td>
+<td align='center' width='105'>
+18. Feb
+</td>
+<td align='left'>
+<a href="#">World WAGR Series #1 (Robert Rock)</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1454.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+16. Feb
+</td>
+<td align='center' width='105'>
+18. Feb
+</td>
+<td align='left'>
+<a href="#">World WAGR Series #1 (Robert Rock)</a>
+</td>
+<td align='center' width='50'>
+U14
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+135.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+16. Feb
+</td>
+<td align='center' width='105'>
+18. Feb
+</td>
+<td align='left'>
+<a href="#">Faldo Series (Cyprus)</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+CYP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1271.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+17. Feb
+</td>
+<td align='center' width='105'>
+19. Feb
+</td>
+<td align='left'>
+<a href="#">European Winter Series #10 (Toro Tour)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1920.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+18. Feb
+</td>
+<td align='center' width='105'>
+20. Feb
+</td>
+<td align='left'>
+<a href="#">Triple A European Open</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1434.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+19. Feb
+</td>
+<td align='center' width='105'>
+21. Feb
+</td>
+<td align='left'>
+<a href="#">Coppa d&#x27;Oro Mario Camicia</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+3597.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+20. Feb
+</td>
+<td align='center' width='105'>
+22. Feb
+</td>
+<td align='left'>
+<a href="#">Copa Murcia</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+4107.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+23. Feb
+</td>
+<td align='center' width='105'>
+25. Feb
+</td>
+<td align='left'>
+<a href="#">European Winter Series #11 (Toro Tour)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1815.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+24. Feb
+</td>
+<td align='center' width='105'>
+26. Feb
+</td>
+<td align='left'>
+<a href="#">R&amp;A Student Tour Series  (La Sella)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+3825.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+25. Feb
+</td>
+<td align='center' width='105'>
+27. Feb
+</td>
+<td align='left'>
+<a href="#">World Junior Golf Championship U12-U13  (BJGT)</a>
+</td>
+<td align='center' width='50'>
+U12
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+497.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+25. Feb
+</td>
+<td align='center' width='105'>
+27. Feb
+</td>
+<td align='left'>
+<a href="#">Estonian Winter Invitational</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+EST
+</td>
+<td align='center' style='border-right: none;' width='70'>
+914.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+25. Feb
+</td>
+<td align='center' width='105'>
+27. Feb
+</td>
+<td align='left'>
+<a href="#">World Junior Golf Championship U14-U18  (BJGT)</a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1238.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+26. Feb
+</td>
+<td align='center' width='105'>
+28. Feb
+</td>
+<td align='left'>
+<a href="#">Grand Prix Saint Donat</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2930.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+27. Feb
+</td>
+<td align='center' width='105'>
+1. Mar
+</td>
+<td align='left'>
+<a href="#">Spanish National U14/U16  Rankings Event #1</a>
+</td>
+<td align='center' width='50'>
+U16
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2273.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+27. Feb
+</td>
+<td align='center' width='105'>
+1. Mar
+</td>
+<td align='left'>
+<a href="#">Grand Premio Della Maremma</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1232.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+27. Feb
+</td>
+<td align='center' width='105'>
+1. Mar
+</td>
+<td align='left'>
+<a href="#">XV Campeonato De Castellon</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2120.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+2. Mar
+</td>
+<td align='center' width='105'>
+4. Mar
+</td>
+<td align='left'>
+<a href="#">Exeter Trophy (BUCS)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ENG
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2970.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+5. Mar
+</td>
+<td align='center' width='105'>
+7. Mar
+</td>
+<td align='left'>
+<a href="#">Stella D&#x27;Oro</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2624.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+6. Mar
+</td>
+<td align='center' width='105'>
+8. Mar
+</td>
+<td align='left'>
+<a href="#">Championnat U18 Garcon 1</a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1820.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+6. Mar
+</td>
+<td align='center' width='105'>
+8. Mar
+</td>
+<td align='left'>
+<a href="#">Grand Prix de Château L&#x27;Arc</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2206.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+6. Mar
+</td>
+<td align='center' width='105'>
+8. Mar
+</td>
+<td align='left'>
+<a href="#">Trofeo Fondazione Sergio E Stella Montelatci</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1445.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+6. Mar
+</td>
+<td align='center' width='105'>
+8. Mar
+</td>
+<td align='left'>
+<a href="#">Trofeo Vincenzo de Benedictis</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+551.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+6. Mar
+</td>
+<td align='center' width='105'>
+8. Mar
+</td>
+<td align='left'>
+<a href="#">Spanish National U16 Rankings Event #2</a>
+</td>
+<td align='center' width='50'>
+U16
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2320.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+7. Mar
+</td>
+<td align='center' width='105'>
+8. Mar
+</td>
+<td align='left'>
+<a href="#">Trump Invitaitonal </a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: ' width='40'>
+SCO
+</td>
+<td align='center' style='border-right: none;' width='70'>
+572.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+11. Mar
+</td>
+<td align='center' width='105'>
+13. Mar
+</td>
+<td align='left'>
+<a href="#">Srixon Winter Open (Norway)</a>
+</td>
+<td align='center' width='50'>
+U19
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2685.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+13. Mar
+</td>
+<td align='center' width='105'>
+15. Mar
+</td>
+<td align='left'>
+<a href="#">Grand Prix Elite de Landiforne</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+7025.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+13. Mar
+</td>
+<td align='center' width='105'>
+15. Mar
+</td>
+<td align='left'>
+<a href="#">Gara Nazionale Modena</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2722.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+14. Mar
+</td>
+<td align='center' width='105'>
+15. Mar
+</td>
+<td align='left'>
+<a href="#">Grand Prix National U12 Garçons</a>
+</td>
+<td align='center' width='50'>
+U12
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+461.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+16. Mar
+</td>
+<td align='center' width='105'>
+18. Mar
+</td>
+<td align='left'>
+<a href="#">Loretto Junior Tour Open</a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: ' width='40'>
+SCO
+</td>
+<td align='center' style='border-right: none;' width='70'>
+529.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+16. Mar
+</td>
+<td align='center' width='105'>
+18. Mar
+</td>
+<td align='left'>
+<a href="#">English and Welsh Championships (BUCS)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ENG
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2025.00
+</td>
+</tr>
+<tr class='even has_results major'>
+<td align='center' width='105'>
+17. Mar
+</td>
+<td align='center' width='105'>
+22. Mar
+</td>
+<td align='left'>
+<a href="#">Spanish International Men&#x27;s Amateur (Copa S. M. El Rey)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+15029.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+17. Mar
+</td>
+<td align='center' width='105'>
+19. Mar
+</td>
+<td align='left'>
+<a href="#">European Winter Series #12 (Toro Tour)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+776.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+18. Mar
+</td>
+<td align='center' width='105'>
+20. Mar
+</td>
+<td align='left'>
+<a href="#">Triple A Series World Final</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1813.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+20. Mar
+</td>
+<td align='center' width='105'>
+22. Mar
+</td>
+<td align='left'>
+<a href="#">41ème Grand Prix de Campagne</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+3125.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+20. Mar
+</td>
+<td align='center' width='105'>
+22. Mar
+</td>
+<td align='left'>
+<a href="#">Grand Prix de Bordeaux</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2469.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+20. Mar
+</td>
+<td align='center' width='105'>
+22. Mar
+</td>
+<td align='left'>
+<a href="#">Faldo (Italy)</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1727.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+20. Mar
+</td>
+<td align='center' width='105'>
+22. Mar
+</td>
+<td align='left'>
+<a href="#">WAGR Invitational Freiburger GC</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+DEU
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1007.50
+</td>
+</tr>
+<tr class='odd cancelled'>
+<td align='center' width='105'>
+22. Mar
+</td>
+<td align='center' width='105'>
+24. Mar
+</td>
+<td align='left'>
+<a href="#">2. Port El Kantaoui Junior Open (JTG)</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+TUN
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1000.00
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='105'>
+24. Mar
+</td>
+<td align='center' width='105'>
+26. Mar
+</td>
+<td align='left'>
+<a href="#">Faldo Junior Tour (UAE)</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+ARE
+</td>
+<td align='center' style='border-right: none;' width='70'>
+3500.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+24. Mar
+</td>
+<td align='center' width='105'>
+29. Mar
+</td>
+<td align='left'>
+<a href="#">Italian National Closed Match Play Championships (Trofeo Giuseppe Silva)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+5405.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+27. Mar
+</td>
+<td align='center' width='105'>
+29. Mar
+</td>
+<td align='left'>
+<a href="#">Grand Prix de la Ligue des HDF</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2898.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+27. Mar
+</td>
+<td align='center' width='105'>
+29. Mar
+</td>
+<td align='left'>
+<a href="#">Grand Prix de l&#x27;Isère Charmeil</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2199.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+27. Mar
+</td>
+<td align='center' width='105'>
+29. Mar
+</td>
+<td align='left'>
+<a href="#">LXVIII Leone Di San Marco</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1515.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+27. Mar
+</td>
+<td align='center' width='105'>
+29. Mar
+</td>
+<td align='left'>
+<a href="#">Ticino Championship</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+CHE
+</td>
+<td align='center' style='border-right: none;' width='70'>
+4120.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+28. Mar
+</td>
+<td align='center' width='105'>
+29. Mar
+</td>
+<td align='left'>
+<a href="#">Grand Prix Jeunes Majeur #1 U14</a>
+</td>
+<td align='center' width='50'>
+U14
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+984.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+29. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">Spanish National U18 Championship (Closed)</a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: ' width='40'>
+ESP
+</td>
+<td align='center' style='border-right: none;' width='70'>
+4636.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+30. Mar
+</td>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='left'>
+<a href="#">54 Junior Tour by Visit Trelleborg #1</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+SWE
+</td>
+<td align='center' style='border-right: none;' width='70'>
+3080.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+30. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">Malta Junior Open</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+MLT
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2133.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+30. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">Danish Juniors Int.-Marbæk by NorSea (U23)</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+DNK
+</td>
+<td align='center' style='border-right: none;' width='70'>
+500.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+30. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">Danish Juniors Int.-Marbæk by NorSea (U18)</a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: ' width='40'>
+DNK
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1172.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+30. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">Danish Juniors Int. -Marbæk by NorSea (U14)</a>
+</td>
+<td align='center' width='50'>
+U14
+</td>
+<td align='center' style='color: ' width='40'>
+DNK
+</td>
+<td align='center' style='border-right: none;' width='70'>
+114.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+30. Mar
+</td>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='left'>
+<a href="#">Elite WAGR Tour #1 (Irish Junior Open Tour)</a>
+</td>
+<td align='center' width='50'>
+U25
+</td>
+<td align='center' style='color: ' width='40'>
+IRL
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1382.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+30. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">PRO1PUTT Open Classic</a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: ' width='40'>
+DEU
+</td>
+<td align='center' style='border-right: none;' width='70'>
+412.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+30. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">R&amp;A Student Series (St Andrews)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+SCO
+</td>
+<td align='center' style='border-right: none;' width='70'>
+3610.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">DJGA Spring Open (Men&#x27;s)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+DNK
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1213.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">DJGA Spring Open (U16)</a>
+</td>
+<td align='center' width='50'>
+U16
+</td>
+<td align='center' style='color: ' width='40'>
+DNK
+</td>
+<td align='center' style='border-right: none;' width='70'>
+178.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='left'>
+<a href="#">DJGA Spring Open (U19)</a>
+</td>
+<td align='center' width='50'>
+U19
+</td>
+<td align='center' style='color: ' width='40'>
+DNK
+</td>
+<td align='center' style='border-right: none;' width='70'>
+301.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='center' width='105'>
+2. Apr
+</td>
+<td align='left'>
+<a href="#">Junior Golf Tour Open Pischelsdorf (JTG)</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: ' width='40'>
+AUT
+</td>
+<td align='center' style='border-right: none;' width='70'>
+627.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='center' width='105'>
+2. Apr
+</td>
+<td align='left'>
+<a href="#">Junior Golf Tour Open Hetzenhof (JTG)</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: green' width='40'>
+DEU
+</td>
+<td align='center' style='border-right: none;' width='70'>
+706.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='center' width='105'>
+2. Apr
+</td>
+<td align='left'>
+<a href="#">KIFFE Youth Open</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: green' width='40'>
+DEU
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1128.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+31. Mar
+</td>
+<td align='center' width='105'>
+2. Apr
+</td>
+<td align='left'>
+<a href="#">Easter Challenge (BJGT)</a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: ' width='40'>
+
+</td>
+<td align='center' style='border-right: none;' width='70'>
+923.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+1. Apr
+</td>
+<td align='center' width='105'>
+3. Apr
+</td>
+<td align='left'>
+<a href="#">Trofeo Angelo Corvini</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1325.00
+</td>
+</tr>
+<tr class='even has_results major'>
+<td align='center' width='105'>
+2. Apr
+</td>
+<td align='center' width='105'>
+6. Apr
+</td>
+<td align='left'>
+<a href="#">French International U18 (Trophée Michel Carlhian)</a>
+</td>
+<td align='center' width='50'>
+U18
+</td>
+<td align='center' style='color: green' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+12215.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+3. Apr
+</td>
+<td align='center' width='105'>
+7. Apr
+</td>
+<td align='left'>
+<a href="#">West of Ireland  Men&#x27;s Amateur Open Championship</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+IRL
+</td>
+<td align='center' style='border-right: none;' width='70'>
+8071.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+3. Apr
+</td>
+<td align='center' width='105'>
+5. Apr
+</td>
+<td align='left'>
+<a href="#">Coppa D&#x27;Oro Citta Di Roma</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2336.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+3. Apr
+</td>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='left'>
+<a href="#">Voorjaarswedstrijd Heren</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+NLD
+</td>
+<td align='center' style='border-right: none;' width='70'>
+5165.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='left'>
+<a href="#">Junior U14 (No.1)</a>
+</td>
+<td align='center' width='50'>
+U14
+</td>
+<td align='center' style='color: ' width='40'>
+BEL
+</td>
+<td align='center' style='border-right: none;' width='70'>
+154.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='center' width='105'>
+6. Apr
+</td>
+<td align='left'>
+<a href="#">Grand Prix de l&#x27;Isle Adam</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2040.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='center' width='105'>
+6. Apr
+</td>
+<td align='left'>
+<a href="#">Grand Prix du Lys Chantilly</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+3120.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='center' width='105'>
+6. Apr
+</td>
+<td align='left'>
+<a href="#">WAR Bassin Bleu</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+FRA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+659.50
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='center' width='105'>
+6. Apr
+</td>
+<td align='left'>
+<a href="#">Trofeo Gianluca</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+ITA
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1704.50
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='center' width='105'>
+5. Apr
+</td>
+<td align='left'>
+<a href="#">Junior Tour Royal Dornoch Boys</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+SCO
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1272.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='center' width='105'>
+4. Apr
+</td>
+<td align='left'>
+<a href="#">Junior U12 (No.1)</a>
+</td>
+<td align='center' width='50'>
+U12
+</td>
+<td align='center' style='color: ' width='40'>
+BEL
+</td>
+<td align='center' style='border-right: none;' width='70'>
+30.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+5. Apr
+</td>
+<td align='center' width='105'>
+7. Apr
+</td>
+<td align='left'>
+<a href="#">Golfing Knights Junior Open</a>
+</td>
+<td align='center' width='50'>
+U23
+</td>
+<td align='center' style='color: green' width='40'>
+DEU
+</td>
+<td align='center' style='border-right: none;' width='70'>
+1478.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+5. Apr
+</td>
+<td align='center' width='105'>
+7. Apr
+</td>
+<td align='left'>
+<a href="#">Scottish Student Sport Championships (BUCS)</a>
+</td>
+<td align='center' width='50'>
+Adult
+</td>
+<td align='center' style='color: ' width='40'>
+SCO
+</td>
+<td align='center' style='border-right: none;' width='70'>
+2729.00
+</td>
+</tr>
+<tr class='odd has_results'>
+<td align='center' width='105'>
+6. Apr
+</td>
+<td align='center' width='105'>
+8. Apr
+</td>
+<td align='left'>
+<a href="#">Faldo Series Masters (Brocket Hall)</a>
+</td>
+<td align='center' width='50'>
+U21
+</td>
+<td align='center' style='color: ' width='40'>
+ENG
+</td>
+<td align='center' style='border-right: none;' width='70'>
+4530.00
+</td>
+</tr>
+<tr class='even has_results'>
+<td align='center' width='105'>
+6. Apr
+</td>
+<td align='center' width='105'>
+7. Apr
+</td>
+<td align='left'>
+<a href="#">Junior Tour #1 (Irish Junior Open Tour)</a>
+</td>
+<td align='center' width='50'>
+U19
+</td>
+<td align='center' style='color: ' width='40'>
+IRL
+</td>
+<td align='center' style='border-right: none;' width='70'>
+364.50
+</td>
+</tr>
+<tr class='table_headfoot'>
+<td colspan='4'>
+<div class="pagination"><span class="previous_page disabled">&#8592; Previous</span> <em class="current">1</em> <a rel="next" href="events.html?gender=M&amp;page=2">2</a> <a href="events.html?gender=M&amp;page=3">3</a> <a href="events.html?gender=M&amp;page=4">4</a> <a href="events.html?gender=M&amp;page=5">5</a> <a href="events.html?gender=M&amp;page=6">6</a> <a href="events.html?gender=M&amp;page=7">7</a> <a class="next_page" rel="next" href="events.html?gender=M&amp;page=2">Next &#8594;</a></div>
+</td>
+<td align='right' colspan='4'>
+Events per page:
+<a href="events.html?gender=M&amp;order=ASC&amp;per_page=10&amp;sort=points">10</a>
+<a href="events.html?gender=M&amp;order=ASC&amp;per_page=25&amp;sort=points">25</a>
+<a href="events.html?gender=M&amp;order=ASC&amp;per_page=50&amp;sort=points">50</a>
+100
+<a href="events.html?gender=M&amp;order=ASC&amp;per_page=200&amp;sort=points">200</a>
+<a href="events.html?gender=M&amp;order=ASC&amp;per_page=100000&amp;sort=points">All</a>
+
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+
+      </div>
+          <aside>
+            
+
+<div class="page">
+    <img alt="Tiger" src="page_images/19/medium/Tiger.gif?1770208375" /> <div class="sidebar"> <h2>Events</h2> 
+<p>For upcoming events, the points are estimated based upon previous results.</p>
+<p>State Championships have 250 points added, U14 125.<br />
+National Championships 500, U14 250</p>
+<p>All Majors, gold font, have up to 50% of the Handicap Points added, and all players completing the event receive points!</p> </div></div>
+
+      <div class="wblock" style="margin-top: 36px;">
+        <a href="https://www.studyandplayamerica.com/"><img src="ads/14/medium/2026_Study_PlayAmerica.gif?2026" /></a>
+      </div>
+
+          </aside>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="copyright.html">Copyright/Trademark</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="last"><a href="imprint.html">Impressum</a></li>
+  </ul>
+</nav>
+
+
+
+
+
+    </footer>
+
+  </div>
+
+<!-- ════════════════ Preview-only Variant-Switcher ════════════════ -->
+<style>
+  .egr-preview-switcher {
+    position: fixed; right: 16px; bottom: 16px; z-index: 2147483000;
+    display: flex; flex-direction: column; gap: 6px;
+    background: #0F1620; color: #fff;
+    padding: 10px 12px; border-radius: 12px;
+    font: 12px/1.3 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+    max-width: 260px;
+    pointer-events: auto;
+  }
+  .egr-preview-switcher * { box-sizing: border-box; }
+  .egr-preview-switcher strong {
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    opacity: .65; color: #fff;
+  }
+  .egr-preview-switcher .row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .egr-preview-switcher a {
+    display: inline-block; padding: 6px 10px; border-radius: 6px;
+    background: #1F2A37; color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 11px; transition: background .15s, transform .1s;
+    border: 1px solid transparent; cursor: pointer;
+  }
+  .egr-preview-switcher a:hover { background: #2A3744; }
+  .egr-preview-switcher a:active { transform: translateY(1px); }
+  .egr-preview-switcher a.is-active {
+    background: #2E7D32; border-color: #66BB6A; color: #fff;
+  }
+  /* Select: dunkel + opake Optionen, in jedem OS lesbar */
+  .egr-preview-switcher select {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-color: #1F2A37;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #fff 50%),
+      linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position: calc(100% - 14px) 12px, calc(100% - 9px) 12px;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    color: #fff !important;
+    border: 1px solid #3B4A5A;
+    padding: 6px 26px 6px 8px; border-radius: 6px;
+    font: 600 11px/1.3 -apple-system, system-ui, sans-serif;
+    width: 100%;
+    cursor: pointer;
+  }
+  .egr-preview-switcher select:focus {
+    outline: 2px solid #66BB6A; outline-offset: 1px;
+  }
+  /* Optionen: opaker dunkler Hintergrund, weisser Text — Chrome+Firefox+WebKit */
+  .egr-preview-switcher select option {
+    background: #1F2A37 !important;
+    color: #fff !important;
+  }
+  .egr-preview-switcher select option:checked,
+  .egr-preview-switcher select option:hover {
+    background: #2E7D32 !important;
+    color: #fff !important;
+  }
+  @media print { .egr-preview-switcher { display: none; } }
+  @media (max-width: 480px) {
+    .egr-preview-switcher { right: 8px; bottom: 8px; padding: 8px; max-width: 180px; }
+  }
+</style>
+<aside class="egr-preview-switcher" id="egr-switcher" aria-label="Preview-Switcher" data-egr-noprint>
+  <strong>Variant</strong>
+  <div class="row" id="egr-switcher-variants"></div>
+  <strong>Page</strong>
+  <select id="egr-switcher-page"></select>
+</aside>
+<script>
+  (function () {
+    var variants = [['a','A · Fairway'], ['b','B · Tour Pro'], ['c','C · Stat-Lab'], ['baseline','Baseline']];
+    var pages = [["home.html", "Home"], ["ranking.html", "Rankings \u00b7 Boys/Men"], ["ranking_women.html", "Rankings \u00b7 Girls/Women"], ["scandinavian_boys.html", "Scandinavian Boys"], ["scandinavian_girls.html", "Scandinavian Girls"], ["dutch_jongens.html", "Dutch \u00b7 Jongens"], ["dutch_meisjes.html", "Dutch \u00b7 Meisjes"], ["events.html", "Events"], ["how-to-use.html", "How it Works"], ["about-us.html", "About Us"], ["tours.html", "Tours"], ["male.html", "Male Overview"], ["female.html", "Female Overview"], ["sign_in.html", "Log In"], ["sign_up.html", "Register"], ["contact.html", "Contact"], ["imprint.html", "Impressum"], ["privacy.html", "Privacy"], ["terms.html", "Terms of Use"], ["copyright.html", "Copyright/Trademark"], ["search.html", "Search Results"]];
+    var p = new URLSearchParams(location.search);
+    var current = (p.get('baseline') === '1') ? 'baseline' : (p.get('v') || 'a').toLowerCase();
+    var thisFile = location.pathname.split('/').pop() || 'home.html';
+    var rowVar = document.getElementById('egr-switcher-variants');
+    variants.forEach(function (v) {
+      var a = document.createElement('a');
+      a.textContent = v[1];
+      var url = thisFile;
+      if (v[0] === 'baseline') url += '?baseline=1';
+      else url += '?v=' + v[0];
+      a.href = url;
+      if (v[0] === current) a.className = 'is-active';
+      rowVar.appendChild(a);
+    });
+    var sel = document.getElementById('egr-switcher-page');
+    pages.forEach(function (pg) {
+      var o = document.createElement('option');
+      o.value = pg[0]; o.textContent = pg[1];
+      if (pg[0] === thisFile) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', function () {
+      var qs = (current === 'baseline') ? '?baseline=1' : '?v=' + current;
+      location.href = sel.value + qs;
+    });
+  })();
+</script>
+
+</body>
+</html>

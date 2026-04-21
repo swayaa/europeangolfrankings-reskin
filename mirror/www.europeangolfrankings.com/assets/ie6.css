@@ -1,0 +1,68 @@
+body{
+  background-repeat: repeat;
+}
+
+div#contentbox{
+  border-left: 1px solid #111111;
+  border-right: 1px solid #111111;
+}
+
+div#contentbox header{
+  height: 155px;
+  background-image: url(/assets/deko6-ie.jpg);
+}
+div#contentbox header h1{
+  display: none;
+}
+
+div#contentbox header img#logo{
+  display: none;
+}
+
+div#contentbox header nav{
+  margin-top: 100px;
+}
+
+
+div#contentbox header div#submenue{
+  background-color: #FFFFFF;
+}
+
+div#contentbox div#main{
+  padding-bottom: 100px;
+  padding-top: 0px;
+}
+
+div#contentbox div#main div#inhalt div.top5{
+  float: left;
+}
+
+div#contentbox div#main div#inhalt div.top5 div ul{
+  margin: 0 0 0 0;
+}
+
+div#contentbox div#main div#inhalt div.top5 div ul li span.flagblock img{
+  margin-left: 3px;
+}
+
+div#contentbox div#main div#inhalt div.top5 div p.complete_ranking{
+  margin-left: 0;
+}
+
+div#contentbox div#main div#inhalt div#searchbar{
+  padding-left: 0;
+  width: 100%;
+}
+
+div#contentbox div#main div#inhalt div#searchbar form{
+  margin-left: -94px;
+}
+
+div#contentbox div#main div#inhalt div#searchbar form div{
+  padding: 0;
+  margin: 0 6px 0 0;
+  width: 96px;
+}
+
+
+

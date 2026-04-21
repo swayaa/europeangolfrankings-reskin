@@ -1,0 +1,226 @@
+/* ============================================================================
+ * European Golf Rankings — Re-Skin
+ * Variante C: "Stat-Lab Editorial"
+ * Token-Definitionen (Custom Properties + Reset)
+ *
+ * Drop-in-Datei. Spec-Doku: docs/design-systems/variant-c-stat-lab-editorial.md
+ * ============================================================================ */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---- Brand-Farben (Light) ---- */
+  --sl-color-paper:        #FBFBF8;
+  --sl-color-surface:      #FFFFFF;
+  --sl-color-rule:         #1B1B1B;
+  --sl-color-rule-soft:    #D4D4D0;
+  --sl-color-ink:          #0A0A0A;
+  --sl-color-ink-2:        #5A5A5A;
+  --sl-color-ink-3:        #9A9A95;
+  --sl-color-accent:       #E63946;
+  --sl-color-accent-soft:  #FFE2E5;
+  --sl-color-up:           #0E7C3A;
+  --sl-color-down:         #B91C1C;
+
+  /* ---- Funktional ---- */
+  --sl-color-link:       #1A4FB8;
+  --sl-color-link-hover: var(--sl-color-accent);
+  --sl-color-mark-bg:    #FFF3A3;
+
+  /* ---- Typografie ---- */
+  --sl-font-sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, system-ui, sans-serif;
+  --sl-font-mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --sl-font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+
+  /* ---- Spacing (kompakt) ---- */
+  --sl-space-1:  2px;
+  --sl-space-2:  4px;
+  --sl-space-3:  8px;
+  --sl-space-4:  12px;
+  --sl-space-5:  16px;
+  --sl-space-6:  24px;
+  --sl-space-8:  32px;
+  --sl-space-10: 40px;
+
+  /* ---- Radii (Editorial: minimal) ---- */
+  --sl-radius-xs:   0;
+  --sl-radius-sm:   2px;
+  --sl-radius-md:   4px;
+  --sl-radius-pill: 999px;
+
+  /* ---- Motion (kaum) ---- */
+  --sl-duration-1: 80ms;
+  --sl-duration-2: 160ms;
+  --sl-ease:       cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---- Breakpoints ---- */
+  --sl-bp-sm: 480px;
+  --sl-bp-md: 768px;
+  --sl-bp-lg: 1024px;
+  --sl-bp-xl: 1280px;
+}
+
+/* ---- Hinweis ----
+   Variant C ist bewusst eine "Editorial"-Identität auf Papier-Weiss.
+   Eine prefers-color-scheme:dark Adaption würde Lesbarkeit/Charakter
+   brechen, daher KEIN Dark-Mode-Spiegel. */
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sl-duration-1: 0.01ms;
+    --sl-duration-2: 0.01ms;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- High-Contrast / Forced-Colors (Windows) ---- */
+@media (forced-colors: active) {
+  :root {
+    --sl-color-rule: CanvasText;
+    --sl-color-rule-soft: CanvasText;
+    --sl-color-accent: LinkText;
+  }
+  table#table tr,
+  table#table th,
+  table#table td {
+    border-color: CanvasText !important;
+  }
+}
+
+/* ============================================================================
+ * Inline-HTML-Attribut-Neutralisierung
+ * ============================================================================ */
+table#table td[width],
+table#table th[width] {
+  width: auto !important;
+}
+table#table td[align],
+table#table th[align] {
+  text-align: revert;
+}
+
+/* ============================================================================
+ * Semantic-Token-Aliasse (--egr-*)
+ * ============================================================================ */
+:root {
+  /* Surfaces */
+  --egr-color-canvas:    var(--sl-color-paper);
+  --egr-color-surface:   var(--sl-color-surface);
+  --egr-color-surface-2: var(--sl-color-surface);
+  --egr-color-surface-3: var(--sl-color-paper);
+  --egr-color-surface-elevated: var(--sl-color-surface);
+
+  /* Borders */
+  --egr-color-border:    var(--sl-color-rule-soft);
+  --egr-color-divider:   var(--sl-color-rule-soft);
+  --egr-color-rule:      var(--sl-color-rule);
+
+  /* Text */
+  --egr-color-text-1:    var(--sl-color-ink);
+  --egr-color-text-2:    var(--sl-color-ink-2);
+  --egr-color-text-3:    var(--sl-color-ink-3);
+  --egr-color-text-on-accent: var(--sl-color-paper);
+
+  /* Accent */
+  --egr-color-accent:        var(--sl-color-accent);
+  --egr-color-accent-strong: var(--sl-color-accent);
+  --egr-color-accent-soft:   var(--sl-color-accent-soft);
+
+  /* Funktional */
+  --egr-color-link:        var(--sl-color-link);
+  --egr-color-link-hover:  var(--sl-color-link-hover);
+  --egr-color-warning:     var(--sl-color-down);
+  --egr-color-error:       var(--sl-color-down);
+  --egr-color-info:        var(--sl-color-link);
+
+  /* Header */
+  --egr-color-header-bg:    var(--sl-color-paper);
+  --egr-color-header-text:  var(--sl-color-ink);
+  --egr-color-nav-bg:       var(--sl-color-paper);
+  --egr-color-nav-text:     var(--sl-color-ink);
+  --egr-color-nav-active:   transparent;
+  --egr-color-nav-active-text: var(--sl-color-accent);
+  --egr-color-nav-hover:    var(--sl-color-accent-soft);
+
+  /* Banner-Hero (Variante C: minimalistisch, scharfe Kontur, Karmin-Akzent) */
+  --egr-banner-bg: var(--sl-color-paper);
+  --egr-banner-image: none;
+  --egr-banner-overlay:
+    linear-gradient(180deg, transparent 0%, transparent calc(100% - 3px), var(--sl-color-accent) calc(100% - 3px), var(--sl-color-accent) 100%);
+  --egr-banner-text-shadow: none;
+  --egr-banner-logo-ring: var(--sl-color-accent);
+  --egr-color-banner-text: var(--sl-color-ink);
+
+  /* Page-Hintergrund (reines Weiß mit minimaler Textur) */
+  --egr-page-bg-color: var(--sl-color-paper);
+  --egr-page-bg-image: none;
+
+  /* Tabelle */
+  --egr-table-row-odd:     var(--sl-color-surface);
+  --egr-table-row-even:    var(--sl-color-surface);  /* Variant C: kein Zebra */
+  --egr-table-row-hover:   var(--sl-color-accent-soft);
+  --egr-table-header-bg:   transparent;
+  --egr-table-header-text: var(--sl-color-ink-2);
+  --egr-table-border:      var(--sl-color-rule-soft);
+
+  /* Stil-Hints */
+  --egr-style-table-zebra: 0;          /* Variant C: kein Zebra, nur Hairlines */
+  --egr-style-table-radius: 2px;       /* Editorial: harte Kanten */
+  --egr-style-row-tone-top3: 0;
+  --egr-style-numerals: tabular-nums lining-nums;
+  --egr-style-points-font: var(--sl-font-mono);
+  --egr-style-points-weight: 500;
+  --egr-style-points-size: 13px;
+  --egr-style-points-color: var(--sl-color-ink);
+
+  /* Typografie */
+  --egr-font-body:    var(--sl-font-sans);
+  --egr-font-display: var(--sl-font-serif);
+  --egr-font-mono:    var(--sl-font-mono);
+
+  /* Spacing */
+  --egr-space-1:  var(--sl-space-1);
+  --egr-space-2:  var(--sl-space-2);
+  --egr-space-3:  var(--sl-space-3);
+  --egr-space-4:  var(--sl-space-4);
+  --egr-space-5:  var(--sl-space-5);
+  --egr-space-6:  var(--sl-space-6);
+  --egr-space-8:  var(--sl-space-8);
+  --egr-space-10: var(--sl-space-10);
+  --egr-space-12: var(--sl-space-10);
+  --egr-space-16: var(--sl-space-10);
+
+  /* Radii */
+  --egr-radius-sm: var(--sl-radius-sm);
+  --egr-radius-md: var(--sl-radius-md);
+  --egr-radius-lg: var(--sl-radius-md);
+  --egr-radius-pill: var(--sl-radius-pill);
+
+  /* Shadows: keine */
+  --egr-shadow-1: none;
+  --egr-shadow-2: none;
+
+  /* Motion */
+  --egr-ease:       var(--sl-ease);
+  --egr-duration-1: var(--sl-duration-1);
+  --egr-duration-2: var(--sl-duration-2);
+  --egr-duration-3: var(--sl-duration-2);
+}
+
+/* ---- Grundlegender Reset ---- */
+html { -webkit-text-size-adjust: 100%; }
+body#rankings,
+body#rankings_women {
+  background: var(--sl-color-paper);
+  color: var(--sl-color-ink);
+  font-family: var(--sl-font-sans);
+  font-size: 13px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

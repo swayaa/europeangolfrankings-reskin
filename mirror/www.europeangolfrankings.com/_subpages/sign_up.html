@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>European Golf Rankings</title>
+  <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.quickselect.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/string_score.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+  
+  <!--[if IE 9]> 
+  <link href="/ie.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE 8]> 
+  <link href="/ie8.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if IE 7]> 
+  <link href="/ie7.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if IE 6]> 
+  <link href="/ie6.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="J6H1odcQ2mwDc+U/ua86SfVRN0NyEK1Tq7PH5FIIy3A=" name="csrf-token" />
+</head>
+<body id="registrations">
+    
+  <div id="contentbox">
+  
+    <header>
+      <h1>European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="/assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="registrations">
+  <li id="l_home"><a href="/">Home</a></li>
+
+    <li id="l_rankings"><a href="/ranking">Rankings</a></li>
+
+    <li id="l_events"><a href="/events">Events</a></li>
+
+    <li>
+  <a href="/how-to-use">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="/users/sign_in">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+
+  
+  <nav id='submenue'>
+<ul class='registrations'>
+<li class='l_signin'>
+<a href="/users/sign_in">Sign in</a>
+</li>
+<li class='l_signup'>
+<a href="/users/sign_up">Register</a>
+</li>
+</ul>
+</nav>
+
+  
+      
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt"> 
+      <div>
+<h2>Register</h2>
+
+<p><i>All fields are required to register with European Golf Rankings.</i></p>
+
+<p></p>
+
+<form accept-charset="UTF-8" action="/users" class="user_new" id="user_new" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="J6H1odcQ2mwDc+U/ua86SfVRN0NyEK1Tq7PH5FIIy3A=" /></div>
+  
+
+  <p><label for="user_first_name">First name</label>
+  <input id="user_first_name" name="user[first_name]" size="30" type="text" /></p>
+
+  <p><label for="user_last_name">Last name</label>
+  <input id="user_last_name" name="user[last_name]" size="30" type="text" /></p>
+
+  <p><label for="user_email">Email</label>
+  <input id="user_email" name="user[email]" size="30" type="email" value="" /></p>
+
+  <p><label for="user_password">Password</label>
+  <input id="user_password" name="user[password]" size="30" type="password" /></p>
+
+  <p style="margin-bottom: 2em;"><label for="user_password_confirmation">Password confirmation</label>
+  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="password" /></p>
+
+  <p><label for="user_gender">Gender</label>
+    <select id="user_gender" name="user[gender]"><option value="M">M</option>
+<option value="F">F</option></select>
+
+  <p><label for="user_born">Year of Birth</label>
+  <input id="user_born" name="user[born]" size="30" type="text" /></p>
+
+  <p><label for="user_golfclub">Golfclub</label>
+  <input id="user_golfclub" name="user[golfclub]" size="30" type="text" /></p>
+
+  <p style="margin-bottom: 2em;"><label for="user_country_id">Country</label>
+    <select id="user_country_id" name="user[country_id]"><option value="">Other</option>
+<option value="13">Austria</option>
+<option value="20">Belgium</option>
+<option value="30">Bulgaria</option>
+<option value="49">Croatia</option>
+<option value="51">Cyprus</option>
+<option value="52">Czech</option>
+<option value="53">Denmark</option>
+<option value="227">England</option>
+<option value="62">Estonia</option>
+<option value="67">Finland</option>
+<option value="68">France</option>
+<option value="74">Germany</option>
+<option value="77">Greece</option>
+<option value="90">Hungary</option>
+<option value="91">Iceland</option>
+<option value="96">Ireland</option>
+<option value="232">Isle of Man</option>
+<option value="97">Israel</option>
+<option value="98">Italy</option>
+<option value="102">Kazakhstan</option>
+<option value="110">Latvia</option>
+<option value="115">Liechtenstein</option>
+<option value="116">Lithuania</option>
+<option value="117">Luxembourg</option>
+<option value="119">Macedonia, the Former Yugoslav Republic of</option>
+<option value="125">Malta</option>
+<option value="234">Montenegro</option>
+<option value="230">N. Ireland</option>
+<option value="142">Netherlands</option>
+<option value="152">Norway</option>
+<option value="162">Poland</option>
+<option value="163">Portugal</option>
+<option value="167">Romania</option>
+<option value="168">Russia</option>
+<option value="228">Scotland</option>
+<option value="231">Serbia</option>
+<option value="183">Slovakia</option>
+<option value="184">Slovenia</option>
+<option value="188">Spain</option>
+<option value="194">Sweden</option>
+<option value="195">Switzerland</option>
+<option value="206">Turkey</option>
+<option value="211">Ukraine</option>
+<option value="229">Wales</option></select>
+
+
+  <p ><label for="user_wanted_role">I am a...</label>
+    <select id="user_wanted_role" name="user[wanted_role]"><option value="2">Player</option>
+<option value="3">Other</option></select>
+
+
+  <p><input name="commit" type="submit" value="Register" /></p>
+</form>
+  <a href="/users/sign_in">Sign in</a><br />
+
+
+  <a href="/users/password/new">Forgot your password?</a><br />
+
+  <a href="/users/confirmation/new">Keine Bestätigungsmail bekommen?</a><br />
+
+
+
+</div>
+
+      </div>
+          <aside>
+            
+
+<div class="page">
+    <img alt="Foos%20and%20matlari" src="/page_images/16/medium/Foos%20and%20Matlari.jpg?1320834874" /> <div class="sidebar"> <h2>Register</h2> <p>Please register for European Golf Rankings.</p>
+<p>You will then receive an e-mail from us with a link to activate your account.</p>
+<p>Private information will not be shared!</p> </div></div>
+
+      <div class="wblock" style="margin-top: 36px;">
+        <a href="https://www.studyandplayamerica.com/"><img src="/ads/14/medium/2026_Study_PlayAmerica.gif?2026" /></a>
+      </div>
+
+          </aside>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="/seite/copyright">Copyright/Trademark</a></li>
+    <li><a href="/seite/privacy">Privacy</a></li>
+    <li><a href="/seite/terms">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="/seite/contact">Contact</a></li>
+    <li class="last"><a href="/seite/imprint">Impressum</a></li>
+  </ul>
+</nav>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//pw.europeangolfrankings.com/piwik/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '3']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//pw.europeangolfrankings.com/piwik/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+
+
+    </footer>
+
+  </div>
+</body>
+</html>

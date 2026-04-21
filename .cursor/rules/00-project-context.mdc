@@ -1,0 +1,63 @@
+---
+description: "Project context for the EGR re-skin project. Always loaded."
+alwaysApply: true
+---
+
+# Projekt-Kontext: European Golf Rankings — Re-Skin
+
+## TL;DR
+
+Wir machen ein **Re-Skin** der bestehenden Live-Seite `europeangolfrankings.com`.
+**Kein** Rebuild. **Kein** neues Backend. **Kein** neuer Tech-Stack.
+
+Die Live-Seite ist eine Ruby-on-Rails-App (vermutlich Rails 3/4, ~ 2012–2014). Wir liefern dem Betreiber ein **Drop-in-CSS-Paket** (+ optional minimales JS), das er in seine bestehende Asset-Pipeline kopiert.
+
+## Was du tun darfst
+
+- Eigene CSS-Custom-Properties, Pseudo-Elemente, Media-Queries, Container-Queries
+- Optional: kleine JS-Helfer (Sticky-Filter, Mobile-Toggle, Tastatur-Shortcuts) als separate `.js`-Datei
+- Inline-Pixel-Widths neutralisieren via `[width] { width: auto !important; }`
+- Vollständige A11y-Verbesserungen (Focus-Ringe, ARIA, Reduced-Motion)
+
+## Was du NICHT tun darfst
+
+- ❌ HAML-Templates oder Controller anfassen (außer einmaliger Viewport-Meta-Tag — siehe `docs/06-rails-integration.md`)
+- ❌ Bestehende CSS-Klassen oder IDs umbenennen — siehe `docs/05-dom-preservation.md`
+- ❌ Neue NPM-Dependencies einführen
+- ❌ Build-Tools aufzwingen (kein Webpack, Vite, Tailwind, PostCSS …)
+- ❌ Neue Features bauen (kein Vergleichstool, keine Watchlist, kein Export)
+- ❌ Logo, Brand-Name oder Inhalt ändern
+
+## Wichtige Verzeichnisse
+
+| Pfad | Inhalt |
+|---|---|
+| `mirror/www.europeangolfrankings.com/ranking.html` | Echter Live-HTML-Snapshot (Read-Only-Referenz) |
+| `docs/01-ist-analyse.md` | Aktueller Tech-Stack und visuelles Inventar |
+| `docs/05-dom-preservation.md` | **Liste der stabilen DOM-Selektoren — Pflichtlektüre** |
+| `docs/06-rails-integration.md` | Wie das Drop-in beim Betreiber landet |
+| `docs/design-systems/variant-{a,b,c}.md` | Vollständige Design-Specs pro Variante |
+| `redesign/tokens/variant-{a,b,c}.css` | Drop-in CSS-Token-Files |
+| `redesign/application.new.css` | Die finale Drop-in-CSS (eine Variante gewählt) |
+| `preview/index.html` | Live-Preview-HTML mit dem gemirrorten Markup |
+
+## Drei Design-Varianten
+
+Pro Variante existiert eine vollständige Spec (`docs/design-systems/`) und eine Token-Datei (`redesign/tokens/`):
+
+- **A — Fairway Modern:** hell, sportlich, Inter, Wald-Grün-Akzent (#2E7D32)
+- **B — Tour Pro Dark:** dunkel, premium, Inter + Fraunces, Champagner-Gold (#D4AF37) auf Navy
+- **C — Stat-Lab Editorial:** maximal datendicht, System-Font + JetBrains Mono, Karmin-Akzent (#E63946)
+
+## Mess-Ziele
+
+- Lighthouse-Performance ≥ 90 (mobile)
+- Lighthouse-A11y ≥ 95
+- WCAG 2.1 AA (Pflicht)
+- CSS-Bundle < 25 KB
+- Mobile-tauglich auf 375 px (heute: 0)
+- Setup-Aufwand für Betreiber: < 10 Min
+
+## Ton an den Betreiber
+
+Wir sind **kein** Konkurrent. Wir liefern Ihm ein freundliches Re-Skin-Geschenk: **null Risiko, null Folgekosten**, mit 5-Min-Rollback. Pitch-Argumentation in `docs/02-soll-zustand.md`.

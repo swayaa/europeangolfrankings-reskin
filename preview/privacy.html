@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>European Golf Rankings — Re-Skin Preview</title>
+
+  <!-- ───── Original-CSS (Baseline). Wird bei aktivem Re-Skin deaktiviert. ───── -->
+  <link id="legacy-css" href="assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <!-- ───── jQuery + Original-Scripts (DOM bleibt 1:1) ───── -->
+  <script src="assets/jquery.js"></script>
+  <script src="assets/jquery_ujs.js"></script>
+  <script src="assets/jquery.quickselect.min.js"></script>
+  <script src="assets/string_score.min.js"></script>
+  <script src="assets/application.js"></script>
+
+  <!-- ───── Variant-Switcher: ?v=a|b|c   ?baseline=1 zeigt das Original ───── -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var v = (p.get('v') || 'a').toLowerCase();
+      if (!/^[abc]$/.test(v)) v = 'a';
+      var baseline = p.get('baseline');
+      var tokenMap = {
+        a: 'redesign/tokens/variant-a-fairway-modern.css',
+        b: 'redesign/tokens/variant-b-tour-pro-dark.css',
+        c: 'redesign/tokens/variant-c-stat-lab-editorial.css'
+      };
+      function loadCss(href) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet'; l.href = href;
+        document.head.appendChild(l);
+      }
+      var cb = '?_=' + Date.now();
+      if (baseline !== '1') {
+        loadCss(tokenMap[v] + cb);
+        loadCss('redesign/application.new.css' + cb);
+      }
+      window.__EGR_VARIANT = v.toUpperCase();
+      window.__EGR_BASELINE = baseline === '1';
+      window.addEventListener('DOMContentLoaded', function () {
+        var legacy = document.getElementById('legacy-css');
+        if (legacy && baseline !== '1') legacy.disabled = true;
+        if (baseline !== '1') document.body.setAttribute('data-variant', v.toUpperCase());
+      });
+    })();
+  </script>
+
+  <!-- ───── Stufe-1-JS-Helfer (mit Cache-Buster) ───── -->
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'redesign/application.new.js?_=' + Date.now();
+      s.defer = true;
+      document.head.appendChild(s);
+    })();
+  </script>
+</head>
+<body id="pages" data-egr-page="pages">
+    
+  <div id="contentbox">
+  
+    <header>
+      <h1>European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="pages">
+  <li id="l_home"><a href="home.html">Home</a></li>
+
+    <li id="l_rankings"><a href="ranking.html">Rankings</a></li>
+
+    <li id="l_events"><a href="events.html">Events</a></li>
+
+    <li>
+  <a href="how-to-use.html">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="sign_in.html">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+
+  
+  
+  
+      
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt"> 
+      <div>
+<h1>
+Privacy Policy
+</h1>
+<div>
+<h2>1. An overview of data protection</h2>
+<h3>General</h3> <p>The following gives a simple overview of what happens to your personal information when you visit our website. Personal information is any data with which you could be personally identified. Detailed information on the subject of data protection can be found in our privacy policy found below.</p>
+<h3>Data collection on our website</h3> <p><strong>Who is responsible for the data collection on this website?</strong></p> <p>The data collected on this website are processed by the website operator. The operator&#8217;s contact details can be found in the website&#8217;s required legal notice.</p> <p><strong>How do we collect your data?</strong></p> <p>Some data are collected when you provide it to us. This could, for example, be data you enter on a contact form.</p> <p>Other data are collected automatically by our IT systems when you visit the website. These data are primarily technical data such as the browser and operating system you are using or when you accessed the page. These data are collected automatically as soon as you enter our website.</p> <p><strong>What do we use your data for?</strong></p> <p>Part of the data is collected to ensure the proper functioning of the website. Other data can be used to analyze how visitors use the site.</p> <p><strong>What rights do you have regarding your data?</strong></p> <p>You always have the right to request information about your stored data, its origin, its recipients, and the purpose of its collection at no charge. You also have the right to request that it be corrected, blocked, or deleted. You can contact us at any time using the address given in the legal notice if you have further questions about the issue of privacy and data protection. You may also, of course, file a complaint with the competent regulatory authorities.</p>
+<h3>Analytics and third-party tools</h3> <p>When visiting our website, statistical analyses may be made of your surfing behavior. This happens primarily using cookies and analytics. The analysis of your surfing behavior is usually anonymous, i.e. we will not be able to identify you from this data. You can object to this analysis or prevent it by not using certain tools. Detailed information can be found in the following privacy policy.</p> <p>You can object to this analysis. We will inform you below about how to exercise your options in this regard.</p>
+<h2>2. General information and mandatory information</h2>
+<h3>Data protection</h3> <p>The operators of this website take the protection of your personal data very seriously. We treat your personal data as confidential and in accordance with the statutory data protection regulations and this privacy policy.</p> <p>If you use this website, various pieces of personal data will be collected. Personal information is any data with which you could be personally identified. This privacy policy explains what information we collect and what we use it for. It also explains how and for what purpose this happens.</p> <p>Please note that data transmitted via the internet (e.g. via email communication) may be subject to security breaches. Complete protection of your data from third-party access is not possible.</p>
+<h3>Notice concerning the party responsible for this website</h3> <p>The party responsible for processing data on this website is:</p> 
+<p>Ted Long (later: Intelligent Solutions for Golf )<br />
+<br>Spitzwegstr.<br />
+<br>68789 St. Leon-Rot</p>
+<p>Telephone: +49 171 616 09 31<br />
+Email: europeangolfrankings@live.com</p>
+ <p>The responsible party is the natural or legal person who alone or jointly with others decides on the purposes and means of processing personal data (names, email addresses, etc.).</p>
+<h3>Revocation of your consent to the processing of your data</h3> <p>Many data processing operations are only possible with your express consent. You may revoke your consent at any time with future effect. An informal email making this request is sufficient. The data processed before we receive your request may still be legally processed.</p>
+<h3><span class="caps">SSL</span> or <span class="caps">TLS</span> encryption</h3> <p>This site uses <span class="caps">SSL</span> or <span class="caps">TLS</span> encryption for security reasons and for the protection of the transmission of confidential content, such as the inquiries you send to us as the site operator. You can recognize an encrypted connection in your browser&#8217;s address line when it changes from &#8220;http://&#8221; to &#8220;https://&#8221; and the lock icon is displayed in your browser&#8217;s address bar.</p> <p>If <span class="caps">SSL</span> or <span class="caps">TLS</span> encryption is activated, the data you transfer to us cannot be read by third parties.</p>
+<h3>Information, blocking, deletion</h3> <p>As permitted by law, you have the right to be provided at any time with information free of charge about any of your personal data that is stored as well as its origin, the recipient and the purpose for which it has been processed. You also have the right to have this data corrected, blocked or deleted. You can contact us at any time using the address given in our legal notice if you have further questions on the topic of personal data.</p>
+<h3>Opposition to promotional emails</h3> <p>We hereby expressly prohibit the use of contact data published in the context of website legal notice requirements with regard to sending promotional and informational materials not expressly requested. The website operator reserves the right to take specific legal action if unsolicited advertising material, such as email spam, is received.</p>
+<h2>3. Data collection on our website</h2>
+<h3>Cookies</h3> <p>Some of our web pages use cookies. Cookies do not harm your computer and do not contain any viruses. Cookies help make our website more user-friendly, efficient, and secure. Cookies are small text files that are stored on your computer and saved by your browser.</p> <p>Most of the cookies we use are so-called &#8220;session cookies.&#8221; They are automatically deleted after your visit. Other cookies remain in your device&#8217;s memory until you delete them. These cookies make it possible to recognize your browser when you next visit the site.</p> <p>You can configure your browser to inform you about the use of cookies so that you can decide on a case-by-case basis whether to accept or reject a cookie. Alternatively, your browser can be configured to automatically accept cookies under certain conditions or to always reject them, or to automatically delete cookies when closing your browser. Disabling cookies may limit the functionality of this website.</p> <p>Cookies which are necessary to allow electronic communications or to provide certain functions you wish to use (such as the shopping cart) are stored pursuant to Art. 6 paragraph 1, letter f of <span class="caps">DSGVO</span>. The website operator has a legitimate interest in the storage of cookies to ensure an optimized service provided free of technical errors. If other cookies (such as those used to analyze your surfing behavior) are also stored, they will be treated separately in this privacy policy.</p>
+<h3>Server log files</h3> <p>The website provider automatically collects and stores information that your browser automatically transmits to us in &#8220;server log files&#8221;. These are:</p> <ul> <li>Browser type and browser version</li> <li>Operating system used</li> <li>Referrer <span class="caps">URL</span></li> <li>Host name of the accessing computer</li> <li>Time of the server request</li> <li>IP address</li> <p></ul> <p>These data will not be combined with data from other sources.</p> <p>The basis for data processing is Art. 6 (1) (f) <span class="caps">DSGVO</span>, which allows the processing of data to fulfill a contract or for measures preliminary to a contract.</p><br />
+<h3>Registration on this website</h3> <p>You can register on our website in order to access additional functions offered here. The input data will only be used for the purpose of using the respective site or service for which you have registered. The mandatory information requested during registration must be provided in full. Otherwise, we will reject your registration.</p> <p>To inform you about important changes such as those within the scope of our site or technical changes, we will use the email address specified during registration.</p> <p>We will process the data provided during registration only based on your consent per Art. 6 (1)(a) <span class="caps">DSGVO</span>. You may revoke your consent at any time with future effect. An informal email making this request is sufficient. The data processed before we receive your request may still be legally processed.</p> <p>We will continue to store the data collected during registration for as long as you remain registered on our website. Statutory retention periods remain unaffected.</p><br />
+<h2>4. Analytics and advertising</h2><br />
+<h3>Matomo (formerly Piwik)</h3> <p>This website uses the open source web analytics service Matomo. Matomo uses so-called &#8220;cookies&#8221;. These are text files that are stored on your computer and that allow an analysis of the use of the website by you. For this purpose, the information generated by the cookie about the use of this website is stored on our server. The IP address is anonymized before it is stored.</p> <p>Matomo cookies remain on your device until you delete them.</p> <p>The storage of Matomo cookies is based on Art. 6 (1) (f) <span class="caps">DSGVO</span>. The website operator has a legitimate interest in analyzing user behavior in order to optimize both its website and its advertising.</p> <p>The information generated by the cookies about your use of this website will not be disclosed to third parties. You can prevent these cookies being stored by selecting the appropriate settings in your browser. However, we wish to point out that doing so may mean you will not be able to enjoy the full functionality of this website.</p> <p>If you do not agree with the storage and use of your data, you can disable this feature here. In this case, an opt-out cookie will be stored in your browser to prevent Matomo from storing your usage data. If you delete your cookies, this will mean that the opt-out cookie will also be deleted. You will then need to reactivate it when you return to our site if you wish your activity not to be tracked.</p></p>
+<p><iframe style="border: 0; height: 200px; width: 600px;" src="https://pw.netz8.de/piwik/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe></p>
+</div>
+</div>
+
+      </div>
+          <aside>
+            
+
+<div class="page">
+    <img alt="Maximilian-roehrig_large" src="page_images/10/medium/maximilian-Roehrig_large.jpg?1401102426" /> <div class="sidebar"> <h2>Upcoming Events</h2> <p>Check out the Events Page under Upcoming for all events!</p> </div></div>
+
+      <div class="wblock" style="margin-top: 36px;">
+        <a href="https://www.studyandplayamerica.com/"><img src="ads/14/medium/2026_Study_PlayAmerica.gif?2026" /></a>
+      </div>
+
+          </aside>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="copyright.html">Copyright/Trademark</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="last"><a href="imprint.html">Impressum</a></li>
+  </ul>
+</nav>
+
+
+
+
+
+    </footer>
+
+  </div>
+
+<!-- ════════════════ Preview-only Variant-Switcher ════════════════ -->
+<style>
+  .egr-preview-switcher {
+    position: fixed; right: 16px; bottom: 16px; z-index: 2147483000;
+    display: flex; flex-direction: column; gap: 6px;
+    background: #0F1620; color: #fff;
+    padding: 10px 12px; border-radius: 12px;
+    font: 12px/1.3 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+    max-width: 260px;
+    pointer-events: auto;
+  }
+  .egr-preview-switcher * { box-sizing: border-box; }
+  .egr-preview-switcher strong {
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    opacity: .65; color: #fff;
+  }
+  .egr-preview-switcher .row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .egr-preview-switcher a {
+    display: inline-block; padding: 6px 10px; border-radius: 6px;
+    background: #1F2A37; color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 11px; transition: background .15s, transform .1s;
+    border: 1px solid transparent; cursor: pointer;
+  }
+  .egr-preview-switcher a:hover { background: #2A3744; }
+  .egr-preview-switcher a:active { transform: translateY(1px); }
+  .egr-preview-switcher a.is-active {
+    background: #2E7D32; border-color: #66BB6A; color: #fff;
+  }
+  /* Select: dunkel + opake Optionen, in jedem OS lesbar */
+  .egr-preview-switcher select {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-color: #1F2A37;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #fff 50%),
+      linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position: calc(100% - 14px) 12px, calc(100% - 9px) 12px;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    color: #fff !important;
+    border: 1px solid #3B4A5A;
+    padding: 6px 26px 6px 8px; border-radius: 6px;
+    font: 600 11px/1.3 -apple-system, system-ui, sans-serif;
+    width: 100%;
+    cursor: pointer;
+  }
+  .egr-preview-switcher select:focus {
+    outline: 2px solid #66BB6A; outline-offset: 1px;
+  }
+  /* Optionen: opaker dunkler Hintergrund, weisser Text — Chrome+Firefox+WebKit */
+  .egr-preview-switcher select option {
+    background: #1F2A37 !important;
+    color: #fff !important;
+  }
+  .egr-preview-switcher select option:checked,
+  .egr-preview-switcher select option:hover {
+    background: #2E7D32 !important;
+    color: #fff !important;
+  }
+  @media print { .egr-preview-switcher { display: none; } }
+  @media (max-width: 480px) {
+    .egr-preview-switcher { right: 8px; bottom: 8px; padding: 8px; max-width: 180px; }
+  }
+</style>
+<aside class="egr-preview-switcher" id="egr-switcher" aria-label="Preview-Switcher" data-egr-noprint>
+  <strong>Variant</strong>
+  <div class="row" id="egr-switcher-variants"></div>
+  <strong>Page</strong>
+  <select id="egr-switcher-page"></select>
+</aside>
+<script>
+  (function () {
+    var variants = [['a','A · Fairway'], ['b','B · Tour Pro'], ['c','C · Stat-Lab'], ['baseline','Baseline']];
+    var pages = [["home.html", "Home"], ["ranking.html", "Rankings \u00b7 Boys/Men"], ["ranking_women.html", "Rankings \u00b7 Girls/Women"], ["scandinavian_boys.html", "Scandinavian Boys"], ["scandinavian_girls.html", "Scandinavian Girls"], ["dutch_jongens.html", "Dutch \u00b7 Jongens"], ["dutch_meisjes.html", "Dutch \u00b7 Meisjes"], ["events.html", "Events"], ["how-to-use.html", "How it Works"], ["about-us.html", "About Us"], ["tours.html", "Tours"], ["male.html", "Male Overview"], ["female.html", "Female Overview"], ["sign_in.html", "Log In"], ["sign_up.html", "Register"], ["contact.html", "Contact"], ["imprint.html", "Impressum"], ["privacy.html", "Privacy"], ["terms.html", "Terms of Use"], ["copyright.html", "Copyright/Trademark"], ["search.html", "Search Results"]];
+    var p = new URLSearchParams(location.search);
+    var current = (p.get('baseline') === '1') ? 'baseline' : (p.get('v') || 'a').toLowerCase();
+    var thisFile = location.pathname.split('/').pop() || 'home.html';
+    var rowVar = document.getElementById('egr-switcher-variants');
+    variants.forEach(function (v) {
+      var a = document.createElement('a');
+      a.textContent = v[1];
+      var url = thisFile;
+      if (v[0] === 'baseline') url += '?baseline=1';
+      else url += '?v=' + v[0];
+      a.href = url;
+      if (v[0] === current) a.className = 'is-active';
+      rowVar.appendChild(a);
+    });
+    var sel = document.getElementById('egr-switcher-page');
+    pages.forEach(function (pg) {
+      var o = document.createElement('option');
+      o.value = pg[0]; o.textContent = pg[1];
+      if (pg[0] === thisFile) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', function () {
+      var qs = (current === 'baseline') ? '?baseline=1' : '?v=' + current;
+      location.href = sel.value + qs;
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+body{
+  background-repeat: repeat;
+}
+
+div#contentbox{
+  border-left: 1px solid #111111;
+  border-right: 1px solid #111111;
+}
+
+div#contentbox header{
+  height: 155px;
+  background-image: url(/assets/deko6-ie.jpg);
+}
+
+div#contentbox header h1{
+  display: none;
+}
+
+div#contentbox header img#logo{
+  display: none;
+}
+
+
+div#searchbar {
+  clear: left;
+  width: 700px;
+  margin-left: -100px;
+}
+
+div#searchbar form{
+  margin-left: -110px;
+}

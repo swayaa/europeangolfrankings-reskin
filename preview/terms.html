@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>European Golf Rankings — Re-Skin Preview</title>
+
+  <!-- ───── Original-CSS (Baseline). Wird bei aktivem Re-Skin deaktiviert. ───── -->
+  <link id="legacy-css" href="assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <!-- ───── jQuery + Original-Scripts (DOM bleibt 1:1) ───── -->
+  <script src="assets/jquery.js"></script>
+  <script src="assets/jquery_ujs.js"></script>
+  <script src="assets/jquery.quickselect.min.js"></script>
+  <script src="assets/string_score.min.js"></script>
+  <script src="assets/application.js"></script>
+
+  <!-- ───── Variant-Switcher: ?v=a|b|c   ?baseline=1 zeigt das Original ───── -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var v = (p.get('v') || 'a').toLowerCase();
+      if (!/^[abc]$/.test(v)) v = 'a';
+      var baseline = p.get('baseline');
+      var tokenMap = {
+        a: 'redesign/tokens/variant-a-fairway-modern.css',
+        b: 'redesign/tokens/variant-b-tour-pro-dark.css',
+        c: 'redesign/tokens/variant-c-stat-lab-editorial.css'
+      };
+      function loadCss(href) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet'; l.href = href;
+        document.head.appendChild(l);
+      }
+      var cb = '?_=' + Date.now();
+      if (baseline !== '1') {
+        loadCss(tokenMap[v] + cb);
+        loadCss('redesign/application.new.css' + cb);
+      }
+      window.__EGR_VARIANT = v.toUpperCase();
+      window.__EGR_BASELINE = baseline === '1';
+      window.addEventListener('DOMContentLoaded', function () {
+        var legacy = document.getElementById('legacy-css');
+        if (legacy && baseline !== '1') legacy.disabled = true;
+        if (baseline !== '1') document.body.setAttribute('data-variant', v.toUpperCase());
+      });
+    })();
+  </script>
+
+  <!-- ───── Stufe-1-JS-Helfer (mit Cache-Buster) ───── -->
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'redesign/application.new.js?_=' + Date.now();
+      s.defer = true;
+      document.head.appendChild(s);
+    })();
+  </script>
+</head>
+<body id="pages" data-egr-page="pages">
+    
+  <div id="contentbox">
+  
+    <header>
+      <h1>European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="pages">
+  <li id="l_home"><a href="home.html">Home</a></li>
+
+    <li id="l_rankings"><a href="ranking.html">Rankings</a></li>
+
+    <li id="l_events"><a href="events.html">Events</a></li>
+
+    <li>
+  <a href="how-to-use.html">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="sign_in.html">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+
+  
+  
+  
+      
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt"> 
+      <div>
+<h1>
+Terms Of Use
+</h1>
+<div>
+<h2>§ 1 Wirksamkeit</h2>
+<p>1.1 Lieferungen (im allgemeinen Bereistellung von Informatonen und Services) erfolgen ausschließlich auf der Basis dieser <span class="caps">AGB</span>.</p>
+<p>1.2 Eine abweichende Regelung bedarf der Schrifform und muss vor Vertragsabschluss gem. h2. § 2 durch den Seitenbetreiber Ted Long, Spitzwegstr., 68789 St. Leon-Rot von Intelligent Solutons for Golf (im folgenden &#8220;Anbieter&#8221; genannt) bestätgt werden.</p>
+<p>1.3 Mit der Registrierung auf der Internetseite http://europeangolfrankings.com/ gelten diese Bedingungen als akzeptert.</p>
+<p>1.4 Rechtliche Schritte bei Verstößen und Zuwiderhandlungen gegen die <span class="caps">AGB</span> und Nutzungsbedingungen behalten wir uns ausdrücklich vor.</p>
+<h2>§ 2 Vertragsabschluss</h2>
+<p>2.1 Die Angebote sind freibleibend und unverbindlich.</p>
+<p>2.2 Ein Vertrag kommt erst dann zustande, wenn sich ein Nutzer registriert und sich für einen kostenpfichtgen Dienst freiwillig anmeldet</p>
+<p>2.3 Es gilt der Preis, der zum Zeitpunkt der Registrierung gültg ist, als akzeptiert.</p>
+<p>2.4 Eine Registrierungsbestätgung erfolgt durch eine Email des Anbieters.</p>
+<h2>§ 3 Rechteeinräumung (Copyright, Urheberrecht, Eigentumsrecht, Nutzungsrecht)</h2>
+<p>3.1 Das Copyright liegt beim Anbieter, der auch Urheber (Autor) sowie Eigentümer der auf Inhalte (incl. Inhalte wie E-Text und Grafiken) ist.</p>
+<p>3.2 Die Angebote für registrierte Nutzer wurden nach bestem Wissen und Gewissen erstellt. Sollte wider Erwarten gegen ein Copyright o.ä. verstoßen worden sein, sind die relevanten Informatonen an den Anbieter zu senden.</p>
+<p>3.3 Die kostenlose Nutzung der Informatonen auf der Seite http://europeangolfrankings.com/ ist ausschließlich für rein private Zwecke (also ohne kommerzielle oder gewerbliche Inhalte) gestattet.</p>
+<p>3.4 Eine kommerzielle oder gewerbliche Nutzung von Informatonen ist nur mit einer kostenpfichtgen Registrierung erlaubt.</p>
+<p>3.5 Der registrierte Nutzer besitzt ein Nutzungsrecht, das immer auf ein Jahr beschränkt ist. Es werden dabei keine Urheberrechte oder exklusive Eigentumsrechte übertragen.</p>
+<h2>§ 4 Gewährleistung | Haftung</h2>
+<p>4.1 Der Anbieter übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der auf http://europeangolfrankings.com/ eingestellten Daten.</p>
+<p>4.2 Die Hafung des Anbieters ist auf Vorsatz und grobe Fahrlässigkeit begrenzt. In keinem Fall hafet der Anbieter für Schäden oder Verluste, die direkt oder indirekt durch die Nutzung der Informaton auf http://europeangolfrankings.com/ entstanden sind. gleichgültg aus welchem Rechtsgrund. Insbesondere hafet der Anbieter nicht für einen dem Kunden entgangenen Gewinn.</p>
+<h2>§ 5 Preise | Zahlungsbedingungen</h2>
+<p>5.1 Die Preise verstehen sich als Endpreis; ein Ausweis der MwSt erfolgt als Kleinunternehmer gem. h2. § 19(1) UStG nicht.</p>
+<p>5.2 Der Anbieter hat das Recht, die Preise jederzeit zu ändern; laufende Lizenzierungen gem. h2. § 2.3 bleiben davon unberührt.</p>
+<p>5.3 Der Rechnungsbetrag ist sofort (spätestens innerhalb von 7 Tagen) nach Rechnungsstellung ohne Abzug per Überweisung auszugleichen. Die Rechnung wird dem Kunden per Email im Pdf-Format zugestellt.</p>
+<p>5.4 Wünscht der Kunde darüber hinaus eine schrifliche Rechnung per Post, ist eine zusätzliche Bearbeitungsgebühr in Höhe von € 5,50 (incl. Porto) zu entrichten.</p>
+<p>5.5 Nach Ablauf der Zahlungsfrist kommt der Kunde in Verzug. Zahlungsverzug wird genau einmal angemahnt (eine Mahngebühr in Höhe von € 5,00 werden zusätzlich erhoben). Bei fruchtlosen Mahnungen leitet der Anbieter nach Ablauf der Nachfrist ohne weitere Ankündigung gerichtliche Schritte ein. Alle die dadurch entstehenden Kosten trägt der Schuldner.</p>
+<h2>§ 6 Kundendaten und Datenschutz</h2>
+<p>6.1 Der Kunde verpfichtet sich, bei der Bestellung wahrheitsgemäße Angaben zu machen. Änderungen sind unverzüglich zu aktualisieren.</p>
+<p>6.2 Die vom Kunden übermittelten Kontaktdaten werden ausschließlich zur Abwicklung des Aufrages benutzt und nicht an Dritte weitergegeben, es sei denn, eine Weitergabe ist aufgrund einer geltenden Rechtsvorschrif erforderlich.</p>
+<h2>§ 7 Lieferung</h2>
+<p>7.1 Die Bereitstellung von zusätzlichen Informatonen und Services für die registrierten Nutzer geschieht nach dem Erhalt der Zahlungen und zwar ausschließlich über die Webseite http://europeangolfrankings.com/.</p>
+<p>7.2 Die Dateien werden vor dem Upload zum Server auf Virenfreiheit geprüf. Der Anbieter hat keinerlei Einfuss darauf, ob während der Übertragung (Download) ein virenbehafetes Programm Zugrif auf die Dateien erhält und übernimmt daher keine Hafung für dadurch eventuell auf dem Computer des Kunden entstehende Schäden.</p>
+<h2>§ 8 Widerrufsbelehrung</h2>
+<p>8.1 Widerrufsrecht: Der Kunde kann die Vertragserklärung innerhalb von zwei Wochen ohne Angabe von Gründen in Textform (z. B. Brief, E-Mail) widerrufen. Die Frist beginnt nach Erhalt dieser Belehrung in Textform, jedoch nicht vor Erfüllung unserer Informatonspfichten gemäß h2. § 312c Abs. 2 <span class="caps">BGB</span> in Verbindung mit h2. § 1 Abs. 1, 2 und 4 <span class="caps">BGB</span>-InfoV sowie unserer Pfichten gemäß h2. § 312e Abs. 1 Satz 1 <span class="caps">BGB</span> in Verbindung mit h2. § 3 <span class="caps">BGB</span>-InfoV. Zur Wahrung der Widerrufsfrist genügt die rechtzeitge Absendung des Widerrufs. Der Widerruf ist zu richten an: Nicola de Rooij, Mönchseestr. 73, 74072 Heilbronn oder per Email an info@homepage-vorlagen-webdesign.de.</p>
+<p>8.2 Widerrufsfolgen: Im Falle eines wirksamen Widerrufs sind die beiderseits empfangenen Leistungen zurückzugewähren und ggf. gezogene Nutzungen (z. B. Zinsen) herauszugeben. Kann der Kunde uns die empfangene Leistung ganz oder teilweise nicht oder nur in verschlechtertem Zustand zurückgewähren, muss er uns insoweit ggf. Wertersatz leisten. Bei der Überlassung von Sachen gilt dies nicht, wenn die Verschlechterung der Sache ausschließlich auf deren Prüfung &#8211; wie sie dem Kunden etwa im Ladengeschäf möglich gewesen wäre &#8211; zurückzuführen ist. Im Übrigen kann der Kunde die Pficht zum Wertersatz für eine durch die bestmmungsgemäße Ingebrauchnahme der Sache entstandene Verschlechterung vermeiden, indem er die Sache nicht wie sein Eigentum in Gebrauch nimmt und alles unterlassen, was deren Wert beeinträchtgt. Verpfichtungen zur Erstattung von Zahlungen müssen innerhalb von 30 Tagen erfüllt werden. Die Frist beginnt für den Kunden mit der Absendung seiner Widerrufserklärung, für uns mit deren Empfang.</p>
+<p>8.3 Einschränkungen des Widerrufsrechts: Das Widerrufsrecht des Kunden erlischt vorzeitg, wenn der Kunde die Dienstleistung vor Ende der Widerrufsfrist beansprucht oder diese selbst z.B. durch Upload der Vorlage auf seinen Server veranlasst hat.</p>
+<h2>§ 9 Schlussbestimmungen</h2>
+<p>9.1 Für alle Verträge gilt deutsches Recht. Erfüllungsort und Gerichtsstand ist Heidelberg, soweit nichts anderes vereinbart ist.</p>
+<p>9.2 Sollte eine der vorstehenden Bestmmungen nicht rechtswirksam sein, so wird die Rechtwirksamkeit der übrigen Bestmmungen nicht berührt. Anstelle der unwirksamen Bestmmung soll eine angemessene Regelung gesetzt werden, die der ursprünglichen Bestmmung wirtschaflich am nächsten kommt.</p>
+<p>9.3 Der Anbieter behält sich das Recht vor, diese <span class="caps">AGB</span> ggf. zu ändern. Vertragsbestandteil ist jeweils die gültge Fassung zum Zeitpunkt des Vertragsabschlusses.<br />
+Urheber- und Kennzeichenrecht<br />
+Der Autor ist bestrebt, bei allen Publikatonen die Urheberrechte der verwendeten Grafiken, Dokumente, Sequenzen und Texte zu wahren, selbst erstellte Grafiken, Dokumente, Sequenzen und Texte zu nutzen oder ggf. auf lizenzfreie Objekte zurückzugreifen. Die auf dieser Website vom Autor selbst erstellten Grafiken, Dokumente, Sequenzen und Texte unterliegen dem Urheberrecht sowie dem Gesetz zum Schutz des geistgen Eigentums. Die Weitergabe, Veränderung, Nutzung oder Verwendung jeglicher Art auf anderen Webseiten oder Medien ist<br />
+ohne ausdrückliche Zustmmung des Autors sowohl entgeltlich als auch unentgeltlich strikt untersagt.<br />
+Alle innerhalb auf dieser Webseite ggf. durch Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den Bestmmungen des jeweils gültgen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer. Diese AGBs im Pdf-Format downloaden!<br />
+<span class="caps">AGB</span> (siehe weiter oben) und Datenschutz gelesen und akzeptert?<br />
+Mit Absenden der Bestellung akzepteren Sie die <span class="caps">AGB</span> und den Datenschutz von http://europeangolfrankings.com/!</p>
+</div>
+</div>
+
+      </div>
+          <aside>
+            
+
+<div class="page">
+    <img alt="Maximilian-roehrig_large" src="page_images/10/medium/maximilian-Roehrig_large.jpg?1401102426" /> <div class="sidebar"> <h2>Upcoming Events</h2> <p>Check out the Events Page under Upcoming for all events!</p> </div></div>
+
+      <div class="wblock" style="margin-top: 36px;">
+        <a href="https://www.studyandplayamerica.com/"><img src="ads/14/medium/2026_Study_PlayAmerica.gif?2026" /></a>
+      </div>
+
+          </aside>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="copyright.html">Copyright/Trademark</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="last"><a href="imprint.html">Impressum</a></li>
+  </ul>
+</nav>
+
+
+
+
+
+    </footer>
+
+  </div>
+
+<!-- ════════════════ Preview-only Variant-Switcher ════════════════ -->
+<style>
+  .egr-preview-switcher {
+    position: fixed; right: 16px; bottom: 16px; z-index: 2147483000;
+    display: flex; flex-direction: column; gap: 6px;
+    background: #0F1620; color: #fff;
+    padding: 10px 12px; border-radius: 12px;
+    font: 12px/1.3 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+    max-width: 260px;
+    pointer-events: auto;
+  }
+  .egr-preview-switcher * { box-sizing: border-box; }
+  .egr-preview-switcher strong {
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    opacity: .65; color: #fff;
+  }
+  .egr-preview-switcher .row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .egr-preview-switcher a {
+    display: inline-block; padding: 6px 10px; border-radius: 6px;
+    background: #1F2A37; color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 11px; transition: background .15s, transform .1s;
+    border: 1px solid transparent; cursor: pointer;
+  }
+  .egr-preview-switcher a:hover { background: #2A3744; }
+  .egr-preview-switcher a:active { transform: translateY(1px); }
+  .egr-preview-switcher a.is-active {
+    background: #2E7D32; border-color: #66BB6A; color: #fff;
+  }
+  /* Select: dunkel + opake Optionen, in jedem OS lesbar */
+  .egr-preview-switcher select {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-color: #1F2A37;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #fff 50%),
+      linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position: calc(100% - 14px) 12px, calc(100% - 9px) 12px;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    color: #fff !important;
+    border: 1px solid #3B4A5A;
+    padding: 6px 26px 6px 8px; border-radius: 6px;
+    font: 600 11px/1.3 -apple-system, system-ui, sans-serif;
+    width: 100%;
+    cursor: pointer;
+  }
+  .egr-preview-switcher select:focus {
+    outline: 2px solid #66BB6A; outline-offset: 1px;
+  }
+  /* Optionen: opaker dunkler Hintergrund, weisser Text — Chrome+Firefox+WebKit */
+  .egr-preview-switcher select option {
+    background: #1F2A37 !important;
+    color: #fff !important;
+  }
+  .egr-preview-switcher select option:checked,
+  .egr-preview-switcher select option:hover {
+    background: #2E7D32 !important;
+    color: #fff !important;
+  }
+  @media print { .egr-preview-switcher { display: none; } }
+  @media (max-width: 480px) {
+    .egr-preview-switcher { right: 8px; bottom: 8px; padding: 8px; max-width: 180px; }
+  }
+</style>
+<aside class="egr-preview-switcher" id="egr-switcher" aria-label="Preview-Switcher" data-egr-noprint>
+  <strong>Variant</strong>
+  <div class="row" id="egr-switcher-variants"></div>
+  <strong>Page</strong>
+  <select id="egr-switcher-page"></select>
+</aside>
+<script>
+  (function () {
+    var variants = [['a','A · Fairway'], ['b','B · Tour Pro'], ['c','C · Stat-Lab'], ['baseline','Baseline']];
+    var pages = [["home.html", "Home"], ["ranking.html", "Rankings \u00b7 Boys/Men"], ["ranking_women.html", "Rankings \u00b7 Girls/Women"], ["scandinavian_boys.html", "Scandinavian Boys"], ["scandinavian_girls.html", "Scandinavian Girls"], ["dutch_jongens.html", "Dutch \u00b7 Jongens"], ["dutch_meisjes.html", "Dutch \u00b7 Meisjes"], ["events.html", "Events"], ["how-to-use.html", "How it Works"], ["about-us.html", "About Us"], ["tours.html", "Tours"], ["male.html", "Male Overview"], ["female.html", "Female Overview"], ["sign_in.html", "Log In"], ["sign_up.html", "Register"], ["contact.html", "Contact"], ["imprint.html", "Impressum"], ["privacy.html", "Privacy"], ["terms.html", "Terms of Use"], ["copyright.html", "Copyright/Trademark"], ["search.html", "Search Results"]];
+    var p = new URLSearchParams(location.search);
+    var current = (p.get('baseline') === '1') ? 'baseline' : (p.get('v') || 'a').toLowerCase();
+    var thisFile = location.pathname.split('/').pop() || 'home.html';
+    var rowVar = document.getElementById('egr-switcher-variants');
+    variants.forEach(function (v) {
+      var a = document.createElement('a');
+      a.textContent = v[1];
+      var url = thisFile;
+      if (v[0] === 'baseline') url += '?baseline=1';
+      else url += '?v=' + v[0];
+      a.href = url;
+      if (v[0] === current) a.className = 'is-active';
+      rowVar.appendChild(a);
+    });
+    var sel = document.getElementById('egr-switcher-page');
+    pages.forEach(function (pg) {
+      var o = document.createElement('option');
+      o.value = pg[0]; o.textContent = pg[1];
+      if (pg[0] === thisFile) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', function () {
+      var qs = (current === 'baseline') ? '?baseline=1' : '?v=' + current;
+      location.href = sel.value + qs;
+    });
+  })();
+</script>
+
+</body>
+</html>

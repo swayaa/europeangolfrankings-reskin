@@ -1,0 +1,92 @@
+---
+description: "Rails-Asset-Pipeline und Drop-in-Liefer-Regeln. Loaded for redesign and INTEGRATION.md work."
+globs:
+  - "redesign/**"
+  - "preview/**"
+---
+
+# Rails-Integration — Lieferregeln
+
+## Lieferpaket-Format
+
+Wir liefern dem Betreiber **plain CSS und JS** — keine Build-Artefakte, keine Source-Maps in Production, keine npm-Manifeste.
+
+```
+redesign/
+├── tokens/
+│   ├── variant-a-fairway-modern.css
+│   ├── variant-b-tour-pro-dark.css
+│   └── variant-c-stat-lab-editorial.css
+├── application.new.css         # Final-CSS (mit @import einer Token-Datei)
+├── application.new.js          # Stufe-1-JS (optional, ~ 4 KB)
+├── ranking-fast-filter.js      # Stufe-2-JS (optional, ~ 8 KB)
+├── fonts/
+│   └── *.woff2
+└── INTEGRATION.md              # 5-Min-Anleitung
+```
+
+## CSS-Schreibregeln
+
+1. **Kein** SCSS, kein PostCSS, kein Tailwind. Plain CSS only.
+2. **Custom Properties** für alle Werte — niemals Hex/Pixel direkt im Component-CSS.
+3. `@import` ist erlaubt (Sprockets versteht sie), aber maximal 1× pro Datei.
+4. **Reihenfolge:** Token → Reset → Layout → Components → States → Print.
+
+## JS-Schreibregeln
+
+1. **Kein** Build-Step. Vanilla JS, ES2020+, läuft direkt im Browser.
+2. **Keine** Frameworks (kein React, Vue, Svelte). jQuery ist im Original geladen — wir dürfen es nutzen, müssen aber nicht.
+3. **Selbst-defensiv:** Skript darf nicht crashen, wenn ein Selektor mal fehlt.
+   ```js
+   const tbl = document.getElementById('table');
+   if (!tbl) return;
+   ```
+4. **Eigener Namespace:** alle Funktionen in `window.EGRReskin = { ... }`.
+5. **Kein** Polluting des globalen Scope.
+6. **`defer`-Loading:** Alle unsere Scripts laden mit `defer`, jQuery bleibt synchron.
+
+## Asset-Pfad-Konventionen
+
+Wenn die Token-CSS Schriften referenziert:
+```css
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/inter-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+```
+
+Der Betreiber wird `/assets/...` durch sein Asset-Helper-Output ersetzen, falls er Fingerprinting nutzt:
+```scss
+src: asset-url("inter-variable.woff2") format("woff2-variations");
+```
+Diesen Hinweis liefern wir in `INTEGRATION.md`.
+
+## Sprockets vs. Propshaft
+
+| Pipeline | Manifest | Asset-Pfad-Helper |
+|---|---|---|
+| Sprockets (Rails 3–6) | `app/assets/stylesheets/application.css` mit `*= require ...` | `asset-url('foo.png')` in SCSS |
+| Propshaft (Rails 7+) | kein Manifest, einfach `<link>` direkt | Pfad ist schon final |
+
+Unsere CSS funktioniert in **beiden** — wir nutzen relative `/assets/`-Pfade als Default und beschreiben in INTEGRATION.md, wie ggf. anzupassen.
+
+## Was NICHT in das Lieferpaket gehört
+
+- ❌ `node_modules/`
+- ❌ `package.json` / `package-lock.json`
+- ❌ `.map`-Files in Production
+- ❌ `.scss`-Quellfiles (nur kompiliertes CSS)
+- ❌ Demo-HTML (das liegt in `preview/`, nicht in `redesign/`)
+- ❌ Diese Regel-Datei oder andere `.cursor/`-Files
+
+## Verifikation vor Übergabe
+
+```bash
+cd redesign
+ls -la
+wc -c *.css *.js                                            # < 30 KB pro File erwartet
+# CSS-Lint mit stylelint (lokal, nicht im Lieferpaket)
+# Manuelles Smoke-Test: preview/index.html mit jeder Token-Variante öffnen
+```

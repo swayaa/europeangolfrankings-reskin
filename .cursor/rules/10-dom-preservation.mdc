@@ -1,0 +1,79 @@
+---
+description: "Stable DOM selectors that must NEVER be renamed. Loaded when editing CSS or JS for the re-skin."
+globs:
+  - "redesign/**/*.css"
+  - "redesign/**/*.js"
+  - "preview/**/*.html"
+---
+
+# DOM-Preservation — Pflichtregeln
+
+> Die vollständige Liste mit Erklärung steht in `docs/05-dom-preservation.md`.
+> Diese Regel ist der **Schnell-Check** für CSS/JS-Edits.
+
+## Goldene Regel
+
+> **Wir hängen unser CSS an die bestehende Klassen-/ID-Hierarchie. Wir benennen nichts um, fügen nichts ins HAML hinzu.**
+
+## Selektoren, die du NUTZEN MUSST (nicht ersetzen!)
+
+### Layout
+- `body#rankings`, `body#rankings_women`
+- `div#contentbox`, `div#main`, `div#main div#inhalt`
+
+### Header & Navigation
+- `div#contentbox > header`, `header img#logo`, `header h1`
+- `nav > ul.rankings`, `nav > ul.events`, `nav > ul.sessions`, `nav > ul.pages`
+- `li#l_rankings.active`, `li#l_home`, `li#l_events`, `li#l_sessions`
+- `div#submenue nav#submenue`, `li.dropmenu`, `li.dropmenuitem`
+
+### Filter
+- `div#searchbar form`
+- `select#country`, `select#age_group`, `select#gender`
+- `input#last_name`, `input#first_name`, `input#open_closed`
+- `input[name="commit"]`
+
+### Tabelle
+- `table#table`
+- `tr.table_headfoot`, `tr.header`, `tr.header.asc`, `tr.header.desc`
+- `th.points`, `th.last_name`, `th.country`, `th.born`, `th.score`, `th.css`, `th.events`
+- `tr.odd`, `tr.even`
+- `tr td a[href*="/players/"]`
+
+### Pagination
+- `div.pagination`
+- `.pagination .previous_page`, `.pagination em.current`, `.pagination .gap`
+- `a[rel="next"]`, `a.next_page`
+
+### Sidebar / Footer
+- `div#main aside`, `aside .page`, `aside .sidebar`, `aside .sidebar h2`, `aside .wblock`
+- `div#contentbox > footer nav ul`, `footer nav ul li.last`
+
+## Inline-HTML-Attribute neutralisieren (PFLICHT)
+
+Rails schreibt `width="70"` und `align="right"` direkt auf `<td>`. Jedes Token-File muss am Anfang folgendes enthalten:
+
+```css
+table#table td[width],
+table#table th[width] {
+  width: auto !important;
+}
+table#table td[align],
+table#table th[align] {
+  text-align: revert;
+}
+```
+
+## Nicht erlaubt
+
+- ❌ `td.player-name { ... }` — die Klasse existiert nicht im Rails-Output
+- ❌ `[data-ranking="true"]` — Attribute werden nicht vom Server gesetzt
+- ❌ Klassen oder IDs umbenennen (z. B. `.odd` → `.row-odd`)
+- ❌ Neue Wrapper-Elemente per JS injizieren, ohne dass es zwingend ist (jeder neue Wrapper ist eine Schnittstelle, die man im HAML anschauen müsste)
+
+## Erlaubt
+
+- ✅ `:nth-child()`, `:nth-of-type()` — robust gegen Markup-Reordering nach Sortier-Wechsel
+- ✅ `::before`, `::after`
+- ✅ Attribut-Selektoren für serverseitig vorhandene Attribute (z. B. `a[href*="/players/"]`)
+- ✅ Custom Properties an `:root` / `body#rankings`

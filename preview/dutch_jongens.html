@@ -1,0 +1,3593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>European Golf Rankings — Re-Skin Preview</title>
+
+  <!-- ───── Original-CSS (Baseline). Wird bei aktivem Re-Skin deaktiviert. ───── -->
+  <link id="legacy-css" href="assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <!-- ───── jQuery + Original-Scripts (DOM bleibt 1:1) ───── -->
+  <script src="assets/jquery.js"></script>
+  <script src="assets/jquery_ujs.js"></script>
+  <script src="assets/jquery.quickselect.min.js"></script>
+  <script src="assets/string_score.min.js"></script>
+  <script src="assets/application.js"></script>
+
+  <!-- ───── Variant-Switcher: ?v=a|b|c   ?baseline=1 zeigt das Original ───── -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var v = (p.get('v') || 'a').toLowerCase();
+      if (!/^[abc]$/.test(v)) v = 'a';
+      var baseline = p.get('baseline');
+      var tokenMap = {
+        a: 'redesign/tokens/variant-a-fairway-modern.css',
+        b: 'redesign/tokens/variant-b-tour-pro-dark.css',
+        c: 'redesign/tokens/variant-c-stat-lab-editorial.css'
+      };
+      function loadCss(href) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet'; l.href = href;
+        document.head.appendChild(l);
+      }
+      var cb = '?_=' + Date.now();
+      if (baseline !== '1') {
+        loadCss(tokenMap[v] + cb);
+        loadCss('redesign/application.new.css' + cb);
+      }
+      window.__EGR_VARIANT = v.toUpperCase();
+      window.__EGR_BASELINE = baseline === '1';
+      window.addEventListener('DOMContentLoaded', function () {
+        var legacy = document.getElementById('legacy-css');
+        if (legacy && baseline !== '1') legacy.disabled = true;
+        if (baseline !== '1') document.body.setAttribute('data-variant', v.toUpperCase());
+      });
+    })();
+  </script>
+
+  <!-- ───── Stufe-1-JS-Helfer (mit Cache-Buster) ───── -->
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'redesign/application.new.js?_=' + Date.now();
+      s.defer = true;
+      document.head.appendChild(s);
+    })();
+  </script>
+</head>
+<body id="tours" data-egr-page="rankings">
+    
+  <div id="contentbox">
+  
+    <header>
+      <div id="tourbanner">
+    <img alt="Tour-default-green" src="assets/tour-default-green.jpg" />  </div>
+  <h1 id="tour">European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="tours">
+  <li id="l_home"><a href="home.html">Home</a></li>
+
+    <li id="l_rankings"><a href="ranking.html">Rankings</a></li>
+
+    <li id="l_events"><a href="events.html">Events</a></li>
+
+    <li>
+  <a href="how-to-use.html">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="sign_in.html">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+
+  <nav id='submenue'>
+<ul>
+<li>
+<a href="ranking.html">Boys/Men</a>
+</li>
+<li>
+<a href="ranking_women.html">Girls/Women</a>
+</li>
+<li class='dropmenu' id='euromenu' style='margin-bottom: 0;'>
+<a class='dropmenu' href='#'>Scandinavian</a>
+<ul style='display: none;'>
+<li class='dropmenuitem'>
+<a href="scandinavian_boys.html">Scandinavian Boys</a>
+<a href="scandinavian_girls.html">Scandinavian Girls</a>
+</li>
+</ul>
+</li>
+<li class='active dropmenu' id='dutchmenu' style='margin-bottom: 0;'>
+<a class='dropmenu' href='#'>Dutch</a>
+<ul style='display: none;'>
+<li class='dropmenuitem'>
+<a href="dutch_jongens.html">Jongens</a>
+<a href="dutch_meisjes.html">Meisjes</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<script>
+  $("li.dropmenu").hover(
+    function(){
+      //console.log($(this));
+      $(this).find("ul").toggle();
+      if($(this).find("a.dropmenu").hasClass("active")){
+        $(this).find("a.dropmenu").removeClass("active");
+      }else{
+        $(this).find("a.dropmenu").addClass("active");
+      }
+    }
+  );
+</script>
+
+  
+  
+      
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt"> 
+      <div>
+<div>
+<!-- = render :partial => 'tours/searchbar' -->
+<!-- %h2{:class => 'tours', :style => "background-image: url('#{@tour.pic.url(:thumb)}'); min-height: 90px;"} -->
+<h2 class='tours'>
+German U25+ Herren
+– Ranking
+</h2>
+<div id='searchbar'>
+<form accept-charset="UTF-8" action="#" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<input id="tour_id" name="tour_id" type="hidden" value="41" />
+<div class='narrow'>
+<label>
+Last Name
+</label>
+<br>
+<input id="last_name" name="last_name" type="text" />
+</div>
+<div class='narrow'>
+<label>
+First Name
+</label>
+<br>
+<input id="first_name" name="first_name" type="text" />
+</div>
+<div>
+<label>
+Age Group
+</label>
+<br>
+<select id="age_group" name="age_group"><option value="All">All</option>
+<option value="U25">U25</option>
+<option value="U25 and younger">U25 &amp; under</option>
+<option value="U23">U23</option>
+<option value="U23 and younger">U23 &amp; under</option>
+<option value="U21">U21</option>
+<option value="U21 and younger">U21 &amp; under</option>
+<option value="U18">U18</option>
+<option value="U18 and younger">U18 &amp; under</option>
+<option value="U16">U16</option>
+<option value="U16 and younger">U16 &amp; under</option>
+<option value="U14">U14</option>
+<option value="U14 and younger">U14 &amp; under</option>
+<option value="U12">U12</option></select>
+</div>
+<div>
+<br>
+<input name="commit" type="submit" value="Suchen" />
+</div>
+</form>
+
+</div>
+
+<table cellspacing='0' id='table'>
+<tr class='table_headfoot'>
+<td colspan='5'>
+Displaying Tourplayer <b>1&nbsp;-&nbsp;100</b> of <b>264</b> in total
+</td>
+<td align='right' colspan='4'>
+Page
+1
+of
+3
+</td>
+</tr>
+<tr class='header  asc'>
+<th class='ranking'>
+Tour
+<br>
+<a href="dutch_jongens.html?order=ASC&amp;sort=ranking">Ranking</a>
+</th>
+<th class='points' style='text-align: right'>
+EGR
+<br>
+<a href="dutch_jongens.html?order=ASC&amp;sort=points">Points</a>
+</th>
+<th class='last_name' style='text-align: left'>
+<a href="dutch_jongens.html?order=ASC&amp;sort=name"><span class="translation_missing" title="translation missing: en.name">Name</span></a>
+</th>
+<th class='country' style='text-align: left'>
+<a href="dutch_jongens.html?order=ASC&amp;sort=country">Country</a>
+</th>
+<th class='born'>
+<a href="dutch_jongens.html?order=ASC&amp;sort=born">Age Group</a>
+</th>
+<th class='score'>
+<!-- - pph[:sort] = "score" -->
+<!-- = link_to t(:avg_score), pph -->
+Avg. Score
+</th>
+<th class='css'>
+<!-- - pph[:sort] = "css" -->
+<!-- = link_to t(:avg_to_css), pph -->
+Avg. to CR
+</th>
+<th class='events' style='border-right: none;'>
+<a href="dutch_jongens.html?order=ASC&amp;sort=events">Events Counting</a>
+</th>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+1
+</td>
+<td align='right' width='70'>
+17151.90
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SCHIERGEN, Laurenz
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+70.92
+</td>
+<td align='center' width='70'>
+68.32
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+2
+</td>
+<td align='right' width='70'>
+12012.20
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+LUDWIG, Marian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+71.62
+</td>
+<td align='center' width='70'>
+69.87
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+3
+</td>
+<td align='right' width='70'>
+11692.20
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+GELSER, Daniel
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+72.14
+</td>
+<td align='center' width='70'>
+69.81
+</td>
+<td align='center' style='border-right: none;' width='60'>
+7
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+4
+</td>
+<td align='right' width='70'>
+9561.71
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+GRÜNDEMANN, Martin Maximilian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+70.54
+</td>
+<td align='center' width='70'>
+67.88
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+5
+</td>
+<td align='right' width='70'>
+6615.60
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+NEBE, Jan Philipp
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.06
+</td>
+<td align='center' width='70'>
+70.61
+</td>
+<td align='center' style='border-right: none;' width='60'>
+6
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+6
+</td>
+<td align='right' width='70'>
+5142.61
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SCHWEYER, Philipp
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.30
+</td>
+<td align='center' width='70'>
+71.39
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+7
+</td>
+<td align='right' width='70'>
+5125.75
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+LANG, Nico
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+69.00
+</td>
+<td align='center' width='70'>
+67.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+8
+</td>
+<td align='right' width='70'>
+5107.37
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+STUDZINSKI, Leonhard
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+71.50
+</td>
+<td align='center' width='70'>
+68.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+9
+</td>
+<td align='right' width='70'>
+4886.45
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+ENGELMOHR, Connor
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.12
+</td>
+<td align='center' width='70'>
+70.56
+</td>
+<td align='center' style='border-right: none;' width='60'>
+6
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+10
+</td>
+<td align='right' width='70'>
+4670.88
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+ERLL, Janis
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+70.17
+</td>
+<td align='center' width='70'>
+69.27
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+11
+</td>
+<td align='right' width='70'>
+4444.70
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SCHEUBLEIN, Luca
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+71.00
+</td>
+<td align='center' width='70'>
+69.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+12
+</td>
+<td align='right' width='70'>
+3857.09
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+AUSBORN JR., Ruwald
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+71.33
+</td>
+<td align='center' width='70'>
+68.21
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+13
+</td>
+<td align='right' width='70'>
+3779.37
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BARUCKI, Jan
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.25
+</td>
+<td align='center' width='70'>
+73.87
+</td>
+<td align='center' style='border-right: none;' width='60'>
+8
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+14
+</td>
+<td align='right' width='70'>
+3612.51
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SCHMIEDING, Daniel
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+71.00
+</td>
+<td align='center' width='70'>
+69.40
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+15
+</td>
+<td align='right' width='70'>
+3543.84
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+WESTERMANN, Philipp
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.83
+</td>
+<td align='center' width='70'>
+72.78
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+16
+</td>
+<td align='right' width='70'>
+3499.83
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+VÖLKER, Yannic
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+69.57
+</td>
+<td align='center' width='70'>
+68.26
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+17
+</td>
+<td align='right' width='70'>
+3112.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+STRÜNKER, Frederik
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+72.00
+</td>
+<td align='center' width='70'>
+69.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+18
+</td>
+<td align='right' width='70'>
+2731.52
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+GULDAN, Nico
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.63
+</td>
+<td align='center' width='70'>
+70.92
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+19
+</td>
+<td align='right' width='70'>
+2528.50
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+WIEDERGRÜN, Stefan
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.00
+</td>
+<td align='center' width='70'>
+70.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+20
+</td>
+<td align='right' width='70'>
+2487.78
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+WARTENBERG, Felix
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.00
+</td>
+<td align='center' width='70'>
+73.15
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+21
+</td>
+<td align='right' width='70'>
+2437.12
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+HENSEL, Moritz
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+71.14
+</td>
+<td align='center' width='70'>
+69.37
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+22
+</td>
+<td align='right' width='70'>
+2425.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+NAKAJIMA, Kenji
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.00
+</td>
+<td align='center' width='70'>
+71.34
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+23
+</td>
+<td align='right' width='70'>
+2352.88
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+LEBRETON, Yannick
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+78.65
+</td>
+<td align='center' width='70'>
+78.16
+</td>
+<td align='center' style='border-right: none;' width='60'>
+8
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+24
+</td>
+<td align='right' width='70'>
+1847.75
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+LAUER, Alexander
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.00
+</td>
+<td align='center' width='70'>
+71.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+24
+</td>
+<td align='right' width='70'>
+1847.75
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+EICHMEIER, Maximilian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.00
+</td>
+<td align='center' width='70'>
+71.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+24
+</td>
+<td align='right' width='70'>
+1847.75
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+ALBRECHT, Nicolai
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.00
+</td>
+<td align='center' width='70'>
+71.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+27
+</td>
+<td align='right' width='70'>
+1843.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BRODMANN, Nico
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.33
+</td>
+<td align='center' width='70'>
+71.83
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+28
+</td>
+<td align='right' width='70'>
+1835.20
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BRÜCKNER, Maximilian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.75
+</td>
+<td align='center' width='70'>
+71.05
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+29
+</td>
+<td align='right' width='70'>
+1772.12
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+HEYEN, Jan-Phillip
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+71.86
+</td>
+<td align='center' width='70'>
+70.54
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+30
+</td>
+<td align='right' width='70'>
+1763.92
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+MENK, Alexander
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.88
+</td>
+<td align='center' width='70'>
+74.01
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+31
+</td>
+<td align='right' width='70'>
+1727.91
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+THANNHÄUSER, Michael
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.00
+</td>
+<td align='center' width='70'>
+74.61
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+32
+</td>
+<td align='right' width='70'>
+1717.74
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BARAKA, Tarek
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.13
+</td>
+<td align='center' width='70'>
+74.08
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+33
+</td>
+<td align='right' width='70'>
+1632.67
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+HEITZ, Leon
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.25
+</td>
+<td align='center' width='70'>
+71.05
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+34
+</td>
+<td align='right' width='70'>
+1621.64
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+OTTEN, Cedric
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.25
+</td>
+<td align='center' width='70'>
+70.21
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+35
+</td>
+<td align='right' width='70'>
+1552.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SEIFERT, Julius
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.00
+</td>
+<td align='center' width='70'>
+72.50
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+36
+</td>
+<td align='right' width='70'>
+1446.98
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+DOHRENDORF, Jasper Hanke
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+70.67
+</td>
+<td align='center' width='70'>
+70.37
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+37
+</td>
+<td align='right' width='70'>
+1420.46
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+VOß, Frederik
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+68.33
+</td>
+<td align='center' width='70'>
+68.33
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+38
+</td>
+<td align='right' width='70'>
+1361.50
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SCHINNENBURG, Julian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.33
+</td>
+<td align='center' width='70'>
+72.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+38
+</td>
+<td align='right' width='70'>
+1361.50
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BARZEN, Tom
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.33
+</td>
+<td align='center' width='70'>
+72.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+40
+</td>
+<td align='right' width='70'>
+1349.43
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+WILHELM, Vincent Immanuel
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+72.00
+</td>
+<td align='center' width='70'>
+69.70
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+41
+</td>
+<td align='right' width='70'>
+1341.91
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+WOLF, Heinrich
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.80
+</td>
+<td align='center' width='70'>
+74.02
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+42
+</td>
+<td align='right' width='70'>
+1328.88
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+GORIWODA, Lucas
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.50
+</td>
+<td align='center' width='70'>
+75.26
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+43
+</td>
+<td align='right' width='70'>
+1327.67
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+GÜNTER, Sven
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.11
+</td>
+<td align='center' width='70'>
+72.94
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+44
+</td>
+<td align='right' width='70'>
+1303.97
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BUNNEFELD, Robert
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.36
+</td>
+<td align='center' width='70'>
+73.15
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+45
+</td>
+<td align='right' width='70'>
+1234.71
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BOYER, Kevin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.00
+</td>
+<td align='center' width='70'>
+68.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+46
+</td>
+<td align='right' width='70'>
+1185.91
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+HAHN, Daniel
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.29
+</td>
+<td align='center' width='70'>
+75.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+47
+</td>
+<td align='right' width='70'>
+1164.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+MÜLLER-FRANK, Noah
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.33
+</td>
+<td align='center' width='70'>
+72.83
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+48
+</td>
+<td align='right' width='70'>
+1154.49
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BECKER, Daniel
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+72.50
+</td>
+<td align='center' width='70'>
+70.20
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+49
+</td>
+<td align='right' width='70'>
+1130.63
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SCHRÖDL, Florian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.00
+</td>
+<td align='center' width='70'>
+70.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+50
+</td>
+<td align='right' width='70'>
+1106.30
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+KRÖBER, Kai
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.83
+</td>
+<td align='center' width='70'>
+74.73
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+51
+</td>
+<td align='right' width='70'>
+1071.06
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+KAISER, Tim-Marlo
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.83
+</td>
+<td align='center' width='70'>
+74.58
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+52
+</td>
+<td align='right' width='70'>
+1057.59
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+TÜRKLITZ, Albert
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.00
+</td>
+<td align='center' width='70'>
+72.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+53
+</td>
+<td align='right' width='70'>
+1018.68
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+VOELKER, Hendrik
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.67
+</td>
+<td align='center' width='70'>
+74.77
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+1013.84
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+PASTOORS, Philipp
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.50
+</td>
+<td align='center' width='70'>
+75.65
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+55
+</td>
+<td align='right' width='70'>
+1012.11
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BEHNKE, Max
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.25
+</td>
+<td align='center' width='70'>
+71.15
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+56
+</td>
+<td align='right' width='70'>
+1007.13
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+MÜLLER, Ferdinand
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.71
+</td>
+<td align='center' width='70'>
+72.76
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+57
+</td>
+<td align='right' width='70'>
+1001.53
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+DURCHNER, Niklas
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.67
+</td>
+<td align='center' width='70'>
+73.17
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+57
+</td>
+<td align='right' width='70'>
+1001.53
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+WEIDEMANN, Justin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.67
+</td>
+<td align='center' width='70'>
+73.17
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+57
+</td>
+<td align='right' width='70'>
+1001.53
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SMANI JR., Fahri
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+76.14
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+60
+</td>
+<td align='right' width='70'>
+996.81
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BUCHHOLZ, Lennart
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.67
+</td>
+<td align='center' width='70'>
+73.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+60
+</td>
+<td align='right' width='70'>
+996.81
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+HEIN, Tobias
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.67
+</td>
+<td align='center' width='70'>
+73.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+60
+</td>
+<td align='right' width='70'>
+996.81
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+KONNIKOV, Phillip
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.67
+</td>
+<td align='center' width='70'>
+73.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+63
+</td>
+<td align='right' width='70'>
+958.11
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+DITTRICH, Florian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.50
+</td>
+<td align='center' width='70'>
+77.25
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+64
+</td>
+<td align='right' width='70'>
+933.35
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+STEGER, Christopher
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.14
+</td>
+<td align='center' width='70'>
+73.07
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+65
+</td>
+<td align='right' width='70'>
+925.14
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BASLER, Maximilian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.00
+</td>
+<td align='center' width='70'>
+73.50
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+66
+</td>
+<td align='right' width='70'>
+923.88
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BLÖMACHER, Michael
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.00
+</td>
+<td align='center' width='70'>
+73.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+66
+</td>
+<td align='right' width='70'>
+923.88
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+IBOLD, Benjamin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.75
+</td>
+<td align='center' width='70'>
+74.33
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+68
+</td>
+<td align='right' width='70'>
+906.01
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+WIETSCHORKE, Bjarne
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.43
+</td>
+<td align='center' width='70'>
+72.53
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+69
+</td>
+<td align='right' width='70'>
+904.70
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SCHARBAUER, Niklas
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.88
+</td>
+<td align='center' width='70'>
+72.95
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+70
+</td>
+<td align='right' width='70'>
+892.25
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+KOPP, Christoph
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.00
+</td>
+<td align='center' width='70'>
+69.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+70
+</td>
+<td align='right' width='70'>
+892.25
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SPRINZ, Camillo-Torre
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.00
+</td>
+<td align='center' width='70'>
+69.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+72
+</td>
+<td align='right' width='70'>
+865.11
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+RAAB, Konstantin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+73.66
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+73
+</td>
+<td align='right' width='70'>
+854.65
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+DÖRRENBERG, Eric
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.20
+</td>
+<td align='center' width='70'>
+70.86
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+74
+</td>
+<td align='right' width='70'>
+850.79
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+LAMMEL, Gero
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+73.78
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+75
+</td>
+<td align='right' width='70'>
+838.78
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+HOFMANN, Marcus
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.33
+</td>
+<td align='center' width='70'>
+74.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+75
+</td>
+<td align='right' width='70'>
+838.78
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+MEHR, Dominik
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.33
+</td>
+<td align='center' width='70'>
+74.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+77
+</td>
+<td align='right' width='70'>
+832.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+DEGENHARDT, Timo
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.33
+</td>
+<td align='center' width='70'>
+72.43
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+78
+</td>
+<td align='right' width='70'>
+796.33
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+WANDEL, Lion Peeke
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+72.33
+</td>
+<td align='center' width='70'>
+72.03
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+79
+</td>
+<td align='right' width='70'>
+753.69
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+LOTHRINGER, Felix
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.67
+</td>
+<td align='center' width='70'>
+74.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+79
+</td>
+<td align='right' width='70'>
+753.69
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+STEINBECK, Anton
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.67
+</td>
+<td align='center' width='70'>
+74.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+79
+</td>
+<td align='right' width='70'>
+753.69
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+RICHTER, Robert
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.67
+</td>
+<td align='center' width='70'>
+74.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+82
+</td>
+<td align='right' width='70'>
+738.42
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+RUMPF, David
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+79.50
+</td>
+<td align='center' width='70'>
+78.81
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+83
+</td>
+<td align='right' width='70'>
+728.71
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+LAURUSCHKAT, Phil
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.00
+</td>
+<td align='center' width='70'>
+74.50
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+84
+</td>
+<td align='right' width='70'>
+718.19
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+KUGEL, Jonas Robert
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.33
+</td>
+<td align='center' width='70'>
+74.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+85
+</td>
+<td align='right' width='70'>
+712.57
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+JÜLICHER, Jan
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.33
+</td>
+<td align='center' width='70'>
+71.23
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+86
+</td>
+<td align='right' width='70'>
+692.91
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+GARD, Jonathan
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+74.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+86
+</td>
+<td align='right' width='70'>
+692.91
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SENCKENBERG, Andreas
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+74.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+88
+</td>
+<td align='right' width='70'>
+685.41
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+KELLER, Jörgen
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+77.41
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+89
+</td>
+<td align='right' width='70'>
+672.59
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+KLIER, Max
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.33
+</td>
+<td align='center' width='70'>
+72.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+90
+</td>
+<td align='right' width='70'>
+662.97
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+OPITZ, Michael
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+69.67
+</td>
+<td align='center' width='70'>
+69.67
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+91
+</td>
+<td align='right' width='70'>
+657.29
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+LASKE, Lukas
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.83
+</td>
+<td align='center' width='70'>
+74.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+92
+</td>
+<td align='right' width='70'>
+656.44
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+PUMPE, Leonard
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.67
+</td>
+<td align='center' width='70'>
+74.42
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+93
+</td>
+<td align='right' width='70'>
+641.41
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+NIEDERMEYER, Nick
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.33
+</td>
+<td align='center' width='70'>
+74.83
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+94
+</td>
+<td align='right' width='70'>
+622.69
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+MEIER, Constantin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.00
+</td>
+<td align='center' width='70'>
+71.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+95
+</td>
+<td align='right' width='70'>
+607.81
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SMOLIN, David
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.67
+</td>
+<td align='center' width='70'>
+75.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+95
+</td>
+<td align='right' width='70'>
+607.81
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+GRAS, Sebastian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.67
+</td>
+<td align='center' width='70'>
+75.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+97
+</td>
+<td align='right' width='70'>
+574.36
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+BÜCHERL, Severin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.00
+</td>
+<td align='center' width='70'>
+71.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+97
+</td>
+<td align='right' width='70'>
+574.36
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+HEBENSTREIT, Maximilian
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.00
+</td>
+<td align='center' width='70'>
+71.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+99
+</td>
+<td align='right' width='70'>
+547.03
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+SCHAPFL, Philipp
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+78.00
+</td>
+<td align='center' width='70'>
+75.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+100
+</td>
+<td align='right' width='70'>
+543.20
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='#'>
+KLOMP, Tobias
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.67
+</td>
+<td align='center' width='70'>
+75.17
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='table_headfoot'>
+<td colspan='5'>
+<div class="pagination"><span class="previous_page disabled">&#8592; Previous</span> <em class="current">1</em> <a rel="next" href="dutch_jongens.html?page=2">2</a> <a href="dutch_jongens.html?page=3">3</a> <a class="next_page" rel="next" href="dutch_jongens.html?page=2">Next &#8594;</a></div>
+</td>
+<td align='right' colspan='4'>
+Players per Page:
+<a href="dutch_jongens.html?order=ASC&amp;per_page=10">10</a>
+<a href="dutch_jongens.html?order=ASC&amp;per_page=25">25</a>
+<a href="dutch_jongens.html?order=ASC&amp;per_page=50">50</a>
+100
+<a href="dutch_jongens.html?order=ASC&amp;per_page=200">200</a>
+<a href="dutch_jongens.html?order=ASC&amp;per_page=100000">All</a>
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="copyright.html">Copyright/Trademark</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="last"><a href="imprint.html">Impressum</a></li>
+  </ul>
+</nav>
+
+
+
+
+
+    </footer>
+
+  </div>
+
+<!-- ════════════════ Preview-only Variant-Switcher ════════════════ -->
+<style>
+  .egr-preview-switcher {
+    position: fixed; right: 16px; bottom: 16px; z-index: 2147483000;
+    display: flex; flex-direction: column; gap: 6px;
+    background: #0F1620; color: #fff;
+    padding: 10px 12px; border-radius: 12px;
+    font: 12px/1.3 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+    max-width: 260px;
+    pointer-events: auto;
+  }
+  .egr-preview-switcher * { box-sizing: border-box; }
+  .egr-preview-switcher strong {
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    opacity: .65; color: #fff;
+  }
+  .egr-preview-switcher .row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .egr-preview-switcher a {
+    display: inline-block; padding: 6px 10px; border-radius: 6px;
+    background: #1F2A37; color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 11px; transition: background .15s, transform .1s;
+    border: 1px solid transparent; cursor: pointer;
+  }
+  .egr-preview-switcher a:hover { background: #2A3744; }
+  .egr-preview-switcher a:active { transform: translateY(1px); }
+  .egr-preview-switcher a.is-active {
+    background: #2E7D32; border-color: #66BB6A; color: #fff;
+  }
+  /* Select: dunkel + opake Optionen, in jedem OS lesbar */
+  .egr-preview-switcher select {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-color: #1F2A37;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #fff 50%),
+      linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position: calc(100% - 14px) 12px, calc(100% - 9px) 12px;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    color: #fff !important;
+    border: 1px solid #3B4A5A;
+    padding: 6px 26px 6px 8px; border-radius: 6px;
+    font: 600 11px/1.3 -apple-system, system-ui, sans-serif;
+    width: 100%;
+    cursor: pointer;
+  }
+  .egr-preview-switcher select:focus {
+    outline: 2px solid #66BB6A; outline-offset: 1px;
+  }
+  /* Optionen: opaker dunkler Hintergrund, weisser Text — Chrome+Firefox+WebKit */
+  .egr-preview-switcher select option {
+    background: #1F2A37 !important;
+    color: #fff !important;
+  }
+  .egr-preview-switcher select option:checked,
+  .egr-preview-switcher select option:hover {
+    background: #2E7D32 !important;
+    color: #fff !important;
+  }
+  @media print { .egr-preview-switcher { display: none; } }
+  @media (max-width: 480px) {
+    .egr-preview-switcher { right: 8px; bottom: 8px; padding: 8px; max-width: 180px; }
+  }
+</style>
+<aside class="egr-preview-switcher" id="egr-switcher" aria-label="Preview-Switcher" data-egr-noprint>
+  <strong>Variant</strong>
+  <div class="row" id="egr-switcher-variants"></div>
+  <strong>Page</strong>
+  <select id="egr-switcher-page"></select>
+</aside>
+<script>
+  (function () {
+    var variants = [['a','A · Fairway'], ['b','B · Tour Pro'], ['c','C · Stat-Lab'], ['baseline','Baseline']];
+    var pages = [["home.html", "Home"], ["ranking.html", "Rankings \u00b7 Boys/Men"], ["ranking_women.html", "Rankings \u00b7 Girls/Women"], ["scandinavian_boys.html", "Scandinavian Boys"], ["scandinavian_girls.html", "Scandinavian Girls"], ["dutch_jongens.html", "Dutch \u00b7 Jongens"], ["dutch_meisjes.html", "Dutch \u00b7 Meisjes"], ["events.html", "Events"], ["how-to-use.html", "How it Works"], ["about-us.html", "About Us"], ["tours.html", "Tours"], ["male.html", "Male Overview"], ["female.html", "Female Overview"], ["sign_in.html", "Log In"], ["sign_up.html", "Register"], ["contact.html", "Contact"], ["imprint.html", "Impressum"], ["privacy.html", "Privacy"], ["terms.html", "Terms of Use"], ["copyright.html", "Copyright/Trademark"], ["search.html", "Search Results"]];
+    var p = new URLSearchParams(location.search);
+    var current = (p.get('baseline') === '1') ? 'baseline' : (p.get('v') || 'a').toLowerCase();
+    var thisFile = location.pathname.split('/').pop() || 'home.html';
+    var rowVar = document.getElementById('egr-switcher-variants');
+    variants.forEach(function (v) {
+      var a = document.createElement('a');
+      a.textContent = v[1];
+      var url = thisFile;
+      if (v[0] === 'baseline') url += '?baseline=1';
+      else url += '?v=' + v[0];
+      a.href = url;
+      if (v[0] === current) a.className = 'is-active';
+      rowVar.appendChild(a);
+    });
+    var sel = document.getElementById('egr-switcher-page');
+    pages.forEach(function (pg) {
+      var o = document.createElement('option');
+      o.value = pg[0]; o.textContent = pg[1];
+      if (pg[0] === thisFile) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', function () {
+      var qs = (current === 'baseline') ? '?baseline=1' : '?v=' + current;
+      location.href = sel.value + qs;
+    });
+  })();
+</script>
+
+</body>
+</html>

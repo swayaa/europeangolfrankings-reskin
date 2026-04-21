@@ -1,0 +1,125 @@
+---
+description: "WCAG 2.1 AA Mindeststandard für alle Varianten."
+globs:
+  - "redesign/**/*.css"
+  - "redesign/**/*.js"
+  - "preview/**/*.html"
+---
+
+# Accessibility — Pflicht für jede Variante
+
+## Mindeststandard
+
+**WCAG 2.1 AA — keine Verhandlung.**
+
+Lighthouse-A11y ≥ 95, axe-DevTools 0 Violations.
+
+## Kontrast
+
+| Inhalt | Mindestkontrast |
+|---|---|
+| Normaler Body-Text (< 18 pt / < 14 pt bold) | **4.5 : 1** |
+| Large-Text (≥ 18 pt / ≥ 14 pt bold) | **3.0 : 1** |
+| UI-Komponenten und Icons | 3.0 : 1 |
+| Inaktive Elemente | keine Anforderung, aber **niemals** als „gleich aussehend wie aktiv" |
+
+Vor jedem Commit: Kontraste der gewählten Variante in der Spec-Tabelle prüfen (alle drei haben WCAG-Tables in `docs/design-systems/variant-X.md`).
+
+## Tastaturnavigation
+
+- Vollständige Tab-Reihenfolge — alle interaktiven Elemente erreichbar
+- Sichtbarer Focus-Ring **immer** (nie `outline: none` ohne Ersatz!)
+- Skip-Link „Zum Ranking springen" am Body-Anfang (per JS injiziert, falls HAML-Edit nicht erlaubt)
+
+```css
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent-token);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+```
+
+## ARIA-Patterns für die Ranking-Tabelle
+
+```html
+<table id="table" role="table" aria-label="Spieler-Ranking">
+  <tr class="header" role="row">
+    <th class="points" aria-sort="descending">EGR Points</th>
+    <th class="last_name" aria-sort="none">Name</th>
+    ...
+  </tr>
+</table>
+```
+
+Da wir das HAML nicht ändern, injizieren wir `aria-sort` per Stufe-1-JS:
+```js
+function syncAriaSort() {
+  const headerRow = document.querySelector('table#table tr.header');
+  if (!headerRow) return;
+  const direction = headerRow.classList.contains('asc') ? 'ascending'
+                  : headerRow.classList.contains('desc') ? 'descending'
+                  : 'none';
+  headerRow.querySelectorAll('th').forEach(th => {
+    th.setAttribute('aria-sort', th.classList.contains('active') ? direction : 'none');
+  });
+}
+```
+
+## Reduced Motion
+
+In jedem Token-File:
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+Spezifische Animationen, die im Reduced-Modus deaktiviert werden:
+- Sticky-Filter Backdrop-Blur Fade-In
+- Top-3-Badge-Reveal (Variante B)
+- Hover-Row-Lift
+
+## Screenreader-Labels
+
+| Element | Anforderung |
+|---|---|
+| Country-Pill mit Flag | Landesname **immer** als Text (kein „nur Flag") |
+| Sortier-Pfeil-SVG | `aria-hidden="true"`, weil `aria-sort` an `<th>` die Info trägt |
+| Pagination-Buttons | „Seite 2 von 137" als `aria-label` (per JS) |
+| Filter-Inputs | Bestehende `<label>`-Elemente korrekt verknüpft (im Original schon ok) |
+| Logo `<img>` | `alt="European Golf Rankings"` (im Original „Egr-logo-ohne" — verbessern wenn HAML-Edit erlaubt) |
+
+## Form-Validation
+
+Bei Such-Treffern „0 Spieler gefunden":
+- visueller Hinweis (Icon + Text) im Tabellen-Body
+- `role="status"` auf dem Hinweis-Container, damit Screenreader es ansagen
+
+## Touch-Target-Größen
+
+- Pagination, Filter-Inputs, Spieler-Links: ≥ 44 × 44 px auf Mobile
+- Auf Desktop: 36 × 36 px ist ok (Maus-Präzision höher)
+
+## Forced-Colors-Mode (Windows High Contrast)
+
+```css
+@media (forced-colors: active) {
+  table#table tr,
+  table#table th,
+  table#table td {
+    border-color: CanvasText;
+  }
+  a { color: LinkText; }
+  button, input[type="submit"] { forced-color-adjust: none; }
+}
+```
+
+## Verifikations-Tools
+
+- **axe DevTools** Browser-Extension — vor jedem Commit
+- **Chrome Lighthouse** — vor Pitch
+- **VoiceOver / NVDA** Smoke-Test — Tabelle einmal komplett vorlesen lassen

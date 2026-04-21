@@ -1,0 +1,284 @@
+/* ============================================================================
+ * European Golf Rankings — Re-Skin
+ * Variante B: "Tour Pro Dark"
+ * Token-Definitionen (Custom Properties + Reset)
+ *
+ * Drop-in-Datei. Spec-Doku: docs/design-systems/variant-b-tour-pro-dark.md
+ * ============================================================================ */
+
+:root {
+  color-scheme: dark light;
+
+  /* ---- Brand-Farben (Dark, Default) ---- */
+  --tp-color-navy-950: #070D1A;
+  --tp-color-navy-900: #0E1626;
+  --tp-color-navy-800: #172238;
+  --tp-color-navy-700: #22324F;
+  --tp-color-navy-600: #2D4168;
+  --tp-color-gold-500: #D4AF37;
+  --tp-color-gold-400: #E6C567;
+  --tp-color-gold-300: #F2DA94;
+
+  /* ---- Text ---- */
+  --tp-color-text-1:        #F4F6FB;
+  --tp-color-text-2:        #A9B2C5;
+  --tp-color-text-3:        #6B7689;
+  --tp-color-text-disabled: #3F485A;
+
+  /* ---- Funktional ---- */
+  --tp-color-success:    #34D399;
+  --tp-color-warning:    #FBBF24;
+  --tp-color-danger:     #F87171;
+  --tp-color-link:       #7DD3FC;
+  --tp-color-link-hover: var(--tp-color-gold-500);
+
+  /* ---- Glassmorph ---- */
+  --tp-glass-bg:     rgba(23, 34, 56, 0.72);
+  --tp-glass-border: rgba(212, 175, 55, 0.12);
+  --tp-glass-blur:   12px;
+
+  /* ---- Typografie ---- */
+  --tp-font-body:    "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --tp-font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* ---- Spacing ---- */
+  --tp-space-1:  4px;
+  --tp-space-2:  8px;
+  --tp-space-3:  12px;
+  --tp-space-4:  16px;
+  --tp-space-5:  20px;
+  --tp-space-6:  24px;
+  --tp-space-8:  32px;
+  --tp-space-10: 40px;
+  --tp-space-12: 48px;
+  --tp-space-16: 64px;
+
+  /* ---- Radii ---- */
+  --tp-radius-xs:   2px;
+  --tp-radius-sm:   6px;
+  --tp-radius-md:   10px;
+  --tp-radius-lg:   14px;
+  --tp-radius-pill: 999px;
+
+  /* ---- Elevation (Dark) ---- */
+  --tp-elevation-1: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --tp-elevation-2: 0 0 0 1px rgba(212, 175, 55, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  /* ---- Motion ---- */
+  --tp-ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --tp-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --tp-duration-1: 120ms;
+  --tp-duration-2: 200ms;
+  --tp-duration-3: 380ms;
+
+  /* ---- Breakpoints ---- */
+  --tp-bp-sm: 480px;
+  --tp-bp-md: 768px;
+  --tp-bp-lg: 1024px;
+  --tp-bp-xl: 1280px;
+}
+
+/* ---- Light-Mode-Spiegel ---- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --tp-color-navy-950: #F4F6FB;
+    --tp-color-navy-900: #FFFFFF;
+    --tp-color-navy-800: #EEF1F8;
+    --tp-color-navy-700: #DCE2EE;
+    --tp-color-navy-600: #C5CEDF;
+    --tp-color-gold-500: #A57F19;
+    --tp-color-gold-400: #BC9326;
+    --tp-color-gold-300: #D5AC4A;
+    --tp-color-text-1:   #0E1626;
+    --tp-color-text-2:   #3B4760;
+    --tp-color-text-3:   #6B7689;
+    --tp-color-link:     #0369A1;
+    --tp-glass-bg:       rgba(255, 255, 255, 0.78);
+    --tp-elevation-1:    0 1px 2px rgba(7, 13, 26, 0.05);
+    --tp-elevation-2:    0 8px 28px rgba(7, 13, 26, 0.08), 0 0 0 1px rgba(7, 13, 26, 0.04);
+  }
+}
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --tp-duration-1: 0.01ms;
+    --tp-duration-2: 0.01ms;
+    --tp-duration-3: 0.01ms;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Fallback für Browser ohne backdrop-filter (Glassmorph-Fallback) ---- */
+@supports not (backdrop-filter: blur(1px)) {
+  :root {
+    --tp-glass-bg: rgba(23, 34, 56, 0.92);
+    --tp-glass-blur: 0px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --tp-glass-bg: rgba(255, 255, 255, 0.97);
+    }
+  }
+}
+
+/* ============================================================================
+ * Inline-HTML-Attribut-Neutralisierung
+ * ============================================================================ */
+table#table td[width],
+table#table th[width] {
+  width: auto !important;
+}
+table#table td[align],
+table#table th[align] {
+  text-align: revert;
+}
+
+/* ============================================================================
+ * Semantic-Token-Aliasse (--egr-*)
+ * ============================================================================ */
+:root {
+  /* Surfaces */
+  --egr-color-canvas:    var(--tp-color-navy-950);
+  --egr-color-surface:   var(--tp-color-navy-900);
+  --egr-color-surface-2: var(--tp-color-navy-800);
+  --egr-color-surface-3: var(--tp-color-navy-700);
+  --egr-color-surface-elevated: var(--tp-color-navy-900);
+
+  /* Borders */
+  --egr-color-border:    rgba(212, 175, 55, 0.10);
+  --egr-color-divider:   rgba(212, 175, 55, 0.18);
+  --egr-color-rule:      var(--tp-color-gold-500);
+
+  /* Text */
+  --egr-color-text-1:    var(--tp-color-text-1);
+  --egr-color-text-2:    var(--tp-color-text-2);
+  --egr-color-text-3:    var(--tp-color-text-3);
+  --egr-color-text-on-accent: var(--tp-color-navy-950);
+
+  /* Accent */
+  --egr-color-accent:        var(--tp-color-gold-500);
+  --egr-color-accent-strong: var(--tp-color-gold-400);
+  --egr-color-accent-soft:   rgba(212, 175, 55, 0.10);
+
+  /* Funktional */
+  --egr-color-link:        var(--tp-color-link);
+  --egr-color-link-hover:  var(--tp-color-link-hover);
+  --egr-color-warning:     var(--tp-color-warning);
+  --egr-color-error:       var(--tp-color-danger);
+  --egr-color-info:        var(--tp-color-link);
+
+  /* Header */
+  --egr-color-header-bg:    var(--tp-color-navy-950);
+  --egr-color-header-text:  var(--tp-color-text-1);
+  --egr-color-nav-bg:       var(--tp-color-navy-800);
+  --egr-color-nav-text:     var(--tp-color-text-2);
+  --egr-color-nav-active:   var(--tp-color-navy-700);
+  --egr-color-nav-active-text: var(--tp-color-gold-500);
+  --egr-color-nav-hover:    var(--tp-color-navy-700);
+
+  /* Banner-Hero (Variante B: dunkles Premium-Leaderboard mit Gold-Akzent) */
+  --egr-banner-bg:
+    linear-gradient(135deg, var(--tp-color-navy-950) 0%, var(--tp-color-navy-900) 50%, var(--tp-color-navy-800) 100%);
+  --egr-banner-image: none;
+  --egr-banner-overlay:
+    radial-gradient(900px 320px at 80% 100%, rgba(212,175,55,0.12), transparent 70%),
+    linear-gradient(180deg, transparent 0%, transparent 70%, rgba(212,175,55,0.08) 100%);
+  --egr-banner-text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  --egr-banner-logo-ring: var(--tp-color-gold-500);
+  --egr-color-banner-text: var(--tp-color-gold-300);
+
+  /* Page-Hintergrund (tiefes Navy mit subtilem Glow) */
+  --egr-page-bg-color: var(--tp-color-navy-950);
+  --egr-page-bg-image:
+    radial-gradient(1400px 700px at 20% -200px, rgba(45,65,104,0.45), transparent 60%),
+    radial-gradient(1000px 500px at 100% 50%, rgba(212,175,55,0.05), transparent 70%);
+
+  /* Tabelle */
+  --egr-table-row-odd:     var(--tp-color-navy-900);
+  --egr-table-row-even:    var(--tp-color-navy-950);
+  --egr-table-row-hover:   var(--tp-color-navy-700);
+  --egr-table-header-bg:   var(--tp-color-navy-800);
+  --egr-table-header-text: var(--tp-color-text-2);
+  --egr-table-border:      rgba(212, 175, 55, 0.06);
+
+  /* Stil-Hints */
+  --egr-style-table-zebra: 1;
+  --egr-style-table-radius: 10px;
+  --egr-style-row-tone-top3: 1;        /* Variant B: Top-3-Rang-Badges */
+  --egr-style-numerals: tabular-nums lining-nums;
+  --egr-style-points-font: var(--tp-font-display);
+  --egr-style-points-weight: 600;
+  --egr-style-points-size: 18px;
+  --egr-style-points-color: var(--tp-color-gold-500);
+
+  /* Typografie */
+  --egr-font-body:    var(--tp-font-body);
+  --egr-font-display: var(--tp-font-display);
+  --egr-font-mono:    "ui-monospace", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Spacing */
+  --egr-space-1:  var(--tp-space-1);
+  --egr-space-2:  var(--tp-space-2);
+  --egr-space-3:  var(--tp-space-3);
+  --egr-space-4:  var(--tp-space-4);
+  --egr-space-5:  var(--tp-space-5);
+  --egr-space-6:  var(--tp-space-6);
+  --egr-space-8:  var(--tp-space-8);
+  --egr-space-10: var(--tp-space-10);
+  --egr-space-12: var(--tp-space-12);
+  --egr-space-16: var(--tp-space-16);
+
+  /* Radii */
+  --egr-radius-sm: var(--tp-radius-sm);
+  --egr-radius-md: var(--tp-radius-md);
+  --egr-radius-lg: var(--tp-radius-lg);
+  --egr-radius-pill: var(--tp-radius-pill);
+
+  /* Shadows / Elevation */
+  --egr-shadow-1: var(--tp-elevation-1);
+  --egr-shadow-2: var(--tp-elevation-2);
+
+  /* Motion */
+  --egr-ease:       var(--tp-ease-standard);
+  --egr-duration-1: var(--tp-duration-1);
+  --egr-duration-2: var(--tp-duration-2);
+  --egr-duration-3: var(--tp-duration-3);
+}
+
+/* Light-Mode-Spiegel */
+@media (prefers-color-scheme: light) {
+  :root {
+    --egr-color-text-on-accent: var(--tp-color-navy-900);
+    --egr-color-border:  rgba(7, 13, 26, 0.10);
+    --egr-color-divider: rgba(7, 13, 26, 0.16);
+    --egr-color-accent-soft: rgba(165, 127, 25, 0.10);
+    --egr-table-border:  rgba(7, 13, 26, 0.06);
+
+    --egr-banner-bg:
+      linear-gradient(135deg, #1A2236 0%, #232F47 50%, #2C3A56 100%);
+    --egr-color-banner-text: var(--tp-color-gold-400);
+    --egr-banner-text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    --egr-page-bg-color: #F4F6FB;
+    --egr-page-bg-image:
+      radial-gradient(1200px 500px at 50% -100px, rgba(45,65,104,0.10), transparent 70%);
+  }
+}
+
+/* ---- Grundlegender Reset ---- */
+html { -webkit-text-size-adjust: 100%; }
+body#rankings,
+body#rankings_women {
+  background: var(--tp-color-navy-950);
+  color: var(--tp-color-text-1);
+  font-family: var(--tp-font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

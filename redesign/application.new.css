@@ -1,0 +1,2125 @@
+/* ============================================================================
+ * European Golf Rankings — Re-Skin
+ * application.new.css  ·  Komponenten-CSS (variant-agnostic)
+ *
+ * Diese Datei referenziert AUSSCHLIESSLICH --egr-* Tokens.
+ * Sie funktioniert mit jeder der drei Variant-Token-Dateien:
+ *   • redesign/tokens/variant-a-fairway-modern.css
+ *   • redesign/tokens/variant-b-tour-pro-dark.css
+ *   • redesign/tokens/variant-c-stat-lab-editorial.css
+ *
+ * Reihenfolge im Setup:
+ *   1) <link rel="stylesheet" href="…tokens/variant-X.css">
+ *   2) <link rel="stylesheet" href="…application.new.css">
+ *
+ * Abdeckt ALLE Seiten:
+ *   • home (frontpage), ranking(_women), male/female overview
+ *   • events, how-to-use, about-us, tours
+ *   • sign_in, sign_up, contact, imprint, privacy, terms, copyright
+ *   • search results
+ *
+ * Spec: docs/design-systems/variant-{a,b,c}.md
+ * DOM:  docs/05-dom-preservation.md
+ * ============================================================================ */
+
+/* ============================================================================
+ * 0. Reset (minimal) + Base
+ * ============================================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--egr-font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--egr-color-text-1);
+  background:
+    var(--egr-page-bg-image, none),
+    var(--egr-page-bg-color, var(--egr-color-canvas));
+  background-size: cover;
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Verhindert horizontalen Overflow durch Inline-styles im DOM */
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 0;
+}
+
+a {
+  color: var(--egr-color-link);
+  text-decoration: none;
+  transition: color var(--egr-duration-1) var(--egr-ease);
+}
+
+a:hover { color: var(--egr-color-link-hover); }
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--egr-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--egr-radius-sm);
+}
+
+/* Skip-Link (per JS injiziert) */
+.egr-skiplink {
+  position: absolute;
+  top: -100px;
+  left: var(--egr-space-3);
+  background: var(--egr-color-accent);
+  color: var(--egr-color-text-on-accent);
+  padding: var(--egr-space-2) var(--egr-space-4);
+  border-radius: var(--egr-radius-sm);
+  font-weight: 600;
+  z-index: 1000;
+  transition: top var(--egr-duration-2) var(--egr-ease);
+}
+.egr-skiplink:focus { top: var(--egr-space-3); }
+
+/* ============================================================================
+ * 1. Layout-Käfig (#contentbox)
+ *    Original ist 960px fix. Wir machen es fluid mit harter Maximalbreite.
+ * ============================================================================ */
+
+div#contentbox {
+  width: min(1280px, 100% - clamp(0px, 4vw, 48px));
+  margin-inline: auto;
+  margin-block: clamp(0px, 2vw, 24px);
+  background: var(--egr-color-canvas);
+  color: var(--egr-color-text-1);
+  box-shadow: var(--egr-shadow-2);
+  border-radius: var(--egr-radius-lg);
+  overflow: hidden;
+  /* Inline-Background des alten Layouts maskieren */
+  background-image: none !important;
+}
+
+/* Falls der Browser das contentbox bei sehr engen Viewports rendert,
+   nimmt es die volle Breite ohne Margin */
+@media (max-width: 600px) {
+  div#contentbox {
+    width: 100%;
+    margin-block: 0;
+    border-radius: 0;
+  }
+}
+
+/* ============================================================================
+ * 2. Header — Banner + Logo + Titel
+ *    Original: <header style="height: 155px"> mit deko6.jpg Hintergrund
+ *
+ *    Strategie: <header> = full-bleed Banner (per Variante different).
+ *    Logo absolut positioniert top-left (sichtbar überlappend), Titel sitzt
+ *    rechts vom Logo. Nav + Submenue stehen darunter, NICHT im Banner.
+ * ============================================================================ */
+
+div#contentbox > header {
+  position: relative;
+  /* Header MUSS einen eigenen Stacking-Context bilden, der über dem
+     #searchbar (z-index:5, position:sticky) liegt — sonst überdeckt das
+     Filter-Card das Scandinavian/Dutch-Dropdown im #submenue. */
+  z-index: 60;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "logo title" "nav nav";
+  align-items: center;
+  column-gap: clamp(14px, 2vw, 24px);
+  margin: 0;
+  padding: 0;
+  background: var(--egr-banner-bg, var(--egr-color-canvas));
+  background-image: var(--egr-banner-image, none) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid var(--egr-color-border);
+  /* Original-Inline `style="height:..."` neutralisieren */
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Banner-Overlay (über Banner-Bereich, unter Logo + Titel) */
+div#contentbox > header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Overlay deckt nur den Banner-Teil (Logo + Titel-Reihe) ab — nav/submenue
+     positionieren sich darunter und behalten ihren eigenen Hintergrund. */
+  height: clamp(96px, 14vw, 160px);
+  background: var(--egr-banner-overlay, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Titel */
+div#contentbox > header h1 {
+  grid-area: title;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: clamp(20px, 3vw, 32px) clamp(16px, 4vw, 32px) clamp(20px, 3vw, 32px) 0;
+  font-family: var(--egr-font-display);
+  font-size: clamp(22px, 3.4vw, 38px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--egr-color-banner-text, var(--egr-color-header-text));
+  text-shadow: var(--egr-banner-text-shadow, none) !important;
+  background: none !important;
+}
+
+/* Logo: in eigener Grid-Spalte, vollständig im Banner */
+div#contentbox > header img#logo {
+  grid-area: logo;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  margin: clamp(14px, 2vw, 22px) 0 clamp(14px, 2vw, 22px) clamp(16px, 3vw, 28px);
+  width: clamp(72px, 9vw, 104px);
+  height: auto;
+  z-index: 3;
+  border-radius: 50%;
+  background: var(--egr-color-canvas);
+  padding: 4px;
+  box-shadow:
+    0 0 0 2px var(--egr-banner-logo-ring, var(--egr-color-accent)),
+    0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Tour-Heading rechts (existiert auf manchen Pages: <h1 id="tour">) */
+div#contentbox > header h1#tour {
+  position: absolute;
+  top: clamp(14px, 2.6vw, 22px);
+  right: clamp(16px, 3vw, 32px);
+  left: auto;
+  padding: 0;
+  font-size: clamp(14px, 1.6vw, 20px);
+  font-weight: 500;
+  text-align: right;
+  color: var(--egr-color-banner-text, var(--egr-color-header-text));
+  opacity: 0.9;
+}
+
+/* ============================================================================
+ * 3. Hauptnav (innerhalb <header><nav>)
+ * ============================================================================ */
+
+div#contentbox > header > nav {
+  grid-area: nav;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  background: var(--egr-color-nav-bg);
+  background-image: none !important;
+  border-top: 1px solid var(--egr-color-border);
+}
+
+div#contentbox > header > nav > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 clamp(8px, 2vw, 16px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: stretch;
+  background: none !important;
+}
+
+div#contentbox > header > nav > ul > li {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  display: flex;
+  list-style: none;
+}
+
+div#contentbox > header > nav > ul > li > a {
+  display: block;
+  padding: var(--egr-space-3) clamp(10px, 2vw, 18px);
+  color: var(--egr-color-nav-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0;
+  text-shadow: none !important;
+  border-bottom: 3px solid transparent;
+  transition: background var(--egr-duration-1) var(--egr-ease),
+              color var(--egr-duration-1) var(--egr-ease),
+              border-color var(--egr-duration-1) var(--egr-ease);
+}
+
+div#contentbox > header > nav > ul > li > a:hover {
+  background: var(--egr-color-nav-hover);
+  color: var(--egr-color-text-1);
+}
+
+div#contentbox > header > nav > ul > li.active > a,
+body[data-egr-page="rankings"] li#l_rankings > a,
+body[data-egr-page="events"] li#l_events > a,
+body[data-egr-page="home"] li#l_home > a,
+body[data-egr-page="pages"] li#l_howtouse > a,
+body[data-egr-page="sessions"] li#l_sessions > a {
+  background: var(--egr-color-nav-active);
+  color: var(--egr-color-nav-active-text);
+  border-bottom-color: var(--egr-color-accent);
+}
+
+/* ============================================================================
+ * 4. Submenue (innerhalb <nav><div#submenue><nav id="submenue">)
+ * ============================================================================ */
+
+div#submenue {
+  position: relative;
+  /* Muss höher liegen als #searchbar (position:sticky, z-index:30),
+     sonst überdeckt das Filter-Card das Scandinavian/Dutch-Dropdown. */
+  z-index: 60;
+  margin: 0;
+  padding: 0;
+  background: var(--egr-color-surface);
+  border-top: 1px solid var(--egr-color-border);
+}
+
+div#submenue nav#submenue {
+  margin: 0;
+  padding: 0;
+}
+
+div#submenue nav#submenue ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 clamp(8px, 2vw, 16px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--egr-color-border);
+}
+
+div#submenue nav#submenue ul li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: transparent !important;
+}
+
+div#submenue nav#submenue ul li > a,
+div#submenue nav#submenue ul li > a.dropmenu {
+  display: inline-block;
+  padding: var(--egr-space-2) var(--egr-space-4);
+  color: var(--egr-color-text-2);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--egr-duration-1) var(--egr-ease),
+              border-color var(--egr-duration-1) var(--egr-ease);
+}
+
+div#submenue nav#submenue ul li > a:hover,
+div#submenue nav#submenue ul li > a.dropmenu:hover {
+  color: var(--egr-color-accent-strong);
+}
+
+div#submenue nav#submenue ul li.active > a,
+div#submenue nav#submenue ul li > a.dropmenu.active {
+  color: var(--egr-color-accent-strong);
+  border-bottom-color: var(--egr-color-accent);
+}
+
+div#submenue nav#submenue ul li.dropmenu > ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--egr-color-surface-elevated);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-sm);
+  box-shadow: var(--egr-shadow-2);
+  padding: var(--egr-space-2);
+  min-width: 200px;
+  z-index: 60;
+  flex-direction: column;
+}
+
+/* CSS-only Fallback, falls jQuery (oder toggle()) klemmt — der Dropdown ist
+   beim Hover *immer* offen, auch wenn der JS-Toggler aussetzt. */
+div#submenue nav#submenue ul li.dropmenu:hover > ul,
+div#submenue nav#submenue ul li.dropmenu:focus-within > ul {
+  display: block !important;
+}
+
+div#submenue nav#submenue ul li.dropmenu > ul li.dropmenuitem { display: block; }
+
+div#submenue nav#submenue ul li.dropmenu > ul li.dropmenuitem a {
+  display: block;
+  padding: var(--egr-space-2) var(--egr-space-3);
+  border-radius: var(--egr-radius-sm);
+  border-bottom: 0;
+  color: var(--egr-color-text-1);
+  font-weight: 500;
+}
+
+div#submenue nav#submenue ul li.dropmenu > ul li.dropmenuitem a:hover {
+  background: var(--egr-color-nav-hover);
+}
+
+/* ============================================================================
+ * 5. Main-Layout (Inhalt + Sidebar)
+ * ============================================================================ */
+
+div#main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 3vw, 32px);
+  padding: clamp(16px, 3vw, 32px);
+  background-image: none !important;
+}
+
+/* Zweispaltig NUR, wenn tatsächlich ein <aside> existiert.
+   Sonst hat z.B. die Home-Seite eine leere zweite Spalte und der
+   Hauptinhalt klebt links. */
+@media (min-width: 900px) {
+  div#main:has(> aside) {
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 24%, 320px);
+  }
+}
+
+/* Fallback für Browser ohne :has() (Safari < 15.4): wir neutralisieren
+   das alte Verhalten nicht — solange #main nur ein Kind hat, liefert
+   das Single-Column-Default von oben das gewünschte Ergebnis. */
+
+div#main div#inhalt {
+  min-width: 0;
+  background-image: none !important;
+}
+
+/* Original setzt manchmal width per inline style — aufheben */
+div#main div#inhalt[style*="width"] {
+  width: auto !important;
+}
+
+div#main aside {
+  background-image: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 20px);
+  min-width: 0;
+}
+
+/* ============================================================================
+ * 6. Typografie im Content-Bereich
+ *    Wirkt auf #inhalt > div > h1, h2, p, ul, ol, blockquote
+ * ============================================================================ */
+
+div#inhalt h1,
+div#inhalt > div > h1 {
+  margin: 0 0 var(--egr-space-4);
+  font-family: var(--egr-font-display);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--egr-color-text-1);
+  text-shadow: none !important;
+  background: none !important;
+}
+
+div#inhalt h2,
+div#inhalt > div > h2 {
+  margin: var(--egr-space-6) 0 var(--egr-space-3);
+  font-family: var(--egr-font-display);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--egr-color-text-1);
+  background: none !important;
+  text-shadow: none !important;
+}
+
+div#inhalt h3 {
+  margin: var(--egr-space-5) 0 var(--egr-space-2);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--egr-color-text-1);
+}
+
+div#inhalt p {
+  margin: 0 0 var(--egr-space-4);
+  color: var(--egr-color-text-2);
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 72ch;
+}
+
+div#inhalt p img,
+div#inhalt p img[style*="float"] {
+  max-width: clamp(180px, 30%, 280px);
+  margin: 0 0 var(--egr-space-3) var(--egr-space-4);
+  border-radius: var(--egr-radius-md);
+  box-shadow: var(--egr-shadow-1);
+}
+
+div#inhalt ul, div#inhalt ol {
+  margin: 0 0 var(--egr-space-4) var(--egr-space-5);
+  padding: 0;
+  color: var(--egr-color-text-2);
+}
+div#inhalt ul li, div#inhalt ol li { margin: 0 0 var(--egr-space-1); }
+
+div#inhalt a { color: var(--egr-color-link); text-decoration: underline; text-underline-offset: 2px; }
+div#inhalt a:hover { color: var(--egr-color-link-hover); }
+
+div#inhalt span.caps {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* ============================================================================
+ * 7. Forms — Sign In, Sign Up, Contact, Search
+ * ============================================================================ */
+
+#inhalt form,
+form#user_new,
+form.user_new,
+form.new_user {
+  display: flex;
+  flex-direction: column;
+  gap: var(--egr-space-3);
+  max-width: 420px;
+  padding: clamp(16px, 3vw, 24px);
+  background: var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  margin-bottom: var(--egr-space-5);
+}
+
+form p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--egr-space-1);
+}
+
+form label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--egr-color-text-2);
+}
+
+/* Checkbox / Radio in <p>-Wrappern: nicht vertikal stapeln, Label normal lesbar.
+   Wichtig für sign_in (Remember me), sign_up und ggf. Suchformulare. */
+form p:has(input[type="checkbox"]),
+form p:has(input[type="radio"]) {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--egr-space-2);
+  flex-wrap: wrap;
+}
+form p:has(input[type="checkbox"]) label,
+form p:has(input[type="radio"]) label {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--egr-color-text-1);
+  cursor: pointer;
+}
+form input[type="checkbox"],
+form input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--egr-color-accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+/* Versteckte Hidden-Inputs für Rails-Booleans dürfen kein Layout-Gewicht haben */
+form input[type="hidden"] {
+  display: none !important;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="search"],
+form input[type="number"],
+form textarea,
+form select {
+  width: 100%;
+  height: 40px;
+  padding: 0 var(--egr-space-3);
+  background: var(--egr-color-surface-elevated);
+  color: var(--egr-color-text-1);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-sm);
+  font-family: var(--egr-font-body);
+  font-size: 14px;
+  transition: border-color var(--egr-duration-1) var(--egr-ease);
+}
+
+form textarea {
+  height: auto;
+  min-height: 100px;
+  padding: var(--egr-space-2) var(--egr-space-3);
+  line-height: 1.5;
+  resize: vertical;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: 2px solid var(--egr-color-accent);
+  outline-offset: 0;
+  border-color: var(--egr-color-accent);
+}
+
+form input[type="checkbox"],
+form input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--egr-color-accent);
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+form input[type="submit"],
+form button[type="submit"] {
+  align-self: flex-start;
+  width: auto;
+  height: 40px;
+  padding: 0 var(--egr-space-6);
+  background: var(--egr-color-accent);
+  color: var(--egr-color-text-on-accent);
+  border: 1px solid var(--egr-color-accent);
+  border-radius: var(--egr-radius-sm);
+  font-family: var(--egr-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--egr-duration-1) var(--egr-ease),
+              transform var(--egr-duration-1) var(--egr-ease);
+}
+
+form input[type="submit"]:hover,
+form button[type="submit"]:hover {
+  background: var(--egr-color-accent-strong);
+  border-color: var(--egr-color-accent-strong);
+}
+
+form input[type="submit"]:active,
+form button[type="submit"]:active { transform: translateY(1px); }
+
+/* Sessions-Page: Sign-In / Sign-Up Links untereinander */
+body[data-egr-page="sessions"] #inhalt > div > a {
+  display: inline-block;
+  margin: var(--egr-space-2) var(--egr-space-3) 0 0;
+  font-size: 14px;
+  color: var(--egr-color-link);
+  text-decoration: underline;
+}
+
+/* Devise-style validation errors */
+#error_explanation,
+.field_with_errors {
+  background: rgba(220, 38, 38, 0.08);
+  border-left: 3px solid var(--egr-color-error);
+  padding: var(--egr-space-3) var(--egr-space-4);
+  border-radius: var(--egr-radius-sm);
+  margin-bottom: var(--egr-space-4);
+  color: var(--egr-color-text-1);
+}
+
+/* ============================================================================
+ * 7b. Home-Landing — Hero, Section-Titles, Card-Labels, How-it-works
+ *     Wird per JS in #inhalt[body[data-egr-page="home"]] eingehängt.
+ *     Variant-agnostisch: nutzt nur --egr-* Tokens.
+ * ============================================================================ */
+
+/* ----- Hero -------------------------------------------------------------- */
+.egr-hero {
+  position: relative;
+  background:
+    radial-gradient(circle at 8% 0%,  var(--egr-color-accent-soft, rgba(0,0,0,.04)) 0%, transparent 55%),
+    radial-gradient(circle at 92% 100%, var(--egr-color-accent-soft, rgba(0,0,0,.04)) 0%, transparent 55%),
+    var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-lg, 16px);
+  padding: clamp(28px, 5vw, 56px) clamp(20px, 4vw, 48px);
+  margin: 0 0 clamp(28px, 4vw, 48px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.egr-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -50% auto;
+  width: 70%;
+  height: 200%;
+  background:
+    conic-gradient(from 220deg at 50% 50%,
+      var(--egr-color-accent) 0deg,
+      transparent 80deg,
+      transparent 360deg);
+  opacity: .06;
+  z-index: -1;
+  filter: blur(40px);
+  pointer-events: none;
+}
+.egr-hero__inner {
+  display: grid;
+  gap: clamp(14px, 2vw, 22px);
+  max-width: 920px;
+  margin-inline: auto;
+  text-align: center;
+}
+.egr-hero__eyebrow {
+  margin: 0;
+  font: 600 11px/1.2 var(--egr-font-sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--egr-color-accent);
+}
+.egr-hero__title {
+  margin: 0;
+  font-family: var(--egr-font-display, var(--egr-font-sans));
+  font-weight: 700;
+  font-size: clamp(28px, 6vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--egr-color-text-1);
+}
+.egr-hero__title span {
+  color: var(--egr-color-accent);
+  background: linear-gradient(95deg,
+    var(--egr-color-accent) 0%,
+    var(--egr-color-accent-strong, var(--egr-color-accent)) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.egr-hero__lead {
+  margin: 0 auto;
+  max-width: 64ch;
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.55;
+  color: var(--egr-color-text-2);
+}
+.egr-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: clamp(4px, 1vw, 8px);
+}
+.egr-cta,
+#inhalt .egr-cta,
+div#inhalt a.egr-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--egr-radius-pill);
+  font: 600 14px/1 var(--egr-font-sans);
+  letter-spacing: .01em;
+  text-decoration: none !important;
+  border: 1px solid transparent;
+  transition: transform var(--egr-duration-1) var(--egr-ease),
+              background var(--egr-duration-1) var(--egr-ease),
+              box-shadow var(--egr-duration-1) var(--egr-ease);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.egr-cta--primary,
+#inhalt .egr-cta--primary,
+div#inhalt a.egr-cta--primary {
+  background: var(--egr-color-accent) !important;
+  color: var(--egr-color-text-on-accent) !important;
+  box-shadow: 0 6px 20px -8px var(--egr-color-accent);
+}
+.egr-cta--primary:hover,
+div#inhalt a.egr-cta--primary:hover {
+  background: var(--egr-color-accent-strong, var(--egr-color-accent)) !important;
+  color: var(--egr-color-text-on-accent) !important;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+.egr-cta--ghost,
+#inhalt .egr-cta--ghost,
+div#inhalt a.egr-cta--ghost {
+  background: transparent !important;
+  color: var(--egr-color-text-1) !important;
+  border-color: var(--egr-color-border-strong, var(--egr-color-border));
+}
+.egr-cta--ghost:hover,
+div#inhalt a.egr-cta--ghost:hover {
+  background: var(--egr-color-surface-2) !important;
+  color: var(--egr-color-text-1) !important;
+  text-decoration: none !important;
+}
+.egr-cta:focus-visible {
+  outline: 2px solid var(--egr-color-accent);
+  outline-offset: 3px;
+}
+
+/* Stats */
+.egr-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(8px, 1.2vw, 14px);
+  margin: clamp(12px, 2vw, 20px) auto 0;
+  padding: clamp(14px, 2vw, 20px);
+  max-width: 720px;
+  background: var(--egr-color-surface-2);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  text-align: center;
+}
+.egr-hero__stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 6px;
+}
+.egr-hero__stats dt {
+  order: 2;
+  font: 500 11px/1.2 var(--egr-font-sans);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--egr-color-text-3);
+}
+.egr-hero__stats dd {
+  order: 1;
+  margin: 0;
+  font: 700 clamp(18px, 2.6vw, 24px)/1.1 var(--egr-font-display, var(--egr-font-sans));
+  color: var(--egr-color-text-1);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----- Section-Titles ---------------------------------------------------- */
+.egr-section-title {
+  margin: clamp(24px, 4vw, 40px) 0 clamp(14px, 2vw, 20px);
+  font-family: var(--egr-font-display, var(--egr-font-sans));
+  font-weight: 700;
+  font-size: clamp(20px, 2.8vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--egr-color-text-1);
+  text-align: center;
+}
+
+/* ----- Card-Labels (auf #frontpage > div) ------------------------------- */
+.egr-card-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: clamp(10px, 1.6vw, 14px);
+  text-align: center;
+}
+.egr-card-label__eyebrow {
+  font: 600 10px/1.2 var(--egr-font-sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--egr-color-accent);
+}
+.egr-card-label__title {
+  font: 700 16px/1.3 var(--egr-font-display, var(--egr-font-sans));
+  color: var(--egr-color-text-1);
+}
+.egr-card-label__desc {
+  font: 400 13px/1.4 var(--egr-font-sans);
+  color: var(--egr-color-text-2);
+}
+
+/* ----- How it works ------------------------------------------------------ */
+.egr-hiw {
+  margin: clamp(32px, 5vw, 56px) 0 clamp(20px, 3vw, 28px);
+}
+.egr-hiw__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: clamp(14px, 2vw, 20px);
+}
+.egr-hiw__head .egr-section-title {
+  margin: 0;
+  text-align: left;
+}
+.egr-hiw__more,
+div#inhalt a.egr-hiw__more {
+  font: 600 13px/1 var(--egr-font-sans);
+  color: var(--egr-color-accent) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+.egr-hiw__more:hover,
+div#inhalt a.egr-hiw__more:hover { text-decoration: underline !important; }
+
+.egr-hiw__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;        /* default: stacked */
+  gap: clamp(14px, 2vw, 22px);
+  counter-reset: hiw;
+}
+@media (min-width: 640px) {
+  .egr-hiw__steps {
+    /* 3 Steps → immer 3 Spalten ab Tablet, nie 2+1 */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.egr-hiw__steps li {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 10px;
+  padding: clamp(18px, 2.4vw, 24px);
+  background: var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  position: relative;
+  transition: transform var(--egr-duration-2) var(--egr-ease),
+              box-shadow var(--egr-duration-2) var(--egr-ease);
+}
+.egr-hiw__steps li:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--egr-shadow-2);
+}
+.egr-hiw__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--egr-color-accent);
+  color: var(--egr-color-text-on-accent);
+  font: 700 16px/1 var(--egr-font-display, var(--egr-font-sans));
+  font-variant-numeric: tabular-nums;
+}
+.egr-hiw__steps li strong {
+  font: 700 16px/1.3 var(--egr-font-display, var(--egr-font-sans));
+  color: var(--egr-color-text-1);
+}
+.egr-hiw__steps li > span:not(.egr-hiw__num) {
+  font: 400 14px/1.5 var(--egr-font-sans);
+  color: var(--egr-color-text-2);
+}
+
+/* Mobile-Polish */
+@media (max-width: 600px) {
+  .egr-hero { padding: 24px 18px; }
+  .egr-hero__title { font-size: clamp(26px, 8vw, 34px); }
+  .egr-hero__ctas { flex-direction: column; align-items: stretch; }
+  .egr-cta { justify-content: center; }
+  .egr-hiw__head { flex-direction: column; align-items: flex-start; }
+  .egr-hiw__head .egr-section-title { text-align: left; }
+}
+
+/* Reduced motion: keine Hover-Transforms */
+@media (prefers-reduced-motion: reduce) {
+  .egr-cta, .egr-hiw__steps li { transition: none; }
+  .egr-cta:hover, .egr-hiw__steps li:hover { transform: none; }
+}
+
+/* ============================================================================
+ * 8. Frontpage (Home)
+ *    Original: <div id="frontpage"> mit 3 Sub-Divs (woman / europe / man)
+ * ============================================================================ */
+
+#inhalt #frontpage,
+#inhalt > div > #frontpage,
+div#frontpage {
+  display: grid !important;
+  grid-template-columns: 1fr !important;        /* default: stacked */
+  gap: clamp(16px, 2.4vw, 28px) !important;
+  padding: 0 !important;
+  margin: 0 0 var(--egr-space-6) !important;
+  max-width: 100%;
+}
+/* ab 640px springen wir direkt auf 3 Spalten für volle Symmetrie.
+   Drunter stacken die Karten; dazwischen gibt's bewusst nichts (kein 2+1). */
+@media (min-width: 640px) {
+  #inhalt #frontpage,
+  #inhalt > div > #frontpage,
+  div#frontpage {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+div#frontpage > div {
+  margin: 0 !important;
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  background: var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  padding: clamp(12px, 2vw, 18px);
+  transition: transform var(--egr-duration-2) var(--egr-ease),
+              box-shadow var(--egr-duration-2) var(--egr-ease);
+  overflow: hidden;
+}
+
+div#frontpage > div:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--egr-shadow-2);
+}
+
+div#frontpage > div a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: var(--egr-color-text-1);
+  margin: 0 !important;
+}
+
+div#frontpage > div a img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 240px !important;
+  display: block !important;
+  border-radius: var(--egr-radius-sm);
+  margin: 0 0 var(--egr-space-3);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+div#frontpage > div a:nth-of-type(2) {
+  display: inline-block;
+  width: auto;
+  padding: var(--egr-space-2) var(--egr-space-4);
+  background: var(--egr-color-accent);
+  color: var(--egr-color-text-on-accent);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  border-radius: var(--egr-radius-pill);
+  transition: background var(--egr-duration-1) var(--egr-ease);
+}
+
+div#frontpage > div a:nth-of-type(2):hover {
+  background: var(--egr-color-accent-strong);
+}
+
+/* Mittlere Zelle (Europe Map): kein Button, nur Bild — quadratisch lassen */
+div#frontpage > div:nth-child(2) a:only-child img {
+  aspect-ratio: 1 / 1;
+  object-position: center;
+}
+
+/* ============================================================================
+ * 9. Filter-Bar (#searchbar) — Rankings-Filter
+ * ============================================================================ */
+
+div#searchbar {
+  background: var(--egr-color-surface-2);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  padding: var(--egr-space-3) var(--egr-space-4);
+  margin-bottom: var(--egr-space-4);
+  position: sticky;
+  top: 0;
+  /* Bewusst NIEDRIG, damit das Scandinavian/Dutch-Dropdown im #submenue
+     (z-index: 60) immer darüber liegt, auch wenn das Filter-Card sticky ist. */
+  z-index: 5;
+  box-shadow: var(--egr-shadow-1);
+  background-image: none !important;
+}
+
+div#searchbar.is-stuck {
+  border-radius: 0;
+  border-inline: 0;
+  margin-inline: calc(-1 * clamp(16px, 3vw, 32px));
+  padding-inline: clamp(16px, 3vw, 32px);
+}
+
+div#searchbar form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--egr-space-3);
+  align-items: end;
+}
+
+div#searchbar form > div[style*="display:inline"],
+div#searchbar form > div[style*="display: inline"] {
+  display: none !important;
+}
+
+div#searchbar form > div.narrow,
+div#searchbar form > div.wide {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+div#searchbar form label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--egr-color-text-2);
+  margin-bottom: 0;
+}
+
+div#searchbar form br { display: none; }
+
+div#searchbar form input[type="text"],
+div#searchbar form input[type="search"],
+div#searchbar form select {
+  height: 36px;
+  font-size: 14px;
+}
+
+div#searchbar form input[name="commit"] {
+  width: auto;
+  height: 36px;
+}
+
+/* ============================================================================
+ * 10. Ranking-Tabelle (#table) — Hero-Komponente
+ * ============================================================================ */
+
+table#table {
+  width: 100%;
+  /* Mindestbreite, damit Spalten nicht zerquetscht werden;
+     der .egr-table-wrap-Wrapper erlaubt horizontales Scrollen. */
+  min-width: 720px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-style-table-radius);
+  overflow: hidden;
+  font-family: var(--egr-font-body);
+  font-size: 14px;
+  color: var(--egr-color-text-1);
+  margin-bottom: var(--egr-space-5);
+}
+/* Rankings-Tabellen mit 8 Spalten brauchen mehr Mindestbreite */
+table#table[data-egr-table="rankings"],
+table#table:not([data-egr-table="events"]) {
+  min-width: 880px;
+}
+
+/* Headfoot (Pagination-Info) */
+table#table tr.table_headfoot td {
+  background: var(--egr-color-surface-2);
+  color: var(--egr-color-text-2);
+  font-size: 12px;
+  padding: var(--egr-space-3) var(--egr-space-4);
+  border-bottom: 1px solid var(--egr-color-border);
+}
+
+table#table tr.table_headfoot td b {
+  color: var(--egr-color-text-1);
+  font-weight: 600;
+  font-variant-numeric: var(--egr-style-numerals);
+}
+
+/* Spalten-Headers */
+table#table tr.header th {
+  background: var(--egr-table-header-bg);
+  color: var(--egr-table-header-text);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: var(--egr-space-3) var(--egr-space-4);
+  border-bottom: 2px solid var(--egr-color-rule);
+  text-align: left;
+  position: relative;
+  white-space: nowrap;
+  text-shadow: none !important;
+  background-image: none !important;
+}
+
+table#table tr.header th a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+table#table tr.header th a:hover { color: var(--egr-color-accent); }
+
+table#table tr.header th.points,
+table#table tr.header th.score,
+table#table tr.header th.css,
+table#table tr.header th.events {
+  text-align: right;
+}
+table#table tr.header th.born { text-align: center; }
+
+table#table tr.header.asc th.points::after  { content: " ↑"; color: var(--egr-color-accent); }
+table#table tr.header.desc th.points::after { content: " ↓"; color: var(--egr-color-accent); }
+table#table tr.header[class*="asc"] th.points,
+table#table tr.header[class*="desc"] th.points { color: var(--egr-color-accent); }
+
+/* Daten-Zeilen */
+table#table tr.odd td,
+table#table tr.even td {
+  padding: var(--egr-space-3) var(--egr-space-4);
+  border-bottom: 1px solid var(--egr-table-border);
+  vertical-align: middle;
+  font-size: 14px;
+  color: var(--egr-color-text-1);
+  text-shadow: none !important;
+}
+
+table#table tr.odd  td { background: var(--egr-table-row-odd); }
+table#table tr.even td { background: var(--egr-table-row-even); }
+
+table#table tr.odd:hover td,
+table#table tr.even:hover td {
+  background: var(--egr-table-row-hover);
+  transition: background var(--egr-duration-1) var(--egr-ease);
+}
+
+/* Spalten-Formatierung
+ * Reihenfolge: Points · Name · Country · Age · AvgScore · AvgCR · Events
+ */
+table#table tr.odd td:nth-child(1),
+table#table tr.even td:nth-child(1) {
+  text-align: right;
+  font-family: var(--egr-style-points-font);
+  font-weight: var(--egr-style-points-weight);
+  font-size: var(--egr-style-points-size);
+  font-variant-numeric: var(--egr-style-numerals);
+  color: var(--egr-style-points-color);
+  white-space: nowrap;
+  width: 1%;
+}
+
+table#table tr.odd td:nth-child(2),
+table#table tr.even td:nth-child(2) {
+  text-align: left;
+  font-weight: 500;
+}
+
+table#table tr.odd td:nth-child(2) a,
+table#table tr.even td:nth-child(2) a {
+  color: var(--egr-color-link);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+table#table tr.odd td:nth-child(2) a:hover,
+table#table tr.even td:nth-child(2) a:hover {
+  color: var(--egr-color-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+table#table tr.odd td:nth-child(3),
+table#table tr.even td:nth-child(3) {
+  white-space: nowrap;
+  color: var(--egr-color-text-2);
+}
+
+table#table tr.odd td:nth-child(4),
+table#table tr.even td:nth-child(4) {
+  text-align: center;
+  font-variant-numeric: var(--egr-style-numerals);
+  color: var(--egr-color-text-2);
+}
+
+table#table tr.odd td:nth-child(5),
+table#table tr.even td:nth-child(5),
+table#table tr.odd td:nth-child(6),
+table#table tr.even td:nth-child(6),
+table#table tr.odd td:nth-child(7),
+table#table tr.even td:nth-child(7) {
+  text-align: right;
+  font-family: var(--egr-font-mono);
+  font-variant-numeric: var(--egr-style-numerals);
+  color: var(--egr-color-text-2);
+  white-space: nowrap;
+}
+
+/* Inline-width auf <td> aufheben */
+table#table td[width],
+table#table th[width] { width: auto !important; }
+table#table td[align],
+table#table th[align] { text-align: revert; }
+
+/* Inline `width="..."` von td neutralisieren wenn unsere Spalten-Regeln greifen */
+table#table tr.odd td:nth-child(1)[width],
+table#table tr.even td:nth-child(1)[width] { width: 1% !important; }
+
+/* Top-3-Hervorhebung — nur wenn Token --egr-style-row-tone-top3: 1 (Variant B) */
+table#table tr.odd:nth-of-type(3) td:nth-child(1) {
+  /* Top 1: Gold */
+}
+@supports (selector(:has(td))) {
+  /* Variant-B-spezifische Top-3-Highlights via Body-Variant-Hook */
+  body[data-variant="B"] table#table tr.odd:nth-of-type(3) td,
+  body[data-variant="B"] table#table tr.odd:nth-of-type(3) td {
+    /* Optional verstärken — minimal, nicht aufdringlich */
+  }
+}
+
+/* ============================================================================
+ * 11. Pagination (.pagination)
+ * ============================================================================ */
+
+div.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  margin: var(--egr-space-3) 0;
+  padding: 0;
+}
+
+div.pagination .gap {
+  border: 0;
+  background: transparent;
+  color: var(--egr-color-text-3);
+  padding: 0 var(--egr-space-1);
+}
+
+div.pagination a,
+div.pagination .current {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 var(--egr-space-2);
+  background: var(--egr-color-surface);
+  color: var(--egr-color-text-2);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background var(--egr-duration-1) var(--egr-ease),
+              color var(--egr-duration-1) var(--egr-ease);
+}
+
+div.pagination a:hover {
+  background: var(--egr-color-accent-soft);
+  color: var(--egr-color-accent-strong);
+  border-color: var(--egr-color-accent);
+}
+
+div.pagination .current {
+  background: var(--egr-color-accent);
+  color: var(--egr-color-text-on-accent);
+  border-color: var(--egr-color-accent);
+  cursor: default;
+}
+
+/* "Players per Page" Footer */
+table#table tr.table_headfoot:last-of-type td {
+  border-top: 1px solid var(--egr-color-border);
+  border-bottom: 0;
+}
+
+table#table tr.table_headfoot td a {
+  color: var(--egr-color-link);
+  text-decoration: none;
+  margin-inline: 2px;
+  padding: 2px 6px;
+  border-radius: var(--egr-radius-sm);
+}
+table#table tr.table_headfoot td a:hover {
+  background: var(--egr-color-accent-soft);
+  color: var(--egr-color-accent-strong);
+}
+
+/* ============================================================================
+ * 11. Tabellen-Wrapper (horizontal scrollbar bei schmalen Viewports)
+ * ============================================================================ */
+.egr-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--egr-style-table-radius);
+  /* Sichtbare Scroll-Indikatoren am Rand wenn scrollbar */
+  background:
+    linear-gradient(to right, var(--egr-color-surface) 0%, transparent 8px),
+    linear-gradient(to left,  var(--egr-color-surface) 0%, transparent 8px) 100% 0,
+    radial-gradient(farthest-side at 0% 50%, rgba(0,0,0,.10), transparent),
+    radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.10), transparent) 100% 0;
+  background-repeat: no-repeat;
+  background-size: 16px 100%, 16px 100%, 12px 100%, 12px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+.egr-table-wrap > table {
+  margin: 0;
+}
+/* Scrollbar permanent sichtbar, damit User merkt dass scrollbar vorhanden ist */
+.egr-table-wrap::-webkit-scrollbar {
+  height: 10px;
+}
+.egr-table-wrap::-webkit-scrollbar-track {
+  background: var(--egr-color-surface-2);
+  border-radius: 5px;
+}
+.egr-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--egr-color-border);
+  border-radius: 5px;
+}
+.egr-table-wrap::-webkit-scrollbar-thumb:hover {
+  background: var(--egr-color-text-3, var(--egr-color-text-2));
+}
+.egr-table-wrap {
+  scrollbar-width: thin;
+  scrollbar-color: var(--egr-color-border) var(--egr-color-surface-2);
+}
+
+/* ============================================================================
+ * 11a. Events-Filter-Banner (Counting / Upcoming / Archive)
+ *      Wird durch applyEventsFilter() in application.new.js eingehängt.
+ * ============================================================================ */
+.egr-filter-banner {
+  margin: clamp(12px, 1.6vw, 18px) 0 clamp(14px, 2vw, 20px);
+  border: 1px solid var(--egr-color-border);
+  background: var(--egr-color-surface-2);
+  border-radius: var(--egr-radius-md);
+  padding: clamp(12px, 1.6vw, 16px) clamp(14px, 2vw, 18px);
+  border-left: 4px solid var(--egr-color-accent);
+}
+.egr-filter-banner__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 14px);
+}
+.egr-filter-banner__chip {
+  display: inline-flex;
+  align-items: center;
+  font: 700 11px/1 var(--egr-font-sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--egr-color-text-on-accent);
+  background: var(--egr-color-accent);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.egr-filter-banner__text {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.4;
+}
+.egr-filter-banner__text strong {
+  font: 600 15px/1.3 var(--egr-font-sans);
+  color: var(--egr-color-text-1);
+}
+.egr-filter-banner__sub {
+  font: 400 13px/1.45 var(--egr-font-sans);
+  color: var(--egr-color-text-2);
+}
+.egr-filter-banner__sub em {
+  font-style: normal;
+  color: var(--egr-color-accent-strong, var(--egr-color-accent));
+  font-weight: 600;
+}
+.egr-filter-banner__reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: 500 13px/1 var(--egr-font-sans);
+  color: var(--egr-color-text-2) !important;
+  text-decoration: none !important;
+  padding: 8px 12px;
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-sm);
+  background: var(--egr-color-surface);
+  transition: border-color var(--egr-duration-2) var(--egr-ease),
+              color var(--egr-duration-2) var(--egr-ease);
+}
+.egr-filter-banner__reset:hover {
+  color: var(--egr-color-accent-strong, var(--egr-color-accent)) !important;
+  border-color: var(--egr-color-accent);
+}
+
+/* Empty-State der gefilterten Events-Tabelle */
+table#table .egr-empty-row td {
+  padding: clamp(20px, 3vw, 32px) !important;
+  background: var(--egr-color-surface) !important;
+  border: none !important;
+  text-align: center;
+}
+.egr-empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  max-width: 540px;
+  margin: 0 auto;
+}
+.egr-empty-state strong {
+  font: 600 16px/1.3 var(--egr-font-sans);
+  color: var(--egr-color-text-1);
+}
+.egr-empty-state span {
+  font: 400 13px/1.5 var(--egr-font-sans);
+  color: var(--egr-color-text-2);
+}
+
+/* Aktiver Sub-Nav-Tab (Counting / Upcoming / Archive) */
+#submenue li.active a,
+#submenue a[aria-current="page"] {
+  color: var(--egr-color-accent-strong, var(--egr-color-accent)) !important;
+  position: relative;
+}
+#submenue li.active a::after,
+#submenue a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--egr-color-accent);
+  border-radius: 2px;
+}
+
+/* ============================================================================
+ * 11b. Events-Tabelle — Spaltenbedeutungen unterscheiden sich vom Rankings
+ *      Layout (col 1+2 = Datums, col 3 = Eventname-Link, col 6 = Punkte).
+ *      Wir kippen die Rankings-spezifischen nth-child-Regeln für Events
+ *      und setzen events-spezifische dazu.
+ * ============================================================================ */
+table#table[data-egr-table="events"] tr.odd td:nth-child(1),
+table#table[data-egr-table="events"] tr.even td:nth-child(1),
+table#table[data-egr-table="events"] tr.odd td:nth-child(2),
+table#table[data-egr-table="events"] tr.even td:nth-child(2) {
+  font: 500 13px/1.4 var(--egr-font-sans);
+  color: var(--egr-color-text-2);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  text-align: center;
+  background: var(--egr-color-surface-2);
+}
+
+/* Tabelle darf umbrechen statt zu überlaufen */
+table#table[data-egr-table="events"] {
+  table-layout: auto;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* col 3: Event-Name als prominenter Link, darf umbrechen */
+table#table[data-egr-table="events"] tr.odd td:nth-child(3),
+table#table[data-egr-table="events"] tr.even td:nth-child(3) {
+  font: 500 14px/1.45 var(--egr-font-sans);
+  color: var(--egr-color-text-1);
+  background: var(--egr-color-surface);
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+}
+table#table[data-egr-table="events"] tr.odd td:nth-child(3) a,
+table#table[data-egr-table="events"] tr.even td:nth-child(3) a {
+  color: var(--egr-color-text-1);
+  font-weight: 600;
+  text-decoration: none;
+}
+table#table[data-egr-table="events"] tr.odd td:nth-child(3) a:hover,
+table#table[data-egr-table="events"] tr.even td:nth-child(3) a:hover {
+  color: var(--egr-color-accent);
+  text-decoration: underline;
+}
+
+/* col 4 (age group), col 5 (country) */
+table#table[data-egr-table="events"] tr.odd td:nth-child(4),
+table#table[data-egr-table="events"] tr.even td:nth-child(4),
+table#table[data-egr-table="events"] tr.odd td:nth-child(5),
+table#table[data-egr-table="events"] tr.even td:nth-child(5) {
+  font: 600 12px/1.3 var(--egr-font-sans);
+  color: var(--egr-color-text-2);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* col 6: EGR Points → Akzentfarbe + tabular */
+table#table[data-egr-table="events"] tr.odd td:nth-child(6),
+table#table[data-egr-table="events"] tr.even td:nth-child(6),
+table#table[data-egr-table="events"] tr.odd td:nth-child(7),
+table#table[data-egr-table="events"] tr.even td:nth-child(7) {
+  font: 700 14px/1.3 var(--egr-font-display, var(--egr-font-sans));
+  color: var(--egr-color-accent-strong, var(--egr-color-accent));
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  background: var(--egr-color-surface);
+}
+
+/* Mobile-Stack-Modus: deaktiviere die Rankings-spezifischen ::before-Labels */
+@media (max-width: 600px) {
+  table#table[data-egr-table="events"] tr.odd td:nth-child(3)::after,
+  table#table[data-egr-table="events"] tr.even td:nth-child(3)::after {
+    content: none !important;
+  }
+  table#table[data-egr-table="events"] tr.odd td:nth-child(5)::before,
+  table#table[data-egr-table="events"] tr.even td:nth-child(5)::before {
+    content: "Country  ";
+  }
+  table#table[data-egr-table="events"] tr.odd td:nth-child(6)::before,
+  table#table[data-egr-table="events"] tr.even td:nth-child(6)::before {
+    content: "Points  ";
+  }
+  table#table[data-egr-table="events"] tr.odd td:nth-child(7)::before,
+  table#table[data-egr-table="events"] tr.even td:nth-child(7)::before {
+    content: none !important;
+  }
+}
+
+/* ============================================================================
+ * 11c. Tours-Page — Card-Grid statt Float-Layout
+ *      Wird durch decorateToursPage() in application.new.js eingehängt.
+ * ============================================================================ */
+.egr-tours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+  margin: clamp(16px, 2.4vw, 24px) 0 clamp(20px, 3vw, 28px);
+}
+
+div#inhalt h2.tours {
+  font-family: var(--egr-font-display, var(--egr-font-sans));
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--egr-color-text-1);
+  margin: 0 0 clamp(12px, 1.6vw, 18px);
+  padding-bottom: clamp(8px, 1.2vw, 12px);
+  border-bottom: 2px solid var(--egr-color-accent);
+  display: inline-block;
+  letter-spacing: -0.01em;
+}
+
+.egr-tour-card {
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: clamp(14px, 1.6vw, 18px);
+  background: var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  text-align: center !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  transition: transform var(--egr-duration-2) var(--egr-ease),
+              box-shadow var(--egr-duration-2) var(--egr-ease),
+              border-color var(--egr-duration-2) var(--egr-ease);
+  text-decoration: none;
+}
+.egr-tour-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--egr-shadow-2);
+  border-color: var(--egr-color-accent);
+}
+.egr-tour-card br { display: none; }
+
+/* Card-Bild (sofern vorhanden und valide) */
+.egr-tour-card[data-has-image="1"] img {
+  width: 100% !important;
+  height: clamp(120px, 18vw, 160px) !important;
+  object-fit: cover;
+  border-radius: var(--egr-radius-sm);
+  display: block;
+  margin: 0 auto;
+  background: var(--egr-color-surface-2);
+}
+
+/* Initialen-Tile statt Broken-Image */
+.egr-tour-card .egr-tour-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: clamp(120px, 18vw, 160px);
+  border-radius: var(--egr-radius-sm);
+  background: linear-gradient(135deg,
+    var(--egr-color-accent-soft, rgba(0,0,0,.05)) 0%,
+    var(--egr-color-surface-2) 100%);
+  color: var(--egr-color-accent-strong, var(--egr-color-accent));
+  font: 700 clamp(28px, 4vw, 40px)/1 var(--egr-font-display, var(--egr-font-sans));
+  letter-spacing: 0.02em;
+  border: 1px dashed var(--egr-color-border);
+}
+
+/* Link-Text in der Card (Tour-Name) */
+.egr-tour-card a {
+  color: var(--egr-color-text-1);
+  text-decoration: none;
+  font: 600 14px/1.35 var(--egr-font-sans);
+}
+div#inhalt .egr-tour-card a {
+  color: var(--egr-color-text-1);
+  text-decoration: none;
+}
+.egr-tour-card a:hover { color: var(--egr-color-accent); }
+
+/* Bild-Link soll sich auch ohne echtes Bild über die Tile spannen */
+.egr-tour-card > a {
+  display: block;
+  text-decoration: none;
+}
+.egr-tour-card > a:first-child .egr-tour-tile {
+  width: 100%;
+  display: flex;
+}
+
+/* ============================================================================
+ * 12. Sidebar (<aside>)
+ * ============================================================================ */
+
+div#main aside .page,
+div#main aside .wblock {
+  background: var(--egr-color-surface-2);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  padding: 0;
+  overflow: hidden;
+  margin: 0 !important;
+}
+
+div#main aside .page {
+  display: flex;
+  flex-direction: column;
+}
+
+div#main aside .page > img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+div#main aside .sidebar {
+  padding: var(--egr-space-4);
+}
+
+div#main aside .sidebar h2 {
+  margin: 0 0 var(--egr-space-3);
+  padding: 0;
+  font-family: var(--egr-font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--egr-color-accent-strong);
+  text-shadow: none !important;
+  background: none !important;
+}
+
+div#main aside .sidebar p {
+  margin: 0 0 var(--egr-space-2);
+  font-size: 13px;
+  color: var(--egr-color-text-2);
+  line-height: 1.55;
+}
+
+div#main aside .sidebar img {
+  width: auto;
+  max-width: 125px;
+  border-radius: var(--egr-radius-sm);
+  margin: var(--egr-space-2) 0;
+}
+
+div#main aside .wblock {
+  padding: var(--egr-space-3);
+  text-align: center;
+  background: var(--egr-color-surface);
+}
+
+div#main aside .wblock img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+/* ============================================================================
+ * 13. Events-Liste / Tour-Liste / Search-Result-Cards
+ *    Original benutzt freie <div>/<table>-Strukturen ohne stabile Klassen.
+ * ============================================================================ */
+
+#inhalt > div > table:not(#table) {
+  width: 100%;
+  margin-bottom: var(--egr-space-4);
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  overflow: hidden;
+}
+
+#inhalt > div > table:not(#table) th,
+#inhalt > div > table:not(#table) td {
+  padding: var(--egr-space-3) var(--egr-space-4);
+  border-bottom: 1px solid var(--egr-color-border);
+  font-size: 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+#inhalt > div > table:not(#table) tr:last-child td { border-bottom: 0; }
+
+#inhalt > div > table:not(#table) thead th,
+#inhalt > div > table:not(#table) tr.header th {
+  background: var(--egr-color-surface-2);
+  color: var(--egr-color-text-2);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+#inhalt > div > table:not(#table) tr:hover td {
+  background: var(--egr-color-accent-soft);
+}
+
+/* Country-Flag-Bilder */
+img[src*="/assets/"][src$=".png"][width="16"],
+img[alt*="flag" i] {
+  width: 16px;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  border-radius: 1px;
+}
+
+/* ============================================================================
+ * 14. Footer
+ * ============================================================================ */
+
+div#contentbox > footer {
+  border-top: 1px solid var(--egr-color-border);
+  padding: var(--egr-space-5) clamp(16px, 3vw, 32px) var(--egr-space-5);
+  margin: 0;
+  background: var(--egr-color-surface);
+  background-image: none !important;
+}
+
+div#contentbox > footer nav ul {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 2vw, 24px);
+  justify-content: center;
+}
+
+div#contentbox > footer nav ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: transparent !important;
+}
+
+div#contentbox > footer nav ul li a {
+  font-size: 12px;
+  color: var(--egr-color-text-2);
+  text-decoration: none;
+  text-transform: none;
+}
+
+div#contentbox > footer nav ul li a:hover {
+  color: var(--egr-color-accent);
+}
+
+/* ============================================================================
+ * 15. Page-Kind-spezifische Tweaks
+ * ============================================================================ */
+
+/* Home: kein Sidebar, voller Inhalt */
+body[data-egr-page="home"] div#main {
+  grid-template-columns: 1fr !important;
+  max-width: 1024px;
+  margin-inline: auto;
+}
+
+/* Sessions: zentrieren, kleinere Spalten */
+body[data-egr-page="sessions"] div#main {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+  margin-inline: auto;
+}
+@media (min-width: 900px) {
+  body[data-egr-page="sessions"] div#main {
+    max-width: 1024px;
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 28%, 320px);
+  }
+}
+
+/* Kaputte Sidebar-Bilder global ausblenden (page_images/* existiert nicht
+   im Mirror; sind im Original CMS-Uploads). Sidebar-Text bleibt sichtbar. */
+img[src*="page_images/"] {
+  display: none !important;
+}
+body[data-egr-page="sessions"] aside .sidebar {
+  background: var(--egr-color-surface);
+  border: 1px solid var(--egr-color-border);
+  border-radius: var(--egr-radius-md);
+  padding: var(--egr-space-4) var(--egr-space-5);
+  margin: 0;
+}
+body[data-egr-page="sessions"] aside .sidebar h2 {
+  margin: 0 0 var(--egr-space-2);
+  font-size: 18px;
+  color: var(--egr-color-text-1);
+}
+body[data-egr-page="sessions"] aside .sidebar p {
+  margin: 0;
+  color: var(--egr-color-text-2);
+  line-height: 1.55;
+}
+
+/* Pages (How it Works, About Us, etc.): max content-width */
+body[data-egr-page="pages"] div#inhalt {
+  max-width: 880px;
+}
+
+/* Search: voller Width */
+body[data-egr-page="search"] div#main {
+  grid-template-columns: 1fr;
+}
+
+/* ============================================================================
+ * 16. Responsive — Tablet (600 - 900)
+ * ============================================================================ */
+
+@media (max-width: 899px) {
+  div#main {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sidebar geht unter Inhalt */
+  div#main aside {
+    order: 2;
+  }
+}
+
+/* ============================================================================
+ * 17. Responsive — Mobile (max-width: 600)
+ *     Tabelle wird zu Card-Layout
+ * ============================================================================ */
+
+@media (max-width: 600px) {
+  div#contentbox > header h1 {
+    padding-inline-start: clamp(96px, 26vw, 120px);
+    font-size: clamp(18px, 5vw, 24px);
+  }
+
+  div#contentbox > header img#logo {
+    width: clamp(64px, 18vw, 84px);
+    left: 12px !important;
+  }
+
+  div#contentbox > header > nav > ul > li > a {
+    padding: var(--egr-space-2) var(--egr-space-3);
+    font-size: 13px;
+  }
+
+  div#searchbar {
+    padding: var(--egr-space-3);
+    position: static;
+  }
+
+  div#searchbar form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  div#searchbar form input[name="commit"] {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  /* Tabelle → Cards */
+  table#table {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  table#table tr.table_headfoot {
+    display: block;
+  }
+  table#table tr.table_headfoot td {
+    display: block;
+    text-align: center !important;
+    padding: var(--egr-space-3);
+    border-radius: var(--egr-radius-sm);
+    margin-bottom: var(--egr-space-2);
+    background: var(--egr-color-surface-2);
+    border: 1px solid var(--egr-color-border);
+  }
+
+  table#table tr.header { display: none; }
+
+  table#table tr.odd,
+  table#table tr.even {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name   points"
+      "meta   meta"
+      "stats  stats";
+    gap: var(--egr-space-1) var(--egr-space-3);
+    margin-bottom: var(--egr-space-2);
+    background: var(--egr-color-surface);
+    border: 1px solid var(--egr-color-border);
+    border-radius: var(--egr-radius-md);
+    padding: var(--egr-space-3) var(--egr-space-4);
+    box-shadow: var(--egr-shadow-1);
+  }
+
+  table#table tr.odd td,
+  table#table tr.even td {
+    border: 0;
+    padding: 0;
+    background: transparent !important;
+    text-align: left !important;
+    width: auto !important;
+  }
+
+  table#table tr.odd td:nth-child(1),
+  table#table tr.even td:nth-child(1) {
+    grid-area: points;
+    justify-self: end;
+    font-size: 18px;
+  }
+
+  table#table tr.odd td:nth-child(2),
+  table#table tr.even td:nth-child(2) {
+    grid-area: name;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--egr-color-text-1);
+  }
+
+  table#table tr.odd td:nth-child(3),
+  table#table tr.even td:nth-child(3) {
+    grid-area: meta;
+    font-size: 12px;
+    color: var(--egr-color-text-2);
+  }
+
+  table#table tr.odd td:nth-child(4),
+  table#table tr.even td:nth-child(4) { display: none; }
+
+  table#table tr.odd td:nth-child(3)::after,
+  table#table tr.even td:nth-child(3)::after {
+    content: " · " attr(data-age);
+    color: var(--egr-color-text-3);
+  }
+
+  table#table tr.odd td:nth-child(5),
+  table#table tr.even td:nth-child(5) {
+    grid-area: stats;
+    font-family: var(--egr-font-mono);
+    font-size: 12px;
+    color: var(--egr-color-text-2);
+  }
+
+  table#table tr.odd td:nth-child(5)::before,
+  table#table tr.even td:nth-child(5)::before {
+    content: "Avg ";
+    color: var(--egr-color-text-3);
+  }
+
+  table#table tr.odd td:nth-child(6),
+  table#table tr.even td:nth-child(6) {
+    display: inline;
+    font-family: var(--egr-font-mono);
+    font-size: 12px;
+    color: var(--egr-color-text-2);
+  }
+  table#table tr.odd td:nth-child(6)::before,
+  table#table tr.even td:nth-child(6)::before {
+    content: "  ·  CR ";
+    color: var(--egr-color-text-3);
+  }
+
+  table#table tr.odd td:nth-child(7),
+  table#table tr.even td:nth-child(7) {
+    display: inline;
+    font-family: var(--egr-font-mono);
+    font-size: 12px;
+    color: var(--egr-color-text-2);
+  }
+  table#table tr.odd td:nth-child(7)::before,
+  table#table tr.even td:nth-child(7)::before {
+    content: "  ·  ";
+    color: var(--egr-color-text-3);
+  }
+  table#table tr.odd td:nth-child(7)::after,
+  table#table tr.even td:nth-child(7)::after {
+    content: " events";
+    color: var(--egr-color-text-3);
+  }
+
+  div.pagination { justify-content: center; }
+
+  div#contentbox > footer nav ul { gap: var(--egr-space-3); }
+
+  /* Frontpage stack */
+  div#frontpage { grid-template-columns: 1fr; }
+}
+
+/* ============================================================================
+ * 18. Print
+ * ============================================================================ */
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  div#contentbox {
+    box-shadow: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  div#searchbar,
+  div#main aside,
+  div#contentbox > header > nav,
+  div#submenue,
+  .egr-preview-switcher { display: none !important; }
+  table#table { border: 1px solid #000; }
+  table#table tr.odd td, table#table tr.even td { background: white !important; }
+}

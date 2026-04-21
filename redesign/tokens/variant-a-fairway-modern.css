@@ -1,0 +1,240 @@
+/* ============================================================================
+ * European Golf Rankings — Re-Skin
+ * Variante A: "Fairway Modern"
+ * Token-Definitionen (Custom Properties + Reset)
+ *
+ * Drop-in-Datei. Ablegen in app/assets/stylesheets/egr-tokens.css und
+ * VOR egr-reskin.css importieren.
+ *
+ * Spec-Doku: docs/design-systems/variant-a-fairway-modern.md
+ * ============================================================================ */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---- Brand-Farben (Light) ---- */
+  --fw-color-fairway-700: #1F5132;
+  --fw-color-fairway-600: #2E7D32;
+  --fw-color-fairway-500: #4CAF50;
+  --fw-color-fairway-100: #E8F5E9;
+
+  /* ---- Neutrale Skala (Light) ---- */
+  --fw-color-canvas:    #FFFFFF;
+  --fw-color-surface:   #F8FAFB;
+  --fw-color-surface-2: #F1F5F8;
+  --fw-color-border:    #E2E8EE;
+  --fw-color-divider:   #CBD3DC;
+  --fw-color-text-1:    #0F1B2D;
+  --fw-color-text-2:    #475569;
+  --fw-color-text-3:    #94A3B8;
+
+  /* ---- Funktional ---- */
+  --fw-color-warning:    #D97706;
+  --fw-color-error:      #DC2626;
+  --fw-color-info:       #0369A1;
+  --fw-color-link:       #1D4FA8;
+  --fw-color-link-hover: var(--fw-color-fairway-600);
+
+  /* ---- Typografie ---- */
+  --fw-font-body:    "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --fw-font-display: "Inter", system-ui, sans-serif;
+
+  /* ---- Spacing (4-px-Raster) ---- */
+  --fw-space-1:  4px;
+  --fw-space-2:  8px;
+  --fw-space-3:  12px;
+  --fw-space-4:  16px;
+  --fw-space-5:  20px;
+  --fw-space-6:  24px;
+  --fw-space-8:  32px;
+  --fw-space-10: 40px;
+  --fw-space-12: 48px;
+  --fw-space-16: 64px;
+
+  /* ---- Radii ---- */
+  --fw-radius-xs:   2px;
+  --fw-radius-sm:   4px;
+  --fw-radius-md:   6px;
+  --fw-radius-lg:   10px;
+  --fw-radius-pill: 999px;
+
+  /* ---- Shadows ---- */
+  --fw-shadow-1: 0 1px 2px rgba(15, 27, 45, 0.06);
+  --fw-shadow-2: 0 4px 12px rgba(15, 27, 45, 0.08);
+
+  /* ---- Motion ---- */
+  --fw-ease-standard:    cubic-bezier(0.2, 0, 0, 1);
+  --fw-ease-emphasized:  cubic-bezier(0.3, 0, 0, 1);
+  --fw-duration-1: 120ms;
+  --fw-duration-2: 200ms;
+  --fw-duration-3: 320ms;
+
+  /* ---- Breakpoints (für JS-Auslesung; CSS nutzt sie direkt in @media) ---- */
+  --fw-bp-sm: 480px;
+  --fw-bp-md: 768px;
+  --fw-bp-lg: 1024px;
+  --fw-bp-xl: 1280px;
+}
+
+/* ---- Hinweis ----
+   Variant A ist bewusst eine helle Theme-Identität ("Fairway Modern").
+   Eine prefers-color-scheme:dark Adaption würde den Charakter brechen,
+   daher KEIN Dark-Mode-Spiegel. Wer Dark möchte, wählt Variant B. */
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fw-duration-1: 0.01ms;
+    --fw-duration-2: 0.01ms;
+    --fw-duration-3: 0.01ms;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================================
+ * Inline-HTML-Attribut-Neutralisierung (KRITISCH — siehe docs/05-dom-preservation.md)
+ * Die Rails-HAML-Templates schreiben width="70" / align="right" direkt ins HTML.
+ * Wir müssen sie überschreiben, damit unser Layout greift.
+ * ============================================================================ */
+table#table td[width],
+table#table th[width] {
+  width: auto !important;
+}
+table#table td[align],
+table#table th[align] {
+  text-align: revert; /* wir setzen es per Spalten-Klasse neu */
+}
+
+/* ============================================================================
+ * Semantic-Token-Aliasse (--egr-*)
+ *
+ * Diese Aliasse machen application.new.css variantenagnostisch: sie nutzt
+ * ausschließlich --egr-*-Tokens und funktioniert mit jeder Variante, die
+ * diese Aliasse setzt.
+ * ============================================================================ */
+:root {
+  /* Surfaces */
+  --egr-color-canvas:    var(--fw-color-canvas);
+  --egr-color-surface:   var(--fw-color-surface);
+  --egr-color-surface-2: var(--fw-color-surface-2);
+  --egr-color-surface-3: var(--fw-color-surface-2);
+  --egr-color-surface-elevated: var(--fw-color-canvas);
+
+  /* Borders */
+  --egr-color-border:    var(--fw-color-border);
+  --egr-color-divider:   var(--fw-color-divider);
+  --egr-color-rule:      var(--fw-color-divider);
+
+  /* Text */
+  --egr-color-text-1:    var(--fw-color-text-1);
+  --egr-color-text-2:    var(--fw-color-text-2);
+  --egr-color-text-3:    var(--fw-color-text-3);
+  --egr-color-text-on-accent: #FFFFFF;
+
+  /* Accent */
+  --egr-color-accent:    var(--fw-color-fairway-600);
+  --egr-color-accent-strong: var(--fw-color-fairway-700);
+  --egr-color-accent-soft:   var(--fw-color-fairway-100);
+
+  /* Funktional */
+  --egr-color-link:        var(--fw-color-link);
+  --egr-color-link-hover:  var(--fw-color-link-hover);
+  --egr-color-warning:     var(--fw-color-warning);
+  --egr-color-error:       var(--fw-color-error);
+  --egr-color-info:        var(--fw-color-info);
+
+  /* Header / Brand-Streifen */
+  --egr-color-header-bg:    var(--fw-color-canvas);
+  --egr-color-header-text:  var(--fw-color-text-1);
+  --egr-color-nav-bg:       var(--fw-color-surface);
+  --egr-color-nav-text:     var(--fw-color-text-1);
+  --egr-color-nav-active:   var(--fw-color-fairway-100);
+  --egr-color-nav-active-text: var(--fw-color-fairway-700);
+  --egr-color-nav-hover:    var(--fw-color-surface-2);
+
+  /* Banner-Hero (Variante A: helle Gradient mit dezenter Sportlichkeit) */
+  --egr-banner-bg:
+    linear-gradient(135deg, #F1F8E9 0%, #E8F5E9 35%, #DCEDC8 100%);
+  --egr-banner-image: none;
+  --egr-banner-overlay:
+    radial-gradient(900px 280px at 80% 100%, rgba(46,125,50,0.08), transparent 70%);
+  --egr-banner-text-shadow: none;
+  --egr-banner-logo-ring: var(--fw-color-fairway-600);
+  --egr-color-banner-text: var(--fw-color-fairway-700);
+
+  /* Page-Hintergrund (sehr dezent) */
+  --egr-page-bg-color: #F4F7F5;
+  --egr-page-bg-image:
+    radial-gradient(1200px 600px at 50% -200px, rgba(46,125,50,0.08), transparent 70%);
+
+  /* Tabelle */
+  --egr-table-row-odd:     var(--fw-color-canvas);
+  --egr-table-row-even:    var(--fw-color-surface);
+  --egr-table-row-hover:   var(--fw-color-fairway-100);
+  --egr-table-header-bg:   var(--fw-color-surface-2);
+  --egr-table-header-text: var(--fw-color-text-2);
+  --egr-table-border:      var(--fw-color-border);
+
+  /* Akzent-Stil-Hints (Variante-spezifisch — von application.new.css gelesen) */
+  --egr-style-table-zebra: 1;          /* 1 = Zebra, 0 = nur Hairlines (Variant C) */
+  --egr-style-table-radius: 6px;       /* Outer-Border-Radius */
+  --egr-style-row-tone-top3: 0;        /* 1 = Top-3 mit Rank-Badge (Variant B) */
+  --egr-style-numerals: tabular-nums lining-nums;
+  --egr-style-points-font: var(--fw-font-body);
+  --egr-style-points-weight: 600;
+  --egr-style-points-size: 16px;
+  --egr-style-points-color: var(--fw-color-fairway-700);
+
+  /* Typografie generisch */
+  --egr-font-body:    var(--fw-font-body);
+  --egr-font-display: var(--fw-font-display);
+  --egr-font-mono:    "ui-monospace", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Spacing */
+  --egr-space-1:  var(--fw-space-1);
+  --egr-space-2:  var(--fw-space-2);
+  --egr-space-3:  var(--fw-space-3);
+  --egr-space-4:  var(--fw-space-4);
+  --egr-space-5:  var(--fw-space-5);
+  --egr-space-6:  var(--fw-space-6);
+  --egr-space-8:  var(--fw-space-8);
+  --egr-space-10: var(--fw-space-10);
+  --egr-space-12: var(--fw-space-12);
+  --egr-space-16: var(--fw-space-16);
+
+  /* Radii */
+  --egr-radius-sm: var(--fw-radius-sm);
+  --egr-radius-md: var(--fw-radius-md);
+  --egr-radius-lg: var(--fw-radius-lg);
+  --egr-radius-pill: var(--fw-radius-pill);
+
+  /* Shadows */
+  --egr-shadow-1: var(--fw-shadow-1);
+  --egr-shadow-2: var(--fw-shadow-2);
+
+  /* Motion */
+  --egr-ease:       var(--fw-ease-standard);
+  --egr-duration-1: var(--fw-duration-1);
+  --egr-duration-2: var(--fw-duration-2);
+  --egr-duration-3: var(--fw-duration-3);
+}
+
+/* Variant A bleibt bewusst hell – kein Dark-Mode-Override. */
+
+/* ---- Grundlegender Reset ---- */
+html { -webkit-text-size-adjust: 100%; }
+body#rankings,
+body#rankings_women {
+  background: var(--fw-color-canvas);
+  color: var(--fw-color-text-1);
+  font-family: var(--fw-font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

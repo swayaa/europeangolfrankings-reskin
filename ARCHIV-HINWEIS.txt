@@ -1,0 +1,25 @@
+European Golf Rankings – Offline-Archiv (/ranking)
+==================================================
+
+Ziel-URL: https://www.europeangolfrankings.com/ranking
+
+Was liegt hier?
+---------------
+- ranking-inhaltssnapshot.md … strukturierter Seiteninhalt (Stand: Abruf über Cursor/Fetch), inkl. erster Ranking-Seite (100 Spieler), Filterbeschreibung und Pagination-Hinweis.
+- download-vollstaendig.sh … führt auf DEINEM System einen vollständigen Download inkl. CSS/JS/Bilder aus (wget).
+- mirror-europeangolfrankings/ bzw. mirror/ … nach erfolgreichem Skript-Lauf: HTML unter www.europeangolfrankings.com/ranking.html (Links sind für Offline-Nutzung angepasst).
+  Öffnen: im Terminal „xdg-open“ mit dem normalen Dateipfad (nicht „file://…“ als Shell-Befehl eingeben); „file://…“ nur in die Browser-Adresszeile kopieren.
+
+Hinweis zu wget-Exitcode / rotem Prompt
+---------------------------------------
+Die Seite verweist auf Dateien, die der Server mit 404 beantwortet (z. B. assets/indicator.gif). Dann kann wget trotz erfolgreicher ranking.html einen Fehlercode liefern. Das aktuelle Skript beendet mit Exit 0, sobald ranking.html existiert, und weist auf den Fall hin.
+
+Warum kein 1:1-HTML von hier?
+------------------------------
+Von dieser Agent-Umgebung aus schlagen direkte HTTPS-Aufrufe (wget/curl) wegen Proxy/DNS fehl. Einen pixelgenauen Snapshot mit allen Assets kannst du daher lokal mit dem Skript erzeugen.
+
+Empfehlung für dein Rebuild
+----------------------------
+1. Skript ausführen, Ordner mirror/ durchsehen.
+2. Optional: „SingleFile“-Browsererweiterung oder Playwright „page.pdf“ / DOM-Snapshot für eine einzelne HTML-Datei.
+3. Rechtliches: Inhalte/Daten nur für private Referenz nutzen; bei kommerziellem Nachbau ggf. Rechte der Betreiber klären.

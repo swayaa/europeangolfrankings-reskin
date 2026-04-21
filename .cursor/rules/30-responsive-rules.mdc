@@ -1,0 +1,125 @@
+---
+description: "Responsive- und Mobile-Regeln. Loaded for any CSS work."
+globs:
+  - "redesign/**/*.css"
+---
+
+# Responsive-Regeln
+
+## Breakpoints (alle Varianten identisch)
+
+```
+sm:  480px   /* kleine Phones */
+md:  768px   /* Tablet portrait — Wechsel Tabelle ↔ Cards/Liste */
+lg: 1024px   /* Tablet landscape / kleines Desktop */
+xl: 1280px   /* Desktop */
+```
+
+## Mobile-First-Pflicht
+
+Schreibe Default-Stile für **Mobile** (< 768 px) und ergänze größere Layouts via `@media (min-width: ...)`.
+Ausnahme: Reset-Block und Token-Definitionen (sind Breakpoint-agnostisch).
+
+## `#contentbox`-Käfig auflösen
+
+Das alte CSS hat:
+```css
+div#contentbox { width: 960px; margin: 0 auto; }
+```
+
+Wir ersetzen das durch:
+```css
+div#contentbox {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: clamp(12px, 4vw, 32px);
+}
+```
+
+## Tabelle → Karten/Liste auf Mobile
+
+**Pflichtregel:** Auf < 768 px **darf die Tabelle nicht horizontal scrollen**.
+
+Wahl je Variante:
+- **A — Fairway:** Card-Layout (Grid mit benannten Areas), siehe Spec
+- **B — Tour Pro:** Leaderboard-Card mit Rank-Badge, Hero-Score in Gold
+- **C — Stat-Lab:** Kompakte Liste mit Mono-Numerals, Hairline-Trennern
+
+In **allen** Varianten:
+```css
+@media (max-width: 767px) {
+  table#table tr.header { display: none; }   /* Spalten-Header verstecken */
+  table#table,
+  table#table tr,
+  table#table td {
+    display: block;
+    width: 100% !important;
+  }
+  /* Restliches Layout per grid-template-areas, variantenspezifisch */
+}
+```
+
+## Sidebar-Verhalten
+
+| Breakpoint | Sidebar |
+|---|---|
+| ≥ 1024 px | rechts neben Tabelle, 240–280 px |
+| 768–1023 px | rechts, 200 px (Werbung schmaler) |
+| < 768 px | **unter** der Tabelle, volle Breite |
+
+CSS-Skelett:
+```css
+div#main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+@media (min-width: 1024px) {
+  div#main {
+    grid-template-columns: 1fr 280px;
+  }
+}
+```
+
+## Container-Queries (Progressive)
+
+Wenn die Sidebar je nach Breite andere Werbung-Größen zeigt:
+```css
+div#main aside { container-type: inline-size; }
+@container (min-width: 240px) {
+  aside .wblock img { max-width: 220px; }
+}
+```
+
+Mit `@media`-Fallback für ältere Browser (Safari < 16):
+```css
+@supports not (container-type: inline-size) {
+  /* Standard-@media-Fallback */
+}
+```
+
+## Viewport-Meta-Tag (einmaliger HAML-Edit)
+
+Damit Mobile überhaupt funktioniert, **MUSS** im Layout-HAML stehen:
+```haml
+%meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+```
+
+Ohne dieses Tag ist alle Mobile-Arbeit wirkungslos. Detail-Anleitung in `docs/06-rails-integration.md`.
+
+## Fluid-Typo (alle Varianten)
+
+```css
+:root {
+  font-size: clamp(13px, 0.8125rem + 0.1vw, 15px);
+}
+```
+
+Damit skaliert die Body-Schrift sanft zwischen Mobile und Desktop, ohne hart zu springen.
+
+## Touch-Targets
+
+- Minimum: 44 × 44 px (Apple HIG) bzw. 48 × 48 px (Material)
+- Pagination-Buttons: 44 × 44 px Mobile, 36 × 36 px Desktop
+- Form-Selects: 44 px Höhe Mobile, 36 px Desktop

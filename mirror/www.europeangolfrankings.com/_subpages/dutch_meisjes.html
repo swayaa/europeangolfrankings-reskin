@@ -1,0 +1,3128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>European Golf Rankings: Tours</title>
+  <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.quickselect.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/string_score.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+  
+  <!--[if IE 9]> 
+  <link href="/ie.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE 8]> 
+  <link href="/ie8.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if IE 7]> 
+  <link href="/ie7.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if IE 6]> 
+  <link href="/ie6.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="AmvNt4c8IwCHKWFH6X+jY+3AWzCr2GtE/lElj4X1FU0=" name="csrf-token" />
+</head>
+<body id="tours">
+    
+  <div id="contentbox">
+  
+    <header>
+      <div id="tourbanner">
+    <img alt="Tour-default-green" src="/assets/tour-default-green.jpg" />  </div>
+  <h1 id="tour">European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="/assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="tours">
+  <li id="l_home"><a href="/">Home</a></li>
+
+    <li id="l_rankings"><a href="/ranking">Rankings</a></li>
+
+    <li id="l_events"><a href="/events">Events</a></li>
+
+    <li>
+  <a href="/how-to-use">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="/users/sign_in">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+
+  <nav id='submenue'>
+<ul>
+<li>
+<a href="/ranking">Boys/Men</a>
+</li>
+<li>
+<a href="/ranking_women">Girls/Women</a>
+</li>
+<li class='dropmenu' id='euromenu' style='margin-bottom: 0;'>
+<a class='dropmenu' href='#'>Scandinavian</a>
+<ul style='display: none;'>
+<li class='dropmenuitem'>
+<a href="/rankings/scandinavian_boys">Scandinavian Boys</a>
+<a href="/rankings/scandinavian_girls">Scandinavian Girls</a>
+</li>
+</ul>
+</li>
+<li class='active dropmenu' id='dutchmenu' style='margin-bottom: 0;'>
+<a class='dropmenu' href='#'>Dutch</a>
+<ul style='display: none;'>
+<li class='dropmenuitem'>
+<a href="/tours/Dutch_jongens_u21/ranking">Jongens</a>
+<a href="/tours/Dutch_meisjes_u21/ranking">Meisjes</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<script>
+  $("li.dropmenu").hover(
+    function(){
+      //console.log($(this));
+      $(this).find("ul").toggle();
+      if($(this).find("a.dropmenu").hasClass("active")){
+        $(this).find("a.dropmenu").removeClass("active");
+      }else{
+        $(this).find("a.dropmenu").addClass("active");
+      }
+    }
+  );
+</script>
+
+  
+  
+      
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt"> 
+      <div>
+<div>
+<!-- = render :partial => 'tours/searchbar' -->
+<!-- %h2{:class => 'tours', :style => "background-image: url('#{@tour.pic.url(:thumb)}'); min-height: 90px;"} -->
+<h2 class='tours'>
+German U25+ Damen
+– Ranking
+</h2>
+<div id='searchbar'>
+<form accept-charset="UTF-8" action="/search_tours" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<input id="tour_id" name="tour_id" type="hidden" value="42" />
+<div class='narrow'>
+<label>
+Last Name
+</label>
+<br>
+<input id="last_name" name="last_name" type="text" />
+</div>
+<div class='narrow'>
+<label>
+First Name
+</label>
+<br>
+<input id="first_name" name="first_name" type="text" />
+</div>
+<div>
+<label>
+Age Group
+</label>
+<br>
+<select id="age_group" name="age_group"><option value="All">All</option>
+<option value="U25">U25</option>
+<option value="U25 and younger">U25 &amp; under</option>
+<option value="U23">U23</option>
+<option value="U23 and younger">U23 &amp; under</option>
+<option value="U21">U21</option>
+<option value="U21 and younger">U21 &amp; under</option>
+<option value="U18">U18</option>
+<option value="U18 and younger">U18 &amp; under</option>
+<option value="U16">U16</option>
+<option value="U16 and younger">U16 &amp; under</option>
+<option value="U14">U14</option>
+<option value="U14 and younger">U14 &amp; under</option>
+<option value="U12">U12</option></select>
+</div>
+<div>
+<br>
+<input name="commit" type="submit" value="Suchen" />
+</div>
+</form>
+
+</div>
+
+<table cellspacing='0' id='table'>
+<tr class='table_headfoot'>
+<td colspan='5'>
+Displaying <b>all&nbsp;89</b> Tourplayer
+</td>
+<td align='right' colspan='4'>
+Page
+1
+of
+1
+</td>
+</tr>
+<tr class='header  asc'>
+<th class='ranking'>
+Tour
+<br>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;sort=ranking">Ranking</a>
+</th>
+<th class='points' style='text-align: right'>
+EGR
+<br>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;sort=points">Points</a>
+</th>
+<th class='last_name' style='text-align: left'>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;sort=name"><span class="translation_missing" title="translation missing: en.name">Name</span></a>
+</th>
+<th class='country' style='text-align: left'>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;sort=country">Country</a>
+</th>
+<th class='born'>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;sort=born">Age Group</a>
+</th>
+<th class='score'>
+<!-- - pph[:sort] = "score" -->
+<!-- = link_to t(:avg_score), pph -->
+Avg. Score
+</th>
+<th class='css'>
+<!-- - pph[:sort] = "css" -->
+<!-- = link_to t(:avg_to_css), pph -->
+Avg. to CR
+</th>
+<th class='events' style='border-right: none;'>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;sort=events">Events Counting</a>
+</th>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+1
+</td>
+<td align='right' width='70'>
+11896.90
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122501'>
+DE BOCHDANOVITS, Theresa
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+72.84
+</td>
+<td align='center' width='70'>
+67.99
+</td>
+<td align='center' style='border-right: none;' width='60'>
+8
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+2
+</td>
+<td align='right' width='70'>
+9305.84
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122502'>
+EISENBEIß, Christin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+70.82
+</td>
+<td align='center' width='70'>
+65.98
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+3
+</td>
+<td align='right' width='70'>
+6751.52
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97325'>
+SAPPER, Annabelle
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+73.33
+</td>
+<td align='center' width='70'>
+68.85
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+4
+</td>
+<td align='right' width='70'>
+2947.15
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97296'>
+OPPENHEIMER, Alena
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.83
+</td>
+<td align='center' width='70'>
+70.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+5
+</td>
+<td align='right' width='70'>
+2552.86
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122504'>
+BÜHLE, Vivienne
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+71.29
+</td>
+<td align='center' width='70'>
+68.44
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+6
+</td>
+<td align='right' width='70'>
+2320.92
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97310'>
+CORDES, Anjana
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.77
+</td>
+<td align='center' width='70'>
+70.35
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+7
+</td>
+<td align='right' width='70'>
+1894.30
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106737'>
+ANETSEDER, Maria
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.00
+</td>
+<td align='center' width='70'>
+70.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+8
+</td>
+<td align='right' width='70'>
+1777.42
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97298'>
+NEUMANN, Julia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+72.50
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+9
+</td>
+<td align='right' width='70'>
+1487.77
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122506'>
+HENZE, Dora
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.43
+</td>
+<td align='center' width='70'>
+71.79
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+10
+</td>
+<td align='right' width='70'>
+1110.58
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108038'>
+DE HEUVEL, Rachel
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+76.33
+</td>
+<td align='center' width='70'>
+71.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+11
+</td>
+<td align='right' width='70'>
+777.66
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97317'>
+LOHMANN, Josephine
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.29
+</td>
+<td align='center' width='70'>
+72.01
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+12
+</td>
+<td align='right' width='70'>
+635.45
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108041'>
+BIRKEN, Nina
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+79.17
+</td>
+<td align='center' width='70'>
+74.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+13
+</td>
+<td align='right' width='70'>
+581.17
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122513'>
+RENGSTORF, Fenja
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+74.00
+</td>
+<td align='center' width='70'>
+72.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+14
+</td>
+<td align='right' width='70'>
+528.27
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106741'>
+AXHAUSEN, Isabel
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+78.44
+</td>
+<td align='center' width='70'>
+73.71
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+15
+</td>
+<td align='right' width='70'>
+496.61
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97302'>
+HEMPEL, Sophie-Charlott
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.11
+</td>
+<td align='center' width='70'>
+73.92
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+16
+</td>
+<td align='right' width='70'>
+454.58
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97299'>
+SCHLENDER, Maike
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.67
+</td>
+<td align='center' width='70'>
+73.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+17
+</td>
+<td align='right' width='70'>
+403.03
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108040'>
+SCHWABE, Clara
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+78.00
+</td>
+<td align='center' width='70'>
+73.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+18
+</td>
+<td align='right' width='70'>
+394.08
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108039'>
+RÜBENKAMP HOFF, Lisa
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+72.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+19
+</td>
+<td align='right' width='70'>
+377.72
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122507'>
+EISENHUT, Anni
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.50
+</td>
+<td align='center' width='70'>
+72.10
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+20
+</td>
+<td align='right' width='70'>
+358.79
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106739'>
+SCHUSTER, Nicola
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+80.33
+</td>
+<td align='center' width='70'>
+74.93
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+21
+</td>
+<td align='right' width='70'>
+343.09
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119937'>
+TEEUWEN, Maximiliane
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.33
+</td>
+<td align='center' width='70'>
+73.03
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+22
+</td>
+<td align='right' width='70'>
+300.03
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108042'>
+ELSÄSSER, Thea Kristina
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+79.33
+</td>
+<td align='center' width='70'>
+74.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+23
+</td>
+<td align='right' width='70'>
+277.65
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119344'>
+DICKEL, Maike
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.33
+</td>
+<td align='center' width='70'>
+72.33
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+24
+</td>
+<td align='right' width='70'>
+270.01
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119938'>
+DANGE, Denise
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+78.33
+</td>
+<td align='center' width='70'>
+76.03
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+25
+</td>
+<td align='right' width='70'>
+228.14
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108044'>
+MATTHEW, Mandy
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+81.17
+</td>
+<td align='center' width='70'>
+77.92
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+26
+</td>
+<td align='right' width='70'>
+205.99
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108043'>
+SCHALLENBERG, Katharina
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+82.33
+</td>
+<td align='center' width='70'>
+77.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+27
+</td>
+<td align='right' width='70'>
+199.78
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122514'>
+KRIEB, Celina-Eileen
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.67
+</td>
+<td align='center' width='70'>
+74.27
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+28
+</td>
+<td align='right' width='70'>
+169.52
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119939'>
+JUNG, Victoria
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+80.33
+</td>
+<td align='center' width='70'>
+78.03
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+29
+</td>
+<td align='right' width='70'>
+159.32
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/113036'>
+RAHLFS, Felicitas
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+75.67
+</td>
+<td align='center' width='70'>
+73.87
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+30
+</td>
+<td align='right' width='70'>
+152.26
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108045'>
+LOYE, Franziska
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+83.33
+</td>
+<td align='center' width='70'>
+78.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+31
+</td>
+<td align='right' width='70'>
+136.82
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97300'>
+WIRTH, Ira-Christina
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+80.67
+</td>
+<td align='center' width='70'>
+76.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+32
+</td>
+<td align='right' width='70'>
+131.67
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97292'>
+KRELLE, Sabine
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+80.80
+</td>
+<td align='center' width='70'>
+78.08
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+33
+</td>
+<td align='right' width='70'>
+125.39
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108046'>
+KASPEREK, Merle
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+84.00
+</td>
+<td align='center' width='70'>
+79.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+34
+</td>
+<td align='right' width='70'>
+123.84
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119940'>
+PAULSBERG, Vanessa
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+81.67
+</td>
+<td align='center' width='70'>
+79.37
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+35
+</td>
+<td align='right' width='70'>
+99.06
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106740'>
+NEUMANN-MANGOLDT, Ramona
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+80.67
+</td>
+<td align='center' width='70'>
+74.57
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+36
+</td>
+<td align='right' width='70'>
+87.30
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122510'>
+WILHELM, Hannah
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+83.67
+</td>
+<td align='center' width='70'>
+81.37
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+37
+</td>
+<td align='right' width='70'>
+85.08
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108048'>
+STRELEN, Virginia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+84.33
+</td>
+<td align='center' width='70'>
+79.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+37
+</td>
+<td align='right' width='70'>
+85.08
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108047'>
+VAN DER SCHALK, Nele
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+84.33
+</td>
+<td align='center' width='70'>
+79.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+39
+</td>
+<td align='right' width='70'>
+78.49
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/107378'>
+BÖTTINGER, Antonia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+79.33
+</td>
+<td align='center' width='70'>
+78.03
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+40
+</td>
+<td align='right' width='70'>
+61.79
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108063'>
+HUFNAGL, Sophie
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+81.00
+</td>
+<td align='center' width='70'>
+76.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+40
+</td>
+<td align='right' width='70'>
+61.79
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108051'>
+LIEHS, Marie-Theres
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+83.60
+</td>
+<td align='center' width='70'>
+79.10
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+42
+</td>
+<td align='right' width='70'>
+61.50
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108066'>
+HAFENRICHTER, Julia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+83.00
+</td>
+<td align='center' width='70'>
+78.84
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+43
+</td>
+<td align='right' width='70'>
+41.89
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106738'>
+REXROTH, Isabella
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+79.67
+</td>
+<td align='center' width='70'>
+73.57
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+44
+</td>
+<td align='right' width='70'>
+40.43
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97326'>
+BILLAND, Alicia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+82.33
+</td>
+<td align='center' width='70'>
+76.23
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+44
+</td>
+<td align='right' width='70'>
+40.43
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122515'>
+STINN, Emilie
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+82.33
+</td>
+<td align='center' width='70'>
+76.23
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+44
+</td>
+<td align='right' width='70'>
+40.43
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106742'>
+KOKOTT, Anna Maria
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+83.00
+</td>
+<td align='center' width='70'>
+77.46
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+47
+</td>
+<td align='right' width='70'>
+35.83
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108049'>
+SEMMLER, Nadja
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+85.00
+</td>
+<td align='center' width='70'>
+80.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+48
+</td>
+<td align='right' width='70'>
+34.51
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119941'>
+MLETZKO, Kristina
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+85.33
+</td>
+<td align='center' width='70'>
+83.03
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+49
+</td>
+<td align='right' width='70'>
+33.56
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119936'>
+LINDLAU, Jessica
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+84.00
+</td>
+<td align='center' width='70'>
+80.20
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+50
+</td>
+<td align='right' width='70'>
+24.50
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122518'>
+RAUSCH, Toni
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+75.20
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+50
+</td>
+<td align='right' width='70'>
+24.50
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122517'>
+EBERHARD, Luisa
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+79.67
+</td>
+<td align='center' width='70'>
+77.87
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+52
+</td>
+<td align='right' width='70'>
+18.15
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/114146'>
+GEERTSEN, Wencke
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+83.33
+</td>
+<td align='center' width='70'>
+81.93
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+52
+</td>
+<td align='right' width='70'>
+18.15
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/114147'>
+TÖDTER, Charlotte
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+80.00
+</td>
+<td align='center' width='70'>
+78.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122505'>
+BECHTOLD, Marie
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+83.67
+</td>
+<td align='center' width='70'>
+79.77
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/103937'>
+BRÄDLE, Hannah
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+88.00
+</td>
+<td align='center' width='70'>
+87.70
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122503'>
+PASCHEN, Julia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+85.50
+</td>
+<td align='center' width='70'>
+81.00
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108050'>
+CHANG, Mi
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+85.50
+</td>
+<td align='center' width='70'>
+80.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108052'>
+ERICHSEN, lndra
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+86.00
+</td>
+<td align='center' width='70'>
+81.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119946'>
+WEINSZIEHR, Luisa
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+92.50
+</td>
+<td align='center' width='70'>
+90.20
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106900'>
+BRIX, Julia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+100.50
+</td>
+<td align='center' width='70'>
+97.70
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122508'>
+STEINHOFF, Sirah
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+77.00
+</td>
+<td align='center' width='70'>
+73.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106744'>
+ZEITLER, Gloria
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+82.00
+</td>
+<td align='center' width='70'>
+75.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122511'>
+SEMESDIEK, Julia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+85.00
+</td>
+<td align='center' width='70'>
+82.70
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122512'>
+SPIES, Emily
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+85.50
+</td>
+<td align='center' width='70'>
+83.20
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/106743'>
+STEINBERGER, Stefanie
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+89.50
+</td>
+<td align='center' width='70'>
+83.40
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/104385'>
+KOWOHL, Laura
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+
+</td>
+<td align='center' width='70'>
+
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/97323'>
+REMBERG-SCHIMPF, Esther
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+87.50
+</td>
+<td align='center' width='70'>
+82.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/122516'>
+ROMANO, Laura-Lucia
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+87.00
+</td>
+<td align='center' width='70'>
+80.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119945'>
+JANSEN, Nina
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+91.00
+</td>
+<td align='center' width='70'>
+88.70
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119944'>
+TROCKLE, Paulina
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+86.00
+</td>
+<td align='center' width='70'>
+83.70
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119943'>
+KNAPPHEIDE, Isabel
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+85.50
+</td>
+<td align='center' width='70'>
+83.20
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108061'>
+WINN, Birgit
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+96.50
+</td>
+<td align='center' width='70'>
+91.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108064'>
+KLANG, Tabea
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+84.00
+</td>
+<td align='center' width='70'>
+79.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108065'>
+BEJEUHR, Anna
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+84.50
+</td>
+<td align='center' width='70'>
+79.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108060'>
+MARTIN, Manuela
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+93.50
+</td>
+<td align='center' width='70'>
+88.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108067'>
+RICHTER, Vivien
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+88.50
+</td>
+<td align='center' width='70'>
+83.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108068'>
+DOMANN, Theresa
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+93.50
+</td>
+<td align='center' width='70'>
+88.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108059'>
+SPIESS, Larissa
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+91.50
+</td>
+<td align='center' width='70'>
+86.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/114148'>
+KOTTMANN, Louisa
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+86.00
+</td>
+<td align='center' width='70'>
+84.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/114149'>
+WENDENBURG WINTER, Sonka
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+88.00
+</td>
+<td align='center' width='70'>
+86.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108058'>
+ADAM, Annette
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+91.00
+</td>
+<td align='center' width='70'>
+86.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119392'>
+HEINZ-SCHWITZGEBEL, Jil
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+88.50
+</td>
+<td align='center' width='70'>
+85.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108057'>
+KLAMMER, Nina
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+90.50
+</td>
+<td align='center' width='70'>
+85.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108056'>
+LÜTTGENS, Eva
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+89.50
+</td>
+<td align='center' width='70'>
+84.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108055'>
+BRINKEN, Carolin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+89.00
+</td>
+<td align='center' width='70'>
+84.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108054'>
+KLOSE, Jasmin
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+89.00
+</td>
+<td align='center' width='70'>
+84.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108053'>
+GRAUMANN, Daniela
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+87.50
+</td>
+<td align='center' width='70'>
+82.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/119942'>
+KURZ, Laura
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+85.00
+</td>
+<td align='center' width='70'>
+82.70
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='center' width='50'>
+<!-- = c -->
+<!-- - c = c + 1 -->
+54
+</td>
+<td align='right' width='70'>
+0.00
+</td>
+<td align='left' width='200'>
+<!-- %a{:href => "/players/#{player.player.id}/Counting/Both/All"} -->
+<!-- = "#{player.full_name}" -->
+<a href='/tours/Dutch_meisjes_u21/tour-player/108062'>
+URBAN, lsabella
+</a>
+</td>
+<td align='left' width='140'>
+Germany
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+99.50
+</td>
+<td align='center' width='70'>
+94.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='table_headfoot'>
+<td colspan='5'>
+
+</td>
+<td align='right' colspan='4'>
+Players per Page:
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;per_page=10">10</a>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;per_page=25">25</a>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;per_page=50">50</a>
+100
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;per_page=200">200</a>
+<a href="/tours/Dutch_meisjes_u21/ranking?order=ASC&amp;per_page=100000">All</a>
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="/seite/copyright">Copyright/Trademark</a></li>
+    <li><a href="/seite/privacy">Privacy</a></li>
+    <li><a href="/seite/terms">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="/seite/contact">Contact</a></li>
+    <li class="last"><a href="/seite/imprint">Impressum</a></li>
+  </ul>
+</nav>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//pw.europeangolfrankings.com/piwik/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '3']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//pw.europeangolfrankings.com/piwik/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+
+
+    </footer>
+
+  </div>
+</body>
+</html>

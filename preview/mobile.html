@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EGR Re-Skin — Mobile Preview (390 × 844)</title>
+  <style>
+    :root { color-scheme: dark; }
+    html, body { margin: 0; padding: 0; min-height: 100%; background: #0E1620;
+                 font-family: ui-sans-serif, system-ui, sans-serif; color: #fff; }
+    header.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+                 padding: 12px 16px; background: rgba(255,255,255,.03);
+                 border-bottom: 1px solid rgba(255,255,255,.08); }
+    header.bar h1 { margin: 0; font-size: 13px; letter-spacing: .04em;
+                    color: #9DA3AB; font-weight: 500; flex: 1; min-width: 200px; }
+    header.bar select, header.bar a {
+      background: rgba(255,255,255,.06); color: #fff;
+      border: 1px solid rgba(255,255,255,.16);
+      padding: 6px 10px; border-radius: 8px; font-size: 12px;
+      text-decoration: none; cursor: pointer;
+    }
+    header.bar a.is-active { background: #2E7D32; border-color: #2E7D32; }
+    .stage { display: flex; flex-wrap: wrap; align-items: flex-start;
+             justify-content: center; padding: 24px; gap: 24px; }
+    .device {
+      width: 390px; height: 844px;
+      border-radius: 32px;
+      border: 6px solid #1F2937;
+      box-shadow: 0 24px 48px rgba(0,0,0,.5);
+      overflow: hidden;
+      background: #0E1620;
+      position: relative;
+      flex: none;
+    }
+    .device::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 110px; height: 22px; background: #000;
+      border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;
+      z-index: 10;
+    }
+    iframe { border: 0; width: 100%; height: 100%; display: block; }
+    .label { color: #9DA3AB; font-size: 11px; letter-spacing: .12em;
+             text-transform: uppercase; text-align: center; padding-top: 8px; }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <h1 id="title">Mobile Preview · 390 × 844</h1>
+    <a href="?v=a" data-v="a">A · Fairway</a>
+    <a href="?v=b" data-v="b">B · Tour Pro</a>
+    <a href="?v=c" data-v="c">C · Stat-Lab</a>
+    <a href="?baseline=1" data-v="baseline">Baseline</a>
+    <select id="page-pick" aria-label="Page"></select>
+  </header>
+  <div class="stage">
+    <div>
+      <div class="device"><iframe id="frame" src="about:blank"></iframe></div>
+      <div class="label" id="lbl"></div>
+    </div>
+  </div>
+  <script>
+    var pages = [
+      ['home.html','Home'],
+      ['ranking.html','Rankings · Boys/Men'],
+      ['ranking_women.html','Rankings · Girls/Women'],
+      ['events.html','Events'],
+      ['how-to-use.html','How it Works'],
+      ['about-us.html','About Us'],
+      ['sign_in.html','Log In'],
+      ['sign_up.html','Register'],
+      ['male.html','Male Overview'],
+      ['female.html','Female Overview'],
+      ['contact.html','Contact'],
+      ['imprint.html','Impressum'],
+      ['scandinavian_boys.html','Scandinavian Boys'],
+      ['dutch_jongens.html','Dutch · Jongens']
+    ];
+    var p = new URLSearchParams(location.search);
+    var v = (p.get('v') || 'a').toLowerCase();
+    var b = p.get('baseline') === '1';
+    var page = p.get('page') || p.get('p') || 'ranking.html';
+    var label = b ? 'Baseline (Original)' : 'Variant ' + v.toUpperCase();
+    document.getElementById('lbl').textContent = label + ' · ' + page;
+    document.getElementById('title').textContent = 'Mobile Preview · 390 × 844 · ' + label;
+
+    var current = b ? 'baseline' : v;
+    document.querySelectorAll('header.bar a').forEach(function(a){
+      var dv = a.getAttribute('data-v');
+      if (dv === current) a.classList.add('is-active');
+      a.href = (dv === 'baseline' ? '?baseline=1' : '?v=' + dv) + '&page=' + page;
+    });
+    var sel = document.getElementById('page-pick');
+    pages.forEach(function(pg){
+      var o = document.createElement('option');
+      o.value = pg[0]; o.textContent = pg[1];
+      if (pg[0] === page) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', function(){
+      var qs = b ? '?baseline=1' : '?v=' + v;
+      location.href = '?' + (b ? 'baseline=1' : 'v=' + v) + '&page=' + sel.value;
+    });
+
+    var url = page + '?' + (b ? 'baseline=1' : 'v=' + v) + '&_=' + Date.now();
+    document.getElementById('frame').src = url;
+  </script>
+</body>
+</html>

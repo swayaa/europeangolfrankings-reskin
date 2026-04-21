@@ -1,0 +1,98 @@
+---
+description: "Wahl der aktiven Design-Variante und Verweis auf Spec / Token-File. Loaded when working on redesign CSS."
+globs:
+  - "redesign/**/*.css"
+  - "preview/**/*.html"
+  - "docs/design-systems/**/*.md"
+---
+
+# Aktive Design-Variante
+
+> **Aktuell aktiv:** keine fest gewählt — der Pitch zeigt alle drei. Nach Entscheidung wird hier die finale Wahl dokumentiert (z. B. „aktiv: A").
+
+## Übersicht der Varianten
+
+| ID | Name | Spec | Tokens |
+|---|---|---|---|
+| **A** | Fairway Modern | `docs/design-systems/variant-a-fairway-modern.md` | `redesign/tokens/variant-a-fairway-modern.css` |
+| **B** | Tour Pro Dark | `docs/design-systems/variant-b-tour-pro-dark.md` | `redesign/tokens/variant-b-tour-pro-dark.css` |
+| **C** | Stat-Lab Editorial | `docs/design-systems/variant-c-stat-lab-editorial.md` | `redesign/tokens/variant-c-stat-lab-editorial.css` |
+
+## Token-Architektur (zwei Schichten)
+
+Wir nutzen **zwei Schichten** von CSS Custom Properties:
+
+### Schicht 1 — Variant-Prefix-Tokens (`--fw-*`, `--tp-*`, `--sl-*`)
+
+Brand-spezifische Rohwerte. Existieren nur in `redesign/tokens/variant-X.css`.
+Beispiel: `--fw-color-fairway-700: #2E7D32;`
+
+- Bleibt in `tokens/`-Files
+- **NIEMALS** direkt in `application.new.css` referenzieren
+- Variant-Prefixe verhindern Kollisionen, falls zwei Varianten parallel verglichen werden
+
+### Schicht 2 — Semantische Aliasse (`--egr-*`)
+
+Universelle Aliasse, die auf Schicht-1-Tokens zeigen. Werden im Bottom-Block jeder
+Variant-Token-Datei definiert. So sieht das Mapping aus:
+
+```css
+/* In variant-a-fairway-modern.css */
+:root {
+  --egr-color-accent: var(--fw-color-fairway-600);
+  --egr-color-canvas: var(--fw-color-canvas);
+  /* … */
+}
+```
+
+`application.new.css` referenziert **ausschließlich** `--egr-*` Tokens.
+Dadurch funktioniert eine einzige Komponenten-CSS-Datei mit allen drei Varianten.
+
+| Schicht | Wo definiert | Wo verwendet | Beispiel |
+|---|---|---|---|
+| 1 | `tokens/variant-X.css` | nur in derselben Datei | `--fw-color-fairway-700` |
+| 2 | `tokens/variant-X.css` (unten) | `application.new.css` | `--egr-color-accent` |
+
+## Wenn du an `redesign/application.new.css` arbeitest
+
+1. **Nur** `--egr-*` Tokens referenzieren — nie `--fw-*`, `--tp-*` oder `--sl-*`
+2. Wenn ein neuer semantischer Token gebraucht wird → erst in **allen drei** Token-Files dem `:root`-Block hinzufügen
+3. Spec-Lesen (`docs/design-systems/variant-X.md`) bei Variant-spezifischen Verhaltens-Hooks (z. B. `--egr-style-row-tone-top3` für Variante B's Top-3-Badges)
+
+## Verbotene Slop-Patterns (übernommen aus Cursor-Canvas-Skill)
+
+Auch in regulärer CSS gilt:
+
+- ❌ Gradients, ausser explizit in der Variant-Spec freigegeben (Variante B: ein gewollter Gold-Gradient nur am Top-3-Badge)
+- ❌ Multiple Box-Shadows auf jedem Element — Schatten sind selten und purposeful
+- ❌ „Wall of cards" — nicht jede `<section>` ist eine Card
+- ❌ Rainbow-Coloring — Akzent-Farbe ist sparsam, neutral dominiert
+- ❌ Decorative Borders — Borders sind strukturell
+
+## Beispiel: was du tun sollst
+
+```css
+/* Gut — semantischer Token in application.new.css */
+table#table td:first-child {
+  color: var(--egr-style-points-color);
+  font-weight: var(--egr-style-points-weight);
+  font-variant-numeric: var(--egr-style-numerals);
+}
+
+/* Auch gut — Variant-Prefix-Token in tokens/variant-a-fairway-modern.css */
+:root {
+  --fw-color-fairway-700: #2E7D32;
+  --egr-style-points-color: var(--fw-color-fairway-700);
+}
+
+/* Schlecht — Hex direkt in application.new.css */
+table#table td:first-child {
+  color: #2E7D32;
+  font-weight: bold;
+}
+
+/* Schlecht — Variant-Prefix in application.new.css */
+table#table td:first-child {
+  color: var(--fw-color-fairway-700);  /* funktioniert nur für Variant A */
+}
+```

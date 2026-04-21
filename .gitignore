@@ -1,0 +1,17 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Python (build_preview.py)
+__pycache__/
+*.pyc
+.venv/
+
+# Build artefacts (we ship preview/ from source, so nothing to ignore here)
+
+# Local backups
+*.bak
+preview/index.html.bak

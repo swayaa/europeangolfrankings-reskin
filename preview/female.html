@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>European Golf Rankings — Re-Skin Preview</title>
+
+  <!-- ───── Original-CSS (Baseline). Wird bei aktivem Re-Skin deaktiviert. ───── -->
+  <link id="legacy-css" href="assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <!-- ───── jQuery + Original-Scripts (DOM bleibt 1:1) ───── -->
+  <script src="assets/jquery.js"></script>
+  <script src="assets/jquery_ujs.js"></script>
+  <script src="assets/jquery.quickselect.min.js"></script>
+  <script src="assets/string_score.min.js"></script>
+  <script src="assets/application.js"></script>
+
+  <!-- ───── Variant-Switcher: ?v=a|b|c   ?baseline=1 zeigt das Original ───── -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var v = (p.get('v') || 'a').toLowerCase();
+      if (!/^[abc]$/.test(v)) v = 'a';
+      var baseline = p.get('baseline');
+      var tokenMap = {
+        a: 'redesign/tokens/variant-a-fairway-modern.css',
+        b: 'redesign/tokens/variant-b-tour-pro-dark.css',
+        c: 'redesign/tokens/variant-c-stat-lab-editorial.css'
+      };
+      function loadCss(href) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet'; l.href = href;
+        document.head.appendChild(l);
+      }
+      var cb = '?_=' + Date.now();
+      if (baseline !== '1') {
+        loadCss(tokenMap[v] + cb);
+        loadCss('redesign/application.new.css' + cb);
+      }
+      window.__EGR_VARIANT = v.toUpperCase();
+      window.__EGR_BASELINE = baseline === '1';
+      window.addEventListener('DOMContentLoaded', function () {
+        var legacy = document.getElementById('legacy-css');
+        if (legacy && baseline !== '1') legacy.disabled = true;
+        if (baseline !== '1') document.body.setAttribute('data-variant', v.toUpperCase());
+      });
+    })();
+  </script>
+
+  <!-- ───── Stufe-1-JS-Helfer (mit Cache-Buster) ───── -->
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'redesign/application.new.js?_=' + Date.now();
+      s.defer = true;
+      document.head.appendChild(s);
+    })();
+  </script>
+</head>
+<body id="home" data-egr-page="gender-overview">
+    
+
+  <div id="contentbox">
+    <header>
+      <h1>European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="home">
+  <li id="l_home"><a href="home.html">Home</a></li>
+
+    <li id="l_rankings"><a href="ranking_women.html">Rankings</a></li>
+
+    <li id="l_events"><a href="#">Events</a></li>
+
+    <li>
+  <a href="how-to-use.html">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="sign_in.html">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+  <nav id='submenue'>
+    <ul>
+      <li><a href="male.html">Boys/Men</a></li>
+      <li class="active"><a href="female.html">Girls/Women</a></li>
+    </ul>
+  </nav>
+
+
+  
+  
+  
+      
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt" style="width: 100%"> 
+      <div class='top5'>
+<h1>Girls/Women</h1>
+<!-- %p{:style=>"margin-left: 34px;"} -->
+<!-- %b Coming soon… -->
+<div class='top5_nations'>
+<h2 class='top5'>
+<span class="translation_missing" title="translation missing: en.open">Open</span>
+</h2>
+<ul>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-1.png);'>
+<img alt="Spain" src="assets/flag/spain.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+MARTIN SA..., P.
+</a>
+<br>
+ESP, U25
+<br>
+Avg. to CR 62.95
+<br>
+EGR Pts 61914.40
+<br>
+Counting Events 4
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-2.png);'>
+<img alt="England" src="assets/flag/england.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+NAUGHTON, C.
+</a>
+<br>
+ENG, U18
+<br>
+Avg. to CR 66.50
+<br>
+EGR Pts 39001.50
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-3.png);'>
+<img alt="Italy" src="assets/flag/italy.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+APARICIO, N.
+</a>
+<br>
+ITA, U21
+<br>
+Avg. to CR 66.75
+<br>
+EGR Pts 36276.50
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-4.png);'>
+<img alt="France" src="assets/flag/france.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+ZHAO, G.
+</a>
+<br>
+FRA, U18
+<br>
+Avg. to CR 65.94
+<br>
+EGR Pts 35574.60
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-5.png);'>
+<img alt="Denmark" src="assets/flag/denmark.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+BRENT-PET..., B.
+</a>
+<br>
+DNK, U21
+<br>
+Avg. to CR 66.40
+<br>
+EGR Pts 34285.70
+<br>
+Counting Events 9
+</span>
+</li>
+</ul>
+<p class='complete_ranking complete_ranking_player'>
+<a href="ranking_women.html"><span class="translation_missing" title="translation missing: en.view_complete_rankings">View Complete Rankings</span></a>
+</p>
+</div>
+<div class='top5_nations'>
+<h2 class='top5'>
+<span class="translation_missing" title="translation missing: en.u18">U18</span>
+</h2>
+<ul>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-1.png);'>
+<img alt="England" src="assets/flag/england.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+NAUGHTON, C.
+</a>
+<br>
+ENG, U18
+<br>
+Avg. to CR 66.50
+<br>
+EGR Pts 39001.50
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-2.png);'>
+<img alt="France" src="assets/flag/france.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+ZHAO, G.
+</a>
+<br>
+FRA, U18
+<br>
+Avg. to CR 65.94
+<br>
+EGR Pts 35574.60
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-3.png);'>
+<img alt="Spain" src="assets/flag/spain.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+GARCIA TEROL, A.
+</a>
+<br>
+ESP, U18
+<br>
+Avg. to CR 67.86
+<br>
+EGR Pts 30222.80
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-4.png);'>
+<img alt="France" src="assets/flag/france.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+PETITCOLAS, M.
+</a>
+<br>
+FRA, U18
+<br>
+Avg. to CR 67.65
+<br>
+EGR Pts 27825.70
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-5.png);'>
+<img alt="England" src="assets/flag/england.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+WILSON, E.
+</a>
+<br>
+ENG, U18
+<br>
+Avg. to CR 69.16
+<br>
+EGR Pts 27334.00
+<br>
+Counting Events 9
+</span>
+</li>
+</ul>
+<p class='complete_ranking complete_ranking_player'>
+<a href="search.html?gender=F&amp;last_name=&amp;first_name=&amp;club=&amp;country=Europe&amp;open_closed=Open&amp;age_group=U18"><span class="translation_missing" title="translation missing: en.view_complete_rankings">View Complete Rankings</span></a>
+</p>
+</div>
+<div class='top5_nations'>
+<h2 class='top5'>
+<span class="translation_missing" title="translation missing: en.u16">U16</span>
+</h2>
+<ul>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-1.png);'>
+<img alt="Spain" src="assets/flag/spain.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+REVUELTA ..., A.
+</a>
+<br>
+ESP, U16
+<br>
+Avg. to CR 67.64
+<br>
+EGR Pts 29564.20
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-2.png);'>
+<img alt="Switzerland" src="assets/flag/switzerland.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+GUYOT, L.
+</a>
+<br>
+CHE, U16
+<br>
+Avg. to CR 67.68
+<br>
+EGR Pts 23252.80
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-3.png);'>
+<img alt="China" src="assets/flag/china.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+WONG, S.
+</a>
+<br>
+CHN, U16
+<br>
+Avg. to CR 67.98
+<br>
+EGR Pts 23134.20
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-4.png);'>
+<img alt="Scotland" src="assets/flag/scotland.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+MCDONALD, C.
+</a>
+<br>
+SCO, U16
+<br>
+Avg. to CR 69.60
+<br>
+EGR Pts 15098.10
+<br>
+Counting Events 9
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-5.png);'>
+<img alt="Italy" src="assets/flag/italy.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+ALBINI, M.
+</a>
+<br>
+ITA, U16
+<br>
+Avg. to CR 69.63
+<br>
+EGR Pts 12532.30
+<br>
+Counting Events 9
+</span>
+</li>
+</ul>
+<p class='complete_ranking complete_ranking_player'>
+<a href="search.html?gender=F&amp;last_name=&amp;first_name=&amp;club=&amp;country=Europe&amp;open_closed=Open&amp;age_group=U16"><span class="translation_missing" title="translation missing: en.view_complete_rankings">View Complete Rankings</span></a>
+</p>
+</div>
+<div class='top5_nations'>
+<h2 class='top5'>
+<span class="translation_missing" title="translation missing: en.u14">U14</span>
+</h2>
+<ul>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-1.png);'>
+<img alt="France" src="assets/flag/france.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+BASTONI, E.
+</a>
+<br>
+FRA, U14
+<br>
+Avg. to CR 69.91
+<br>
+EGR Pts 17052.60
+<br>
+Counting Events 8
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-2.png);'>
+<img alt="Italy" src="assets/flag/italy.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+TASSONI TEG, G.
+</a>
+<br>
+ITA, U14
+<br>
+Avg. to CR 71.84
+<br>
+EGR Pts 6450.54
+<br>
+Counting Events 8
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-3.png);'>
+<img alt="Scotland" src="assets/flag/scotland.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+WALTERS, S.
+</a>
+<br>
+SCO, U14
+<br>
+Avg. to CR 71.88
+<br>
+EGR Pts 5849.61
+<br>
+Counting Events 8
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-4.png);'>
+<img alt="France" src="assets/flag/france.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+LEBLOND, E.
+</a>
+<br>
+FRA, U14
+<br>
+Avg. to CR 72.76
+<br>
+EGR Pts 5454.56
+<br>
+Counting Events 8
+</span>
+</li>
+<li>
+<span class='flagblock' style='background-image: url(/assets/top5-5.png);'>
+<img alt="Italy" src="assets/flag/italy.png" />
+</span>
+<a href='#'>
+<img src='assets/default.jpg'>
+</a>
+<span class='playerblock'>
+<a href='#'>
+COLOMBO, S.
+</a>
+<br>
+ITA, U14
+<br>
+Avg. to CR 72.48
+<br>
+EGR Pts 4786.32
+<br>
+Counting Events 8
+</span>
+</li>
+</ul>
+<p class='complete_ranking complete_ranking_player'>
+<a href="search.html?gender=F&amp;last_name=&amp;first_name=&amp;club=&amp;country=Europe&amp;open_closed=Open&amp;age_group=U14"><span class="translation_missing" title="translation missing: en.view_complete_rankings">View Complete Rankings</span></a>
+</p>
+</div>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="copyright.html">Copyright/Trademark</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="last"><a href="imprint.html">Impressum</a></li>
+  </ul>
+</nav>
+
+
+
+
+
+    </footer>
+
+  </div>
+
+<!-- ════════════════ Preview-only Variant-Switcher ════════════════ -->
+<style>
+  .egr-preview-switcher {
+    position: fixed; right: 16px; bottom: 16px; z-index: 2147483000;
+    display: flex; flex-direction: column; gap: 6px;
+    background: #0F1620; color: #fff;
+    padding: 10px 12px; border-radius: 12px;
+    font: 12px/1.3 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+    max-width: 260px;
+    pointer-events: auto;
+  }
+  .egr-preview-switcher * { box-sizing: border-box; }
+  .egr-preview-switcher strong {
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    opacity: .65; color: #fff;
+  }
+  .egr-preview-switcher .row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .egr-preview-switcher a {
+    display: inline-block; padding: 6px 10px; border-radius: 6px;
+    background: #1F2A37; color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 11px; transition: background .15s, transform .1s;
+    border: 1px solid transparent; cursor: pointer;
+  }
+  .egr-preview-switcher a:hover { background: #2A3744; }
+  .egr-preview-switcher a:active { transform: translateY(1px); }
+  .egr-preview-switcher a.is-active {
+    background: #2E7D32; border-color: #66BB6A; color: #fff;
+  }
+  /* Select: dunkel + opake Optionen, in jedem OS lesbar */
+  .egr-preview-switcher select {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-color: #1F2A37;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #fff 50%),
+      linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position: calc(100% - 14px) 12px, calc(100% - 9px) 12px;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    color: #fff !important;
+    border: 1px solid #3B4A5A;
+    padding: 6px 26px 6px 8px; border-radius: 6px;
+    font: 600 11px/1.3 -apple-system, system-ui, sans-serif;
+    width: 100%;
+    cursor: pointer;
+  }
+  .egr-preview-switcher select:focus {
+    outline: 2px solid #66BB6A; outline-offset: 1px;
+  }
+  /* Optionen: opaker dunkler Hintergrund, weisser Text — Chrome+Firefox+WebKit */
+  .egr-preview-switcher select option {
+    background: #1F2A37 !important;
+    color: #fff !important;
+  }
+  .egr-preview-switcher select option:checked,
+  .egr-preview-switcher select option:hover {
+    background: #2E7D32 !important;
+    color: #fff !important;
+  }
+  @media print { .egr-preview-switcher { display: none; } }
+  @media (max-width: 480px) {
+    .egr-preview-switcher { right: 8px; bottom: 8px; padding: 8px; max-width: 180px; }
+  }
+</style>
+<aside class="egr-preview-switcher" id="egr-switcher" aria-label="Preview-Switcher" data-egr-noprint>
+  <strong>Variant</strong>
+  <div class="row" id="egr-switcher-variants"></div>
+  <strong>Page</strong>
+  <select id="egr-switcher-page"></select>
+</aside>
+<script>
+  (function () {
+    var variants = [['a','A · Fairway'], ['b','B · Tour Pro'], ['c','C · Stat-Lab'], ['baseline','Baseline']];
+    var pages = [["home.html", "Home"], ["ranking.html", "Rankings \u00b7 Boys/Men"], ["ranking_women.html", "Rankings \u00b7 Girls/Women"], ["scandinavian_boys.html", "Scandinavian Boys"], ["scandinavian_girls.html", "Scandinavian Girls"], ["dutch_jongens.html", "Dutch \u00b7 Jongens"], ["dutch_meisjes.html", "Dutch \u00b7 Meisjes"], ["events.html", "Events"], ["how-to-use.html", "How it Works"], ["about-us.html", "About Us"], ["tours.html", "Tours"], ["male.html", "Male Overview"], ["female.html", "Female Overview"], ["sign_in.html", "Log In"], ["sign_up.html", "Register"], ["contact.html", "Contact"], ["imprint.html", "Impressum"], ["privacy.html", "Privacy"], ["terms.html", "Terms of Use"], ["copyright.html", "Copyright/Trademark"], ["search.html", "Search Results"]];
+    var p = new URLSearchParams(location.search);
+    var current = (p.get('baseline') === '1') ? 'baseline' : (p.get('v') || 'a').toLowerCase();
+    var thisFile = location.pathname.split('/').pop() || 'home.html';
+    var rowVar = document.getElementById('egr-switcher-variants');
+    variants.forEach(function (v) {
+      var a = document.createElement('a');
+      a.textContent = v[1];
+      var url = thisFile;
+      if (v[0] === 'baseline') url += '?baseline=1';
+      else url += '?v=' + v[0];
+      a.href = url;
+      if (v[0] === current) a.className = 'is-active';
+      rowVar.appendChild(a);
+    });
+    var sel = document.getElementById('egr-switcher-page');
+    pages.forEach(function (pg) {
+      var o = document.createElement('option');
+      o.value = pg[0]; o.textContent = pg[1];
+      if (pg[0] === thisFile) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', function () {
+      var qs = (current === 'baseline') ? '?baseline=1' : '?v=' + current;
+      location.href = sel.value + qs;
+    });
+  })();
+</script>
+
+</body>
+</html>

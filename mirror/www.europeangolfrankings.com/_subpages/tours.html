@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>European Golf Rankings: Tours</title>
+  <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.quickselect.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/string_score.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+  
+  <!--[if IE 9]> 
+  <link href="/ie.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE 8]> 
+  <link href="/ie8.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if IE 7]> 
+  <link href="/ie7.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if IE 6]> 
+  <link href="/ie6.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="OMRjQpeqm23ZQnGypsb6jTNPf9wm/Yh5dChrCt0l1Jc=" name="csrf-token" />
+</head>
+<body id="tours">
+    
+  <div id="contentbox">
+  
+    <header>
+      <h1>European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="/assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="tours">
+  <li id="l_home"><a href="/">Home</a></li>
+
+    <li id="l_rankings"><a href="/ranking">Rankings</a></li>
+
+    <li id="l_events"><a href="/events">Events</a></li>
+
+    <li>
+  <a href="/how-to-use">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="/users/sign_in">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+
+  <nav id='submenue'>
+<ul>
+<li>
+<a href="/ranking">Boys/Men</a>
+</li>
+<li>
+<a href="/ranking_women">Girls/Women</a>
+</li>
+<li class='dropmenu' id='euromenu' style='margin-bottom: 0;'>
+<a class='dropmenu' href='#'>Scandinavian</a>
+<ul style='display: none;'>
+<li class='dropmenuitem'>
+<a href="/rankings/scandinavian_boys">Scandinavian Boys</a>
+<a href="/rankings/scandinavian_girls">Scandinavian Girls</a>
+</li>
+</ul>
+</li>
+<li class='dropmenu' id='dutchmenu' style='margin-bottom: 0;'>
+<a class='dropmenu' href='#'>Dutch</a>
+<ul style='display: none;'>
+<li class='dropmenuitem'>
+<a href="/tours/Dutch_jongens_u21/ranking">Jongens</a>
+<a href="/tours/Dutch_meisjes_u21/ranking">Meisjes</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<script>
+  $("li.dropmenu").hover(
+    function(){
+      //console.log($(this));
+      $(this).find("ul").toggle();
+      if($(this).find("a.dropmenu").hasClass("active")){
+        $(this).find("a.dropmenu").removeClass("active");
+      }else{
+        $(this).find("a.dropmenu").addClass("active");
+      }
+    }
+  );
+</script>
+
+  
+  
+      
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt"> 
+      <div>
+<div>
+<h2 class='tours'>
+Tours
+</h2>
+<div style='float: left; text-align: center;'>
+
+
+<a href="/tours/scandinavian"><img alt="1._bl_1._spiletag" src="/tours/27/banner/1._BL_1._Spiletag.jpg?1478441297" /></a>
+<br>
+<a href="/tours/scandinavian">Scandinavian</a>
+</div>
+<div style='float: left; text-align: center;'>
+
+
+<a href="/tours/german_girls_national_u18"><img alt="Germany-flag" src="/tours/32/banner/germany-flag.gif?1517235250" /></a>
+<br>
+<a href="/tours/german_girls_national_u18">German Mädchen U18</a>
+</div>
+<div style='float: left; text-align: center;'>
+
+
+<a href="/tours/German_jungen_u18"><img alt="Germany-flag" src="/tours/33/banner/germany-flag.gif?1517235575" /></a>
+<br>
+<a href="/tours/German_jungen_u18">German Jungen U18</a>
+</div>
+<div style='float: left; text-align: center;'>
+
+
+<a href="/tours/Dutch_jongens_u21"><img alt="Tour-default-green" src="/assets/tour-default-green.jpg" /></a>
+<br>
+<a href="/tours/Dutch_jongens_u21">German U25+ Herren</a>
+</div>
+<div style='float: left; text-align: center;'>
+
+
+<a href="/tours/Dutch_meisjes_u21"><img alt="Tour-default-green" src="/assets/tour-default-green.jpg" /></a>
+<br>
+<a href="/tours/Dutch_meisjes_u21">German U25+ Damen</a>
+</div>
+<div style='float: left; text-align: center;'>
+
+
+<a href="/tours/faldo-series"><img alt="Faldo-series" src="/tours/45/banner/faldo-series.jpg?1671634774" /></a>
+<br>
+<a href="/tours/faldo-series">Faldo Series</a>
+</div>
+<div style='float: left; text-align: center;'>
+
+
+<a href="/tours/German_jungen_ak14"><img alt="Germany-flag" src="/tours/48/banner/germany-flag.gif?1707147783" /></a>
+<br>
+<a href="/tours/German_jungen_ak14">German Jungen AK 14</a>
+</div>
+<div style='float: left; text-align: center;'>
+
+
+<a href="/tours/German_maedchen_ak14"><img alt="Germany-flag" src="/tours/49/banner/germany-flag.gif?1707149627" /></a>
+<br>
+<a href="/tours/German_maedchen_ak14">German Mädchen AK 14</a>
+</div>
+</div>
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="/seite/copyright">Copyright/Trademark</a></li>
+    <li><a href="/seite/privacy">Privacy</a></li>
+    <li><a href="/seite/terms">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="/seite/contact">Contact</a></li>
+    <li class="last"><a href="/seite/imprint">Impressum</a></li>
+  </ul>
+</nav>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//pw.europeangolfrankings.com/piwik/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '3']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//pw.europeangolfrankings.com/piwik/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+
+
+    </footer>
+
+  </div>
+</body>
+</html>

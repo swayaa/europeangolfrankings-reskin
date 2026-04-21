@@ -1,0 +1,5044 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>European Golf Rankings: Players</title>
+  <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.quickselect.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/string_score.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+  
+  <!--[if IE 9]> 
+  <link href="/ie.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE 8]> 
+  <link href="/ie8.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if IE 7]> 
+  <link href="/ie7.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <!--[if IE 6]> 
+  <link href="/ie6.css" media="screen" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="ECboXEhTiBVpdxjmhBnwdpkMdeDrDwPvVNTkXo3LzbE=" name="csrf-token" />
+</head>
+<body id="rankings">
+    
+  <div id="contentbox">
+  
+    <header>
+      <h1>European Golf Rankings</h1>
+<img alt="Egr-logo-ohne" id="logo" src="/assets/egr-logo-ohne.png" /><nav>
+  
+
+<ul class="rankings">
+  <li id="l_home"><a href="/">Home</a></li>
+
+    <li id="l_rankings"><a href="/ranking_women">Rankings</a></li>
+
+    <li id="l_events"><a href="/events/female">Events</a></li>
+
+    <li>
+  <a href="/how-to-use">How it Works</a></li>
+
+    <li>
+  </li>
+
+
+  <li id="l_sessions" class="last">
+      <a href="/users/sign_in">Log In</a>
+  </li>
+  <!-- <li id="l_search" class="last"><a href="#">Locale: en</a></li> -->
+</ul>
+
+<div id="submenue">
+
+
+  <nav id='submenue'>
+<ul>
+<li>
+<a href="/ranking">Boys/Men</a>
+</li>
+<li>
+<a href="/ranking_women">Girls/Women</a>
+</li>
+<li class='active dropmenu' id='euromenu' style='margin-bottom: 0;'>
+<a class='dropmenu' href='#'>Scandinavian</a>
+<ul style='display: none;'>
+<li class='dropmenuitem'>
+<a href="/rankings/scandinavian_boys">Scandinavian Boys</a>
+<a href="/rankings/scandinavian_girls">Scandinavian Girls</a>
+</li>
+</ul>
+</li>
+<li class='dropmenu' id='dutchmenu' style='margin-bottom: 0;'>
+<a class='dropmenu' href='#'>Dutch</a>
+<ul style='display: none;'>
+<li class='dropmenuitem'>
+<a href="/tours/Dutch_jongens_u21/ranking">Jongens</a>
+<a href="/tours/Dutch_meisjes_u21/ranking">Meisjes</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<script>
+  $("li.dropmenu").hover(
+    function(){
+      //console.log($(this));
+      $(this).find("ul").toggle();
+      if($(this).find("a.dropmenu").hasClass("active")){
+        $(this).find("a.dropmenu").removeClass("active");
+      }else{
+        $(this).find("a.dropmenu").addClass("active");
+      }
+    }
+  );
+</script>
+
+  
+  
+      
+
+
+</div>
+
+</nav>
+
+    </header>
+    
+    <div id="main">
+      <div id="inhalt"> 
+      <div>
+<div>
+<h2>Scandinavian Girls</h2>
+<table cellspacing='0' id='table'>
+<tr class='table_headfoot'>
+<td colspan='4'>
+Displaying Player <b>1&nbsp;-&nbsp;100</b> of <b>493</b> in total
+<br>
+Click on the white headers to sort with this criteria
+</td>
+<td align='right' colspan='3'>
+Page
+1
+of
+5
+</td>
+</tr>
+<tr class='header  asc'>
+<th class='points' style='text-align: right'>
+EGR
+<br>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;sort=points">Points</a>
+</th>
+<th class='last_name' style='text-align: left'>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;sort=last_name"><span class="translation_missing" title="translation missing: en.name">Name</span></a>
+</th>
+<!-- %th{:class => "first_name", :style => 'text-align: left'} -->
+<!-- - pph[:sort] = "first_name" -->
+<!-- = link_to t(:first_name), pph -->
+<!-- %th ID -->
+<th class='country' style='text-align: left'>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;sort=country">Country</a>
+</th>
+<th class='born'>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;sort=born">Age Group</a>
+</th>
+<th class='score'>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;sort=score">Avg. Score</a>
+</th>
+<th class='css'>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;sort=css">Avg. to CR</a>
+</th>
+<th class='events' style='border-right: none;'>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;sort=events">Events Counting</a>
+</th>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+34285.70
+</td>
+<td align='left' width='200'>
+<a href="/players/55334/Counting/All">BRENT-PETERSEN, Benedicte</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.00
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+66.40
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+21516.40
+</td>
+<td align='left' width='200'>
+<a href="/players/40962/Counting/All">HOLMBERG, Olivia</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.14
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.96
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+19061.80
+</td>
+<td align='left' width='200'>
+<a href="/players/25645/Counting/All">MADSEN, Marie Eline</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+69.75
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+64.38
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+17723.70
+</td>
+<td align='left' width='200'>
+<a href="/players/21262/Counting/All">SKOVGAARD BILS, Sarah</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.78
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.87
+</td>
+<td align='center' style='border-right: none;' width='60'>
+8
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+16760.90
+</td>
+<td align='left' width='200'>
+<a href="/players/25300/Counting/All">FREDRIKSSON, Elice</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.88
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.74
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+15466.70
+</td>
+<td align='left' width='200'>
+<a href="/players/25559/Counting/All">WECKMAN, June</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.84
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.33
+</td>
+<td align='center' style='border-right: none;' width='60'>
+7
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+15162.90
+</td>
+<td align='left' width='200'>
+<a href="/players/23877/Counting/All">ORTENGREN, Meja</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.00
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+65.35
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+14962.90
+</td>
+<td align='left' width='200'>
+<a href="/players/34788/Counting/All">TORSTENSSON, Havanna</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.24
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+13933.30
+</td>
+<td align='left' width='200'>
+<a href="/players/27199/Counting/All">LUNDQVIST, Ebba</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+70.88
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.23
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+13097.50
+</td>
+<td align='left' width='200'>
+<a href="/players/29390/Counting/All">WIBERG, Alvilda</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.64
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.00
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+12572.60
+</td>
+<td align='left' width='200'>
+<a href="/players/31638/Counting/All">INGEBRETSEN, Ella</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.33
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.41
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+11777.40
+</td>
+<td align='left' width='200'>
+<a href="/players/35451/Counting/All">DYRESKOV, Jessica</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.32
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.45
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+11519.40
+</td>
+<td align='left' width='200'>
+<a href="/players/29395/Counting/All">ANDERSEN, Liva Krøl</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.08
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+10995.00
+</td>
+<td align='left' width='200'>
+<a href="/players/24453/Counting/All">SVEDENSKIÖLD, Moa</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+70.88
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+65.50
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+9584.49
+</td>
+<td align='left' width='200'>
+<a href="/players/36338/Counting/All">MEJER, Ebba</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.39
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+9493.36
+</td>
+<td align='left' width='200'>
+<a href="/players/21449/Counting/All">BUNCH, Emma Kaisa Dalgaard</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.63
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+66.25
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+9444.67
+</td>
+<td align='left' width='200'>
+<a href="/players/36366/Counting/All">FORSS, Ella</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.43
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.52
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+9115.24
+</td>
+<td align='left' width='200'>
+<a href="/players/27307/Counting/All">EGGERSEN, Cecilie</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.26
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.75
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+8928.77
+</td>
+<td align='left' width='200'>
+<a href="/players/23883/Counting/All">SVARVAR, Kajsalotta</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.00
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+65.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+8840.48
+</td>
+<td align='left' width='200'>
+<a href="/players/36796/Counting/All">LUSSAND, Marie Sandtorv</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.05
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.21
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+8760.99
+</td>
+<td align='left' width='200'>
+<a href="/players/27198/Counting/All">BJÖRKMAN, Matilda</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+70.55
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+67.44
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+8709.97
+</td>
+<td align='left' width='200'>
+<a href="/players/23075/Counting/All">OHMA, Silje Torvund</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.82
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+67.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+8682.35
+</td>
+<td align='left' width='200'>
+<a href="/players/33495/Counting/All">FREDERIKSEN, Julie</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.00
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.36
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+8456.98
+</td>
+<td align='left' width='200'>
+<a href="/players/43721/Counting/All">ASKERDAL, Lova</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.78
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+71.56
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+7617.44
+</td>
+<td align='left' width='200'>
+<a href="/players/31671/Counting/All">JACOBSEN, Christina</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.50
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.00
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+7516.66
+</td>
+<td align='left' width='200'>
+<a href="/players/40056/Counting/All">RÅLIN, Molly</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.92
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+71.01
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+6670.27
+</td>
+<td align='left' width='200'>
+<a href="/players/35268/Counting/All">SVEUM, Martine</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.86
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+71.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+6390.87
+</td>
+<td align='left' width='200'>
+<a href="/players/32301/Counting/All">AHTI, Iiris</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.24
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.10
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+6326.63
+</td>
+<td align='left' width='200'>
+<a href="/players/28080/Counting/All">GJELTEN, Henriette Spilling</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.12
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+6250.18
+</td>
+<td align='left' width='200'>
+<a href="/players/45275/Counting/All">BOHLIN, Maja</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.26
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.50
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+5753.84
+</td>
+<td align='left' width='200'>
+<a href="/players/24636/Counting/All">NORDSTEDT, Ebba</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.33
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+67.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+5501.46
+</td>
+<td align='left' width='200'>
+<a href="/players/34869/Counting/All">PERSSON LIDGREN, Blondie</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.75
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.35
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+5456.49
+</td>
+<td align='left' width='200'>
+<a href="/players/22486/Counting/All">HEKKONEN, Anastasia</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.31
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+67.97
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+5178.88
+</td>
+<td align='left' width='200'>
+<a href="/players/14470/Counting/All">KURONEN, Oona</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.92
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.34
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+5131.65
+</td>
+<td align='left' width='200'>
+<a href="/players/36339/Counting/All">JOHNSEN, Nora Sophie</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.52
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+71.30
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+5050.12
+</td>
+<td align='left' width='200'>
+<a href="/players/31886/Counting/All">WIDAL, Josefin</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.00
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+65.97
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4847.07
+</td>
+<td align='left' width='200'>
+<a href="/players/24638/Counting/All">JOHANSSON, Alice</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.13
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.53
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4666.26
+</td>
+<td align='left' width='200'>
+<a href="/players/29394/Counting/All">SØRENSEN, Dagmar Arenfeldt</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.36
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+71.37
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4450.79
+</td>
+<td align='left' width='200'>
+<a href="/players/36464/Counting/All">SEL, Tomine</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.87
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.25
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4381.10
+</td>
+<td align='left' width='200'>
+<a href="/players/27465/Counting/All">PUDAS REMLER, Elin</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.15
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.00
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4252.74
+</td>
+<td align='left' width='200'>
+<a href="/players/31640/Counting/All">KLEPPE, Julie Ulvenes</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.76
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+71.84
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4094.48
+</td>
+<td align='left' width='200'>
+<a href="/players/26332/Counting/All">PIHLAJAMÄKI, Sara</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.00
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.41
+</td>
+<td align='center' style='border-right: none;' width='60'>
+6
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4085.78
+</td>
+<td align='left' width='200'>
+<a href="/players/36462/Counting/All">HESSEN RYGH, Erica</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.17
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.79
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4083.22
+</td>
+<td align='left' width='200'>
+<a href="/players/38752/Counting/All">JELANDER, Hanna</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.50
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.75
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4080.79
+</td>
+<td align='left' width='200'>
+<a href="/players/21369/Counting/All">GRONBORG, Olivia</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4049.10
+</td>
+<td align='left' width='200'>
+<a href="/players/30119/Counting/All">BERGLUND, Mira</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.11
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.19
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+4015.79
+</td>
+<td align='left' width='200'>
+<a href="/players/34242/Counting/All">HOLMGREN, Elva</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.63
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.37
+</td>
+<td align='center' style='border-right: none;' width='60'>
+7
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3819.41
+</td>
+<td align='left' width='200'>
+<a href="/players/17066/Counting/All">GESTSDÓTTIR, Hulda Clara</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Iceland
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.67
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+66.80
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3777.47
+</td>
+<td align='left' width='200'>
+<a href="/players/40845/Counting/All">AUGUSTSSON, Wilma</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.61
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3506.93
+</td>
+<td align='left' width='200'>
+<a href="/players/43723/Counting/All">ALVERLIN, Ronja</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.77
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.75
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3416.92
+</td>
+<td align='left' width='200'>
+<a href="/players/28786/Counting/All">JANSSON, Lova</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.65
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.46
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3401.58
+</td>
+<td align='left' width='200'>
+<a href="/players/43015/Counting/All">HEDLUND, Lilly</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+77.16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+75.27
+</td>
+<td align='center' style='border-right: none;' width='60'>
+8
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3376.39
+</td>
+<td align='left' width='200'>
+<a href="/players/26327/Counting/All">EKHOLM, Essi</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.52
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.79
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3135.15
+</td>
+<td align='left' width='200'>
+<a href="/players/44901/Counting/All">PEDERSEN, Pok Tuphok</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.92
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.82
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3051.52
+</td>
+<td align='left' width='200'>
+<a href="/players/24884/Counting/All">ENGESAETH, Sofie Bindner</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.56
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.37
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+3020.22
+</td>
+<td align='left' width='200'>
+<a href="/players/29611/Counting/All">LILJEBERG, Ebba</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.67
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.63
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2977.51
+</td>
+<td align='left' width='200'>
+<a href="/players/27585/Counting/All">STRANDA, Henriette</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.60
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.11
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2971.26
+</td>
+<td align='left' width='200'>
+<a href="/players/38005/Counting/All">HJALTADÓTTIR, Pamela Ósk</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Iceland
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.83
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.97
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2955.25
+</td>
+<td align='left' width='200'>
+<a href="/players/27613/Counting/All">STRIDH, Moa</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.56
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.52
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2906.97
+</td>
+<td align='left' width='200'>
+<a href="/players/35360/Counting/All">BRUUN, Caroline Kirkegaard</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.42
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.56
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2895.05
+</td>
+<td align='left' width='200'>
+<a href="/players/38102/Counting/All">NOUSIAINEN, Oona</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.30
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.53
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2822.27
+</td>
+<td align='left' width='200'>
+<a href="/players/25577/Counting/All">AXELSEN, Johanna</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.17
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.57
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2806.08
+</td>
+<td align='left' width='200'>
+<a href="/players/42728/Counting/All">STEVENS CHRISTIANSEN, Amalie</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.65
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.42
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2747.22
+</td>
+<td align='left' width='200'>
+<a href="/players/23881/Counting/All">SUNDQUIST, Filippa</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+71.25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+65.65
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2673.05
+</td>
+<td align='left' width='200'>
+<a href="/players/26328/Counting/All">LINDQVIST, Lina</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+77.53
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+7
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2621.68
+</td>
+<td align='left' width='200'>
+<a href="/players/40856/Counting/All">MÅRTENSSON, Alice</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.87
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.17
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2596.60
+</td>
+<td align='left' width='200'>
+<a href="/players/22484/Counting/All">GRÖNLUND, Fanni</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.22
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.07
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2524.08
+</td>
+<td align='left' width='200'>
+<a href="/players/34234/Counting/All">LÖFMAN, Tilde</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.50
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.24
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2484.31
+</td>
+<td align='left' width='200'>
+<a href="/players/14478/Counting/All">MÄKI-TANILA, Ella</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+73.57
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+71.23
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2469.48
+</td>
+<td align='left' width='200'>
+<a href="/players/41217/Counting/All">WAHLUND, Fiona</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.32
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.79
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2417.32
+</td>
+<td align='left' width='200'>
+<a href="/players/43722/Counting/All">EDVINSSON, Tuva</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.70
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.84
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2277.64
+</td>
+<td align='left' width='200'>
+<a href="/players/31880/Counting/All">FRIDH, Thea</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.38
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.75
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2237.34
+</td>
+<td align='left' width='200'>
+<a href="/players/32296/Counting/All">GYNTHER, Veera</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+79.24
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+76.87
+</td>
+<td align='center' style='border-right: none;' width='60'>
+7
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2100.49
+</td>
+<td align='left' width='200'>
+<a href="/players/31252/Counting/All">FREDERIKSEN, Laura</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.14
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.85
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+2039.06
+</td>
+<td align='left' width='200'>
+<a href="/players/47564/Counting/All">NEMMØE, Liva</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.29
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+75.00
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1989.92
+</td>
+<td align='left' width='200'>
+<a href="/players/35267/Counting/All">THALBERG, Keira Julie</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+77.70
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1949.77
+</td>
+<td align='left' width='200'>
+<a href="/players/31884/Counting/All">GYLLNER, Amanda</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.89
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.02
+</td>
+<td align='center' style='border-right: none;' width='60'>
+7
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1922.76
+</td>
+<td align='left' width='200'>
+<a href="/players/20408/Counting/All">BROVOLD SANNE, Celine</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+70.67
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1909.09
+</td>
+<td align='left' width='200'>
+<a href="/players/21901/Counting/All">OLSSON, Alicia</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.50
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1901.10
+</td>
+<td align='left' width='200'>
+<a href="/players/49285/Counting/All">TØNNESSEN, Ruth</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.58
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+71.90
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1893.25
+</td>
+<td align='left' width='200'>
+<a href="/players/18029/Counting/All">LARSSON, Emma (SA)</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+77.11
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.96
+</td>
+<td align='center' style='border-right: none;' width='60'>
+7
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1872.15
+</td>
+<td align='left' width='200'>
+<a href="/players/43157/Counting/All">BOTHELIUS, Alice</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.78
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.91
+</td>
+<td align='center' style='border-right: none;' width='60'>
+8
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1825.58
+</td>
+<td align='left' width='200'>
+<a href="/players/37535/Counting/All">KRISTINSDÓTTIR, Eva</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Iceland
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.60
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.36
+</td>
+<td align='center' style='border-right: none;' width='60'>
+5
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1809.28
+</td>
+<td align='left' width='200'>
+<a href="/players/38631/Counting/All">ANDERSEN, Karoline Daugaard</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.55
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1768.97
+</td>
+<td align='left' width='200'>
+<a href="/players/45809/Counting/All">THORSTEINSDOTTIR, Gudrun</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Iceland
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.50
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.35
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1762.20
+</td>
+<td align='left' width='200'>
+<a href="/players/32300/Counting/All">HALLIKAS, Katariina</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+78.58
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+76.32
+</td>
+<td align='center' style='border-right: none;' width='60'>
+8
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1757.74
+</td>
+<td align='left' width='200'>
+<a href="/players/33497/Counting/All">OFFENBACH, Claudia B.</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U14
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+78.24
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+76.42
+</td>
+<td align='center' style='border-right: none;' width='60'>
+8
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1678.31
+</td>
+<td align='left' width='200'>
+<a href="/players/23912/Counting/All">SUNDBERG, Nora</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+72.60
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+67.88
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1678.21
+</td>
+<td align='left' width='200'>
+<a href="/players/26336/Counting/All">HÄNNINEN, Hanna</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.25
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.89
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1677.14
+</td>
+<td align='left' width='200'>
+<a href="/players/31882/Counting/All">KONO, Hannah</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.89
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.06
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1603.17
+</td>
+<td align='left' width='200'>
+<a href="/players/39123/Counting/All">KRAK PAULICK, Amanda</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U18
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+77.90
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+75.22
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1540.43
+</td>
+<td align='left' width='200'>
+<a href="/players/53221/Counting/All">LINDQVIST, Desirée</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U14
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.38
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.88
+</td>
+<td align='center' style='border-right: none;' width='60'>
+6
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1477.96
+</td>
+<td align='left' width='200'>
+<a href="/players/43543/Counting/All">WITTE-SKJELBRED, Anne</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Norway
+</td>
+<td align='center' width='40'>
+U16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+75.86
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+74.96
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1438.93
+</td>
+<td align='left' width='200'>
+<a href="/players/40548/Counting/All">OLOFSSON, Emma</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+76.45
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+75.47
+</td>
+<td align='center' style='border-right: none;' width='60'>
+4
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1436.16
+</td>
+<td align='left' width='200'>
+<a href="/players/20341/Counting/All">BORG, Nathalie</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+78.13
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+72.35
+</td>
+<td align='center' style='border-right: none;' width='60'>
+3
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1421.15
+</td>
+<td align='left' width='200'>
+<a href="/players/22734/Counting/All">ORRING, Mathilda</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+70.71
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+68.37
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1419.79
+</td>
+<td align='left' width='200'>
+<a href="/players/18912/Counting/All">SVENSSON, Elsa</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Sweden
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.50
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+67.60
+</td>
+<td align='center' style='border-right: none;' width='60'>
+1
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1400.22
+</td>
+<td align='left' width='200'>
+<a href="/players/19859/Counting/All">VÄISTÖ, Emilia</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+Adult
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+74.00
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+69.13
+</td>
+<td align='center' style='border-right: none;' width='60'>
+2
+</td>
+</tr>
+<tr class='odd'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1399.95
+</td>
+<td align='left' width='200'>
+<a href="/players/41889/Counting/All">GREGERSEN, Mia Kjeldsgaard</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Denmark
+</td>
+<td align='center' width='40'>
+U16
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+78.24
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+76.46
+</td>
+<td align='center' style='border-right: none;' width='60'>
+9
+</td>
+</tr>
+<tr class='even'>
+<td align='right' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.egr_points) unless player.egr_points.nil? -->
+<!-- - last_points = player.egr_points -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.egr_points_closed) unless player.egr_points_closed.nil? -->
+<!-- - last_points = player.egr_points_closed -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.egr_points_open) unless player.egr_points_open.nil? -->
+<!-- - last_points = player.egr_points_open -->
+1391.99
+</td>
+<td align='left' width='200'>
+<a href="/players/26330/Counting/All">PALIN, Sandra</a>
+</td>
+<!-- %td{:align => 'left', :width => '125'} -->
+<!-- = player.first_name -->
+<!-- %td{:align => 'right', :style=>'color: #666'} -->
+<!-- = player.egrid -->
+<td align='left' width='140'>
+Finland
+</td>
+<td align='center' width='40'>
+U21
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f",player.avg_score_played) unless player.avg_score_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f",player.avg_score_played_closed) unless player.avg_score_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f",player.avg_score_played_open) unless player.avg_score_played_open == 0 -->
+77.19
+</td>
+<td align='center' width='70'>
+<!-- - if pph['open_closed'] == "Both" -->
+<!-- = sprintf("%.2f", player.avg_css_played) unless player.avg_css_played == 0 -->
+<!-- - elsif pph['open_closed'] == "Closed" -->
+<!-- = sprintf("%.2f", player.avg_css_played_closed) unless player.avg_css_played_closed == 0 -->
+<!-- - else -->
+<!-- = sprintf("%.2f", player.avg_css_played_open) unless player.avg_css_played_open == 0 -->
+73.85
+</td>
+<td align='center' style='border-right: none;' width='60'>
+7
+</td>
+</tr>
+<tr class='table_headfoot'>
+<td colspan='4'>
+<div class="pagination"><span class="previous_page disabled">&#8592; Previous</span> <em class="current">1</em> <a rel="next" href="/rankings/scandinavian_girls?gender=F&amp;page=2">2</a> <a href="/rankings/scandinavian_girls?gender=F&amp;page=3">3</a> <a href="/rankings/scandinavian_girls?gender=F&amp;page=4">4</a> <a href="/rankings/scandinavian_girls?gender=F&amp;page=5">5</a> <a class="next_page" rel="next" href="/rankings/scandinavian_girls?gender=F&amp;page=2">Next &#8594;</a></div>
+</td>
+<td align='right' colspan='3'>
+Players per Page:
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;per_page=10">10</a>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;per_page=25">25</a>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;per_page=50">50</a>
+100
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;per_page=200">200</a>
+<a href="/rankings/scandinavian_girls?gender=F&amp;order=ASC&amp;per_page=100000">All</a>
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+
+      </div>
+          <aside>
+            
+
+<div class="page">
+    <img alt="Landgraf" src="/page_images/12/medium/Landgraf.jpg?1770138992" /> <div class="sidebar"> <h2>Rankings</h2> <p>Search Criteria:</p>
+<p>Open: All<br />
+ U25: 24-25<br />
+ U23: 22-23<br />
+ U21: 19-21<br />
+ U18: 17-18<br />
+ U16: 15-16<br />
+ U14: 13-14<br />
+ U12: 12 and younger</p> </div></div>
+
+      <div class="wblock" style="margin-top: 36px;">
+        <a href="https://www.studyandplayamerica.com/"><img src="/ads/14/medium/2026_Study_PlayAmerica.gif?2026" /></a>
+      </div>
+
+          </aside>
+    </div>
+
+    <footer>
+    <nav>
+  <ul style="margin-left: 10px;">
+    <li><a href="/seite/copyright">Copyright/Trademark</a></li>
+    <li><a href="/seite/privacy">Privacy</a></li>
+    <li><a href="/seite/terms">Terms Of Use</a></li>
+    <li><a href="http://www.facebook.com/pages/European-Golf-Rankings/296585840356003" target="_blank">Facebook</a></li>
+    <li><a href="/seite/contact">Contact</a></li>
+    <li class="last"><a href="/seite/imprint">Impressum</a></li>
+  </ul>
+</nav>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//pw.europeangolfrankings.com/piwik/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '3']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//pw.europeangolfrankings.com/piwik/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+
+
+    </footer>
+
+  </div>
+</body>
+</html>
