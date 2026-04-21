@@ -346,6 +346,17 @@ def transform_html(html: str, page_kind: str, body_id_default: str) -> str:
     body_part = re.sub(
         r'(<img[^>]*src=["\']ads/[^"\']+\.gif)\?[^"\']+(["\'])',
         r'\1\2', body_part)
+    # 3d) Mirror-Quirk: country flags live at /assets/X.png, but the HAML
+    #     references them at /assets/flag/X.png. Rewrite directly so the
+    #     browser doesn't issue 404s on first paint.
+    body_part = re.sub(
+        r'(src=["\'])assets/flag/', r'\1assets/', body_part)
+    # 3e) Strip inline `style='background-image: url(/assets/top5-N.png)'`
+    #     from .flagblock spans (female.html / male.html) — our CSS counters
+    #     render the rank badges, the inline URL would only cause 404s.
+    body_part = re.sub(
+        r"\s*style=['\"]background-image:\s*url\(/assets/top5-\d+\.png\);?['\"]",
+        '', body_part)
 
     # 4) Ensure body has data-egr-page attribute
     body_part = re.sub(
