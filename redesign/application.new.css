@@ -1922,25 +1922,20 @@ div#inhalt div.top5_nations > ul > li > a > img {
   background: var(--egr-color-surface-2);
 }
 
-/* Playerblock = Name + Stats */
+/* Playerblock = Name + Stats. Original benutzt <br>-getrennte Text-Nodes
+   in einem <span> — wir lassen die Umbrüche stehen und sorgen über
+   line-height für lesbare Vertikal-Rhythmus. */
 div#inhalt div.top5_nations > ul > li .playerblock {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  display: block;
   font-size: 13px;
   color: var(--egr-color-text-2);
-  line-height: 1.4;
-}
-
-div#inhalt div.top5_nations > ul > li .playerblock br {
-  display: none;
+  line-height: 1.6;
+  padding-top: var(--egr-space-1);
 }
 
 div#inhalt div.top5_nations > ul > li .playerblock a {
   display: block;
-  width: 100%;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   font-family: var(--egr-font-display);
   font-size: 14px;
   font-weight: 700;
@@ -1955,14 +1950,19 @@ div#inhalt div.top5_nations > ul > li .playerblock a:hover {
   text-decoration: underline !important;
 }
 
-/* "View Complete Rankings" → CTA-Button */
-div#inhalt div.top5_nations > a[href*="ranking"],
-div#inhalt div.top5_nations > a:not([class]) {
+/* "View Complete Rankings" liegt im Original in
+   <p class="complete_ranking complete_ranking_player"><a>…</a></p>
+   — wir stylen den ganzen Absatz als CTA-Button. */
+div#inhalt div.top5_nations > p.complete_ranking {
+  margin: 0 0 var(--egr-space-3);
+  padding: 0;
+  text-align: right;
+}
+
+div#inhalt div.top5_nations > p.complete_ranking a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  align-self: flex-end;
-  margin: calc(-1 * var(--egr-space-2)) 0 var(--egr-space-2) auto;
   padding: 8px 16px;
   font-family: var(--egr-font-display);
   font-size: 13px;
@@ -1975,21 +1975,28 @@ div#inhalt div.top5_nations > a:not([class]) {
   transition: background 160ms ease, transform 160ms ease;
 }
 
-div#inhalt div.top5_nations > a[href*="ranking"]:hover,
-div#inhalt div.top5_nations > a:not([class]):hover {
+div#inhalt div.top5_nations > p.complete_ranking a:hover {
   background: var(--egr-color-accent-strong);
   transform: translateY(-1px);
+  color: var(--egr-color-on-accent, #fff) !important;
 }
 
-div#inhalt div.top5_nations > a[href*="ranking"] img,
-div#inhalt div.top5_nations > a:not([class]) img {
-  display: none; /* das Pfeil-PNG (pfeil-view-complete-top5.png) ist 404 */
-}
-
-div#inhalt div.top5_nations > a[href*="ranking"]::after,
-div#inhalt div.top5_nations > a:not([class])::after {
+div#inhalt div.top5_nations > p.complete_ranking a::after {
   content: "→";
   font-weight: 700;
+}
+
+div#inhalt div.top5_nations > p.complete_ranking .translation_missing {
+  background: none !important;
+  color: inherit !important;
+  border: none !important;
+  font-style: normal;
+}
+
+/* Alle 404-Pfeil-PNGs (pfeil-view-complete-top5.png) global verstecken,
+   das Original-Asset existiert im Mirror nicht. */
+img[src*="pfeil-view-complete-top5"] {
+  display: none !important;
 }
 
 /* ============================================================================
